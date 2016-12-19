@@ -13,15 +13,15 @@ RSpec.feature "Unathenticated User Can Sign Up", type: :feature do
     expect(page).to have_field("user_password_confirmation")
   end
 
-  xit "allows new user to creat and account" do
-    visit new_user_sign_up_path
-    fill_in "Email address", with: "jasmin@example.com"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
-    click_button "Sign Up"
+  it "allows new user to creat and account" do
+    visit new_user_registration_path
+    fill_in "user[email]", with: "jasmin@example.com"
+    fill_in "user[password]", with: "password"
+    fill_in "user[password_confirmation]", with: "password"
+    click_button "Sign up"
 
     user = User.last
-    expect(current_user).to eq(user)
+    # expect(current_user).to eq(user)
     expect(current_path).to eq(links_path)
   end
 end
