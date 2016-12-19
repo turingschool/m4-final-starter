@@ -10,6 +10,12 @@
     <%= f.submit "Add Link" %>
   <% end %>
 
+  <div class="user-links">
+    <% @current_links.each do |link| %>
+      <p> <%= link.title %> <%= link.url %>  <%= link_to "Edit", edit_link_path(link) %></p>
+    <% end %>
+  </div>
+
 <% else %>
 
   <%= link_to "Sign Up", new_user_registration_path %>

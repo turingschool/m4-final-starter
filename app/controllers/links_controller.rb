@@ -3,6 +3,7 @@ class LinksController < ApplicationController
 
   def index
     @link = Link.new
+    @current_links = current_user.links
   end
 
   def create
@@ -13,7 +14,22 @@ class LinksController < ApplicationController
       flash.notice = "Successfully added new link"
       redirect_to links_path
     else
-      flash.now.error = @message.errors.join(' ,')
+      flash.now.error = @message.errors.join(' ,') # <- FIX ME
+    end
+  end
+
+  def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    @link = Link.find(params[:id])
+
+    if @link.update(link_params)
+      flash.notice = "Successfully updated link"
+      redirect_to links_path
+    else
+      flash.now[:error] = "nope" # <- FIX ME
     end
   end
 
