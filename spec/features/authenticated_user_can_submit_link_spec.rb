@@ -7,11 +7,11 @@ RSpec.feature "Authenticated User", type: :feature do
     fill_in "Email", with: "jasmin@turing.io"
     fill_in "Password", with: "password"
     click_button "Log in"
-    save_and_open_page
+
     expect(Link.count).to eq(0)
 
-    fill_in "Link title", with: "Test Link"
-    fill_in "Link URL", with: "www.coolnewlink.com"
+    fill_in "Title", with: "Test Link"
+    fill_in "Url", with: "http://coolnewlink.com"
     click_button "Add Link"
 
     expect(Link.count).to eq(1)
