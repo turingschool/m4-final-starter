@@ -6,17 +6,17 @@ RSpec.describe Link, type: :model do
 
   it { is_expected.to belong_to :user }
 
-  it { is_expected.to allow_value("www.coollinkbro.com").for(:url) }
-  it { is_expected.to_not allow_value("www.coollinkbro").for(:url) }
+  it { is_expected.to allow_value("http://coollinkbro.com").for(:url) }
+  it { is_expected.to_not allow_value("coollinkbro.com").for(:url) }
 
   it "has all required attributes" do
     user = create(:user)
     link = Link.create( title: "New Link",
-                        url: "www.coollinkbro.com",
-                        user_id: user )
+                        url: "http://coollinkbro.com",
+                        user_id: user.id )
 
     expect(link.title).to eq("New Link")
-    expect(link.url).to eq("www.coollinkbro.com")
+    expect(link.url).to eq("http://coollinkbro.com")
     expect(link.user_id).to eq(user.id)
     expect(link.read).to eq(false)
   end
