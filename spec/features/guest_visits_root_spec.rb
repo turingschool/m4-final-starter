@@ -11,6 +11,12 @@ RSpec.describe 'Visitor' do
   it 'can sign up with an email and password' do
     visit root_path
     click_link 'Sign up'
+    fill_in 'Email', with: 'bcgoss@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Confirm Password', with: 'passwor'
+    click_button 'Sign up'
+
+    expect(current_path).to eq(links_path)
   end
 
   xit 'cannot sign up if the email is being used' do

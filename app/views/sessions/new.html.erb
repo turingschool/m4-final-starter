@@ -1,0 +1,12 @@
+<h1>Log in</h1>
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= label_tag :password %>
+  <%= text_field_tag :password %>
+  <%= label_tag :password_confirmation %>
+  <%= text_field_tag :password_confirmation %>
+  <%= f.submit 'Log in' %>
+<% end %>
+<h3>Or create an account</h3>
+<%= link_to 'Sign up', new_user_path %>
