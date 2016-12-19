@@ -5,7 +5,7 @@ RSpec.describe 'Visitor' do
     visit root_path
     expect(page).to have_content('Log in')
     expect(page).to have_content('Sign up')
-    expect(current_path).to eq(new_session_path)
+    expect(current_path).to eq(login_path)
   end
 
   it 'can sign up with an email and password' do
