@@ -22,7 +22,6 @@ gem 'awesome_print'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'web-console', '~> 2.0'
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
@@ -33,3 +32,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 end
+
+gem 'web-console', '~> 2.0', group: :development
