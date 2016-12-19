@@ -3,11 +3,14 @@ require 'rails_helper'
 RSpec.feature "Unathenticated User Can Sign Up", type: :feature do
   it "shows sign up form" do
     visit root_path
+
+    expect(page).to have_link("Log In")
+
     click_on "Sign Up"
 
-    expect(page).to have_field("EmailAddress")
-    expect(page).to have_field("Password")
-    expect(page).to have_field("PasswordConfirmation")
+    expect(page).to have_field("user_email")
+    expect(page).to have_field("user_password")
+    expect(page).to have_field("user_password_confirmation")
   end
 
   xit "allows new user to creat and account" do
