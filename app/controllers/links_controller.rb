@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
+  before_action :authorized?, only: [:index]
   def index
-    render json: 'hello'
   end
 end
