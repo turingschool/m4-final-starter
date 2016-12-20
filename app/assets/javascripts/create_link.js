@@ -28,8 +28,8 @@ function getLinkData() {
 }
 
 function renderLink(link){
-  $("#links_list").append( linkHTML(link) )
-  // clearLink();
+  $("#links_list").prepend( linkHTML(link) )
+  clearLink();
 }
 
 function linkHTML(link) {

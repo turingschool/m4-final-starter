@@ -7,16 +7,16 @@ class LinksController < ApplicationController
   end
 
   def create
-    user = current_user
-    @link = user.links.new(link_params)
-
-    if @link.save
-      flash.notice = "Successfully added new link"
-      redirect_to links_path
-    else
-      flash[:danger] = @link.errors.full_messages.join(", ")
-      redirect_to links_path
-    end
+    # user = current_user
+    # @link = user.links.new(link_params)
+    #
+    # if @link.save
+    #   flash.notice = "Successfully added new link"
+    #   redirect_to links_path
+    # else
+    #   flash[:danger] = @link.errors.full_messages.join(", ")
+    #   redirect_to links_path
+    # end
   end
 
   def edit

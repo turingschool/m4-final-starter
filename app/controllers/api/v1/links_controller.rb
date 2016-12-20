@@ -1,5 +1,8 @@
 class Api::V1::LinksController < ApplicationController
 
+  def index
+  end
+
   def create
     user = current_user
     @link = user.links.new(link_params)
