@@ -1,0 +1,24 @@
+<% if current_user %>
+
+  <%= form_for @link do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, id: 'link_title' %></br>
+
+    <%= f.label :url %>
+    <%= f.text_field :url, id: 'link_url' %></br>
+
+    <%= f.submit "Add Link", id: 'submit_link' %>
+  <% end %>
+
+  <div class="user-links" id="links_list">
+    <!-- <%# @current_links.each do |link| %>
+      <p> <%# link.title %> <%# link_to link.url, link.url, id: 'link-url' %>  <%# link_to "Edit", edit_link_path(link) %></p>
+    <%# end %> -->
+  </div>
+
+<% else %>
+
+  <%= link_to "Sign Up", new_user_registration_path %>
+  <%= link_to "Log In", new_user_session_path %>
+
+<% end %>
