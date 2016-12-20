@@ -10,8 +10,6 @@ RSpec.feature "Authenticated User", type: :feature do
 
     link = user.links.create(title: "New Link", url: "http://coolstorybro.com")
 
-    save_and_open_page
-
     within('.user-links') do
       click_link "Edit"
     end

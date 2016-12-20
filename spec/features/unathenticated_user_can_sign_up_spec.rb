@@ -16,15 +16,14 @@ RSpec.feature "Unathenticated User Can Sign Up", type: :feature do
   it "allows new user to create an account" do
     user = { email: "turing@example.com", password: "password" }
     sign_up_user(user)
-    # save_and_open_page
     expect(current_path).to eq(links_path)
   end
 
-  xit "doesn't allow emails to be taken more than once" do
-    user = create(:user)
+  it "doesn't allow emails to be taken more than once" do
+    user = { email: "turing@example.com", password: "password" }
     sign_up_user(user)
-    visit destroy_user_session_path
-    # sign_up_user
+    click_link "Log out"
+    sign_up_user(user)
 
     expect(page).to have_content("Email has already been taken")
   end
