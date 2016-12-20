@@ -36,8 +36,9 @@ class LinksController < ApplicationController
 
   def read
     link = Link.find(params[:id])
-    ReadLinkService.new(link) if link.update(read: true)
+    rls = ReadLinkService.new(link) if link.update(read: true)
 
+    rls.send_read_receipt
     redirect_to links_path
   end
 
