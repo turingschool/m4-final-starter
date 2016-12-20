@@ -14,7 +14,8 @@ class LinksController < ApplicationController
       flash.notice = "Successfully added new link"
       redirect_to links_path
     else
-      flash.now.error = @message.errors.join(' ,') # <- FIX ME
+      flash[:danger] = @link.errors.full_messages.join(", ")
+      redirect_to links_path
     end
   end
 
@@ -29,7 +30,7 @@ class LinksController < ApplicationController
       flash.notice = "Successfully updated link"
       redirect_to links_path
     else
-      flash.now[:error] = "nope" # <- FIX ME
+      flash.now[:error] = @link.errors.full_messages.join(', ')
     end
   end
 

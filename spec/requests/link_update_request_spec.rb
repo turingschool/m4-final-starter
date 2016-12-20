@@ -4,7 +4,7 @@ RSpec.describe "Update link", type: :request do
 
   it "updates link 'read' attribute" do
     link = create(:link)
-    put "/api/v1/links/#{link.id}", '{ "link": { "read": true } }'
+    put "/api/v1/links/#{link.id}", { "read": true }
 
     expect(link.read).to eq(true)
   end
