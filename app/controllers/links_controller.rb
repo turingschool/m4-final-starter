@@ -34,6 +34,13 @@ class LinksController < ApplicationController
     end
   end
 
+  def read
+    link = Link.find(params[:id])
+    ReadLinkService.new(link) if link.update(read: true)
+
+    redirect_to links_path
+  end
+
   private
   def link_params
     params.require(:link).permit(:title, :url)
