@@ -27,7 +27,7 @@ RSpec.describe User do
 
   context 'login' do
     it 'accepts valid input' do
-      me = create :user, email: 'bcgoss@example.com', password: 'password'
+      me = create :user, email: 'bcgoss@example.com', password: 'password', password_confirmation: 'password'
 
       visit login_path
 
@@ -41,8 +41,7 @@ RSpec.describe User do
     end
 
     it 'shows userful errors' do
-      me = create :user, email: 'bcgoss@example.com', password: 'password'
-
+me = create :user, email: 'bcgoss@example.com', password: 'password', password_confirmation: 'password'
       visit login_path
 
       fill_in 'email', with: me.email
