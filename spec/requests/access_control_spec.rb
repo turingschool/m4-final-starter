@@ -19,6 +19,12 @@ RSpec.describe SessionsController do
 
       expect(response).to redirect_to login_path
     end
+
+    it 'cannot edit links' do
+      link = create :link
+      get edit_link_path link.id
+      expect(response).to redirect_to login_path
+    end
   end
 
   context 'Logged in User' do
@@ -32,6 +38,12 @@ RSpec.describe SessionsController do
     it 'can view index' do
       get links_path
       expect(response.status).to eq 200
+    end
+
+    it 'can view edit' do
+      link = create :link
+      get edit_link_path link.id
+      expect(resonse.status).to eq 200
     end
   end
 end
