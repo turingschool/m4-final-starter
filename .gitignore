@@ -11,3 +11,15 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore SimpleCov files
+coverage
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore vcr cassettes
+/specspec/fixtures/vcr_cassettes
