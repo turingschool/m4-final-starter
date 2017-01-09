@@ -38,7 +38,9 @@ RSpec.describe Link, :js => :true do
     link = create :link, user: me
     visit '/'
 
-    expect { click_on 'Mark as Read' }.to change{ Link.find(link.id).read }.from(false).to(true)
+    expect(page).to have_css('.mark-read')
+    click_on 'Mark as Read'
+    expect(page).to have_css('.mark-unread')
 
   end
 end
