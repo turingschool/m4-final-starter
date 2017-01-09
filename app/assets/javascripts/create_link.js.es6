@@ -24,7 +24,6 @@ function getLinkData() {
    title: $newLinkTitle.val(),
    url: $newLinkUrl.val(),
    user_id: $('a').attr('id')
-
  }
 }
 
