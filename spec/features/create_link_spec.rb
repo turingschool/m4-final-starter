@@ -38,8 +38,7 @@ RSpec.describe Link, :js => :true do
     link = create :link, user: me
     visit '/'
 
-save_and_open_page
-    expect { click_on 'Mark as Read' }.to change{ Link.find(link.id) }.from(false).to(true)
+    expect { click_on 'Mark as Read' }.to change{ Link.find(link.id).read }.from(false).to(true)
 
   end
 end
