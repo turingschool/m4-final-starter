@@ -27,7 +27,7 @@ RSpec.describe User do
 
   context 'login' do
     it 'accepts valid input' do
-      me = create :user, email: 'bcgoss@example.com', password: 'password'
+      me = create :user, email: 'bcgoss@example.com', password: 'password', password_confirmation: 'password'
 
       visit login_path
 
@@ -41,8 +41,7 @@ RSpec.describe User do
     end
 
     it 'shows userful errors' do
-      me = create :user, email: 'bcgoss@example.com', password: 'password'
-
+      me = create :user, email: 'bcgoss@example.com', password: 'password', password_confirmation: 'password'
       visit login_path
 
       fill_in 'email', with: me.email
@@ -53,6 +52,24 @@ RSpec.describe User do
       expect(current_path).to eq login_path
       expect(page).to have_content 'Invalid email or password'
 
+    end
+  end
+
+  context 'logout' do
+    it 'is invisible to guests' do
+      visit root_path
+
+      expect(page).not_to have_content 'Logout'
+    end
+
+    it 'allows users to logout' do
+      me = create :user
+
+      login me
+
+      click_on 'Logout'
+
+      expect(current_path).to eq login_path
     end
   end
 end
