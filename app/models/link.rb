@@ -1,4 +1,7 @@
 class Link < ApplicationRecord
+  validates :title, presence: true
+  validates :url, presence: true
+
   scope :hot, -> {
     select('links.url as url')
       .joins('join reads on reads.link_id = links.id')
