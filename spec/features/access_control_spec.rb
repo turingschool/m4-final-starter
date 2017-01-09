@@ -20,4 +20,17 @@ RSpec.describe 'Authentication:' do
       expect(current_path).to eq login_path
     end
   end
+
+  context 'Logged in User' do
+    before do
+      @me = create :user
+      login @me
+    end
+
+    it 'can view index' do
+      visit links_path
+
+      expect(current_path).to eq links_path
+    end
+  end
 end

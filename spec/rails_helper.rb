@@ -8,6 +8,7 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'phantomjs'
 require 'support/factory_girl'
+require 'support/login_helper'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.register_driver :poltergeist do |app|
@@ -22,7 +23,9 @@ Shoulda::Matchers.configure do |config|
   end
 end
 # Add additional requires below this line. Rails is not loaded until this point!
-
+RSpec.configure do |config|
+  config.include(LoginHelper)
+end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
