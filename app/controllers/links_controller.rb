@@ -1,5 +1,7 @@
 class LinksController < ApplicationController
+  before_action :authenticate
+
   def index
-    @hot_links = current_user.links.hot
+    @hot_links = Link.hot
   end
 end
