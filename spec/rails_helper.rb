@@ -54,7 +54,7 @@ RSpec.configure do |config|
   #### Database cleaner strategy
   #### Copied from https://github.com/DatabaseCleaner/database_cleaner#rspec-with-capybara-example
 
-  config.use_transactional_fixtures = false
+  # config.use_transactional_fixtures = false
 
   config.before(:suite) do
     if config.use_transactional_fixtures?
