@@ -29,7 +29,7 @@ RSpec.describe SessionsController do
 
   context 'Logged in User' do
     before do
-      @me = create :user
+      @me = create :user, email: 'bcgoss@example.com'
       app_controller = double("ApplicationHelper")
       allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
 
@@ -43,7 +43,7 @@ RSpec.describe SessionsController do
     it 'can view edit' do
       link = create :link
       get edit_link_path link.id
-      expect(resonse.status).to eq 200
+      expect(response.status).to eq 200
     end
   end
 end
