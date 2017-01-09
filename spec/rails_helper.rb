@@ -7,6 +7,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'phantomjs'
+require 'support/factory_girl'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.register_driver :poltergeist do |app|
