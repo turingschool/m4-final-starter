@@ -13,11 +13,11 @@
 
 <div id="links-list">
   <% @links.each do |link| %>
-
+    <div class='link' data-userId='<%=link.user_id%>' data-id='<%=link.id%>' id="link-<%=link.id%>">
+      
+    </div>
   <% end %>
-
 </div>
-
 
 <h2>Hot Reads!</h2>
 <ol id="hot-reads">
