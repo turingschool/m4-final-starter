@@ -24,7 +24,9 @@ feature "A guest can sign up" do
       fill_in :user_email, with: "raphael@example.com"
       click_button "Submit"
 
-      expect(page).to have_content("Password can't be blank, Password can't be blank")
+      error = "Password can't be blank SignUp ! Email Password Password confirmation Already an user? Log in by clicking here"
+
+      expect(page).to have_content(error)
    end
 
 end
