@@ -8,7 +8,11 @@
   <input type="submit" value="Add Link">
 </form>
 
-<div id="links-list"></div>
+<div id="links-list">
+  <% @links.each do |link| %>
+    <%= render partial: 'link', locals: {link: link} %>
+  <% end %>
+</div>
 
 <h2>Hot Reads!</h2>
 <ol id="hot-reads">
