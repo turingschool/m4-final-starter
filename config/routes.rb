@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "home#index"
+  root to: "sessions#create"
 
   resources :links, only: [:index]
 
