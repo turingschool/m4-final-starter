@@ -1,11 +1,10 @@
 var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
+  $newLinkTitle = $("#link-title");
+  $newLinkUrl  = $("#link-url");
 
-  $newLinkTitle = $("#link_title");
-  $newLinkUrl  = $("#link_url");
-
-  $("#submit_link").on('click', createLink);
+  $("#new-link").on('submit', createLink);
 })
 
 function createLink (event){
@@ -23,27 +22,28 @@ function createLink (event){
 function getLinkData() {
  return {
    title: $newLinkTitle.val(),
-   url: $newLinkUrl.val()
+   url: $newLinkUrl.val(),
+   user_id: $('a').attr('id')
  }
 }
 
 function renderLink(link){
-  $("#links_list").append( linkHTML(link) )
+  $("#links-list").append( linkHTML(link) )
   // clearLink();
 }
 
 function linkHTML(link) {
 
-    return `<div class='link' data-id='${link.id}' id="link-${link.id}">
-              <p class='link-title' contenteditable=true>${ link.title }</p>
-              <p class='link-url' contenteditable=true>${ link.url }</p>
+    return `<div class='link' data-userId='${link.user_id}' data-id='${link.id}' id="link-${link.id}">
+              <p class='link-title'>Title: ${ link.title }</p>
+              <p class='link-url'>URL: ${ link.url }</p>
 
               <p class="link_read">
-                ${ link.read }
+                Read? ${ link.read }
               </p>
               <p class="link_buttons">
-                <button class="upgrade-quality">+</button>
-                <button class="downgrade-quality">-</button>
+                <button class="mark-read">Mark as Read</button>
+                <button class='edit-link'>Edit</button>
                 <button class='delete-link'>Delete</button>
               </p>
             </div>`
@@ -55,5 +55,5 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  $('#warning').html("FAILED attempt to create new Link: " + failureData.responseText);
 }

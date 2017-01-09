@@ -1,0 +1,43 @@
+#parent {
+  text-align: center;
+}
+
+.link {
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 5px;
+  text-align: center;
+  width: 15%;
+}
+
+.hide {
+  display: none;
+}
+
+.navbar > p {
+  margin-top: 10px;
+  float: right;
+}
+
+.url-format {
+  font-size: 0.8em;
+  color: red;
+  text-align: left;
+}
+
+.orange {
+  color: orange;
+}
+
+.black {
+  color: black;
+}
+.orange a {
+  color: orange;
+  text-decoration: underline;
+}
+
+.black a {
+  color: black;
+  text-decoration: underline;
+}
