@@ -1,0 +1,35 @@
+#parent {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.navbar > p {
+  margin-top: 10px;
+  float: right;
+}
+
+.url-format {
+  font-size: 0.8em;
+  color: red;
+  text-align: left;
+}
+
+.orange {
+  color: orange;
+}
+
+.black {
+  color: black;
+}
+.orange a {
+  color: orange;
+  text-decoration: underline;
+}
+
+.black a {
+  color: black;
+  text-decoration: underline;
+}
