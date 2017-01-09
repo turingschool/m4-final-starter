@@ -17,7 +17,7 @@
 <h2>Hot Reads!</h2>
 <ol id="hot-reads">
 <% @hot_links.each do |read| %>
-  <%= render partial: 'link' %>
+  <%= render partial: 'link', locals: {link: read}%>
   <li class='hot-read'>
     <a href="<%= read.url %>"><%= read.url %></a>
   </li>
