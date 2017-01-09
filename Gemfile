@@ -14,9 +14,13 @@ gem 'rails_12factor', group: :production
 gem 'responders'
 gem 'awesome_print'
 gem 'bcrypt', '~> 3.1.7'
-gem 'better_errors', group: :development
 gem 'react-rails'
 gem 'sprockets-es6'
+gem 'figaro'
+gem 'faraday'
+gem 'vcr', group: :test
+gem 'webmock', group: :test
+gem 'selenium-webdriver', group: :test
 
 # gem 'unicorn'
 
@@ -24,6 +28,7 @@ gem 'sprockets-es6'
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'listen'
   gem 'better_errors'
 end
 
@@ -32,7 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'pry'
+  gem 'pry-rails'
   gem 'simplecov', :require => false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
