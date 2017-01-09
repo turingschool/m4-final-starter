@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'Welcome ' + user.email
       redirect_to :root
     else
-      flash[:error] = user.errors.full_messages.join('. ')
+      flash[:error] = 'Invalid email or password'
       redirect_to :login
     end
   end
