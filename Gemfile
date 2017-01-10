@@ -17,6 +17,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'react-rails'
 gem 'sprockets-es6'
 gem 'validate_url'
+gem 'bootstrap-sass'
+gem 'faraday'
+
 
 # gem 'unicorn'
 
@@ -41,5 +44,4 @@ group :development, :test do
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'vcr'
   gem 'webmock'
-  gem 'faraday'
 end
