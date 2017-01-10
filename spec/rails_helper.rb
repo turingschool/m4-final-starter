@@ -9,7 +9,8 @@ require 'capybara/poltergeist'
 require 'phantomjs'
 require 'support/factory_girl'
 require 'support/login_helper'
-require 'vcr'
+require 'support/vcr_setup'
+
 Capybara.javascript_driver = :poltergeist
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
@@ -25,12 +26,6 @@ end
 # Add additional requires below this line. Rails is not loaded until this point!
 RSpec.configure do |config|
   config.include(LoginHelper)
-end
-
-VCR.configure do |config|
-  config.cassette_library_dir = "fixtures/vcr_cassettes"
-  config.hook_into :webmock # or :fakeweb
-  config.allow_http_connections_when_no_cassette = true
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
