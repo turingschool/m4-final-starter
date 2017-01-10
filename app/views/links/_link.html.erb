@@ -11,7 +11,7 @@
     <% else %>
       <%= button_tag 'Mark as Read', class: 'mark-read' %>
     <% end %>
-    <button class='edit-link'>Edit</button>
+    <button class='edit-link'><%= link_to 'Edit', edit_link_path(link) %></button>
     <button class='delete-link'>Delete</button>
   </p>
 </div>
