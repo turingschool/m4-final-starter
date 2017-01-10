@@ -20,7 +20,6 @@ gem 'validate_url'
 gem 'bootstrap-sass'
 gem 'faraday'
 
-
 # gem 'unicorn'
 
 # gem 'capistrano-rails', group: :development

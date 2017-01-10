@@ -33,7 +33,7 @@ RSpec.describe Link, :js => :true do
   end
 
   scenario 'can be marked read' do
-    pending "JQury is hard"
+    pending 'Failed to load assets'
     me = create :user
     login me
     link = create :link, user: me
@@ -41,6 +41,7 @@ RSpec.describe Link, :js => :true do
 
     expect(page).to have_css('.mark-read')
     click_on 'Mark as Read'
+
     expect(page).to have_css('.mark-unread')
 
   end
