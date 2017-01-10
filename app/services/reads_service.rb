@@ -3,6 +3,10 @@ class ReadsService
     new(read[:link]).send
   end
 
+  def self.hot
+    new({}).get_hot_reads
+  end
+
   def initialize(link)
 
     @url = link[:url]
@@ -18,8 +22,16 @@ class ReadsService
     end
   end
 
+  def get_hot_reads
+    JSON.parse(response.body)
+  end
+
+  def response
+    conn.get '/api/v1/reads'
+  end
+
   def conn
-    Faraday.new(url: 'http://localhost:3001')
+    Faraday.new(url: 'https://hotter-reads.herokuapp.com/')
   end
 
   def message
