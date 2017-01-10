@@ -16,6 +16,7 @@ gem 'awesome_print'
 gem 'bcrypt', '~> 3.1.7'
 gem 'react-rails'
 gem 'sprockets-es6'
+gem 'validate_url'
 
 # gem 'unicorn'
 
@@ -38,4 +39,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'faraday'
 end

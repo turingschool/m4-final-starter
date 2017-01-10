@@ -8,4 +8,19 @@ class Link < ApplicationRecord
   }
 
   belongs_to :user
+
+  validates :url, presence: true
+  validates :url, url: true
+
+  def read_link
+    ReadsService.create(link: self)
+  end
+
+  def js_class
+    if read
+      'link read'
+    else
+      'link unread'
+    end
+  end
 end
