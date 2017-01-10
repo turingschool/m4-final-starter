@@ -1,6 +1,6 @@
 function linkHTML(link) {
 
-    return `<div class='link' data-id='${link.id}' id="link-${link.id}">
+    return `<div class='link col-md-4' data-id='${link.id}' id="link-${link.id}">
               <p class='link-title'>${ link.title }</p>
               <p class='link-url'>${ link.url }</p>
 

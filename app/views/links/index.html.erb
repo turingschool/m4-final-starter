@@ -8,14 +8,14 @@
   <input type="submit" value="Add Link">
 </form>
 
-<div id="links-list">
+<div id="links-list" class='row'>
   <% @links.each do |link| %>
     <%= render partial: 'link', locals: {link: link} %>
   <% end %>
 </div>
 
 <h2>Hot Reads!</h2>
-<ol id="hot-reads">
+<ol id="hot-reads" class='row'>
 <% @hot_links.each do |read| %>
   <li class='hot-read'>
     <a href="<%= read.url %>"><%= read.url %></a>
