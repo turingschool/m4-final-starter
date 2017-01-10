@@ -2,21 +2,30 @@ var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
 
-  $('#links-list').on('click', 'button.mark-read', function(){
+  $('#links-list').on('click', 'button.mark-read', toggleRead)
+
+  function toggleRead(event){
+    event.PreventDefault();
+
     var $this = $(this);
     var $link = $this.parents('.link')
     var linkId = $link.data('id');
-
+debugger 
     $.ajax({
       url: '/api/v1/links/' + linkId,
       method: 'PATCH',
       data: {read: true}
-    }).then( toggleRead
+    }).then( updateLink
     ).fail();
   })
 })
 
-function toggleRead() {
+function updateLink() {
+  toggleClass()
+  changeCallback()
+  toggleText()
+}
+function toggleClass() {
   debugger;
   if (this.hasClass('mark-read')) {
     this.removeClass('mark-read')

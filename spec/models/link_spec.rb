@@ -17,7 +17,7 @@ RSpec.describe Link, type: :model do
 
     link = create :link
     response = link.read_link
-    expect(response.status).to eq 201
+    expect(response[:status]).to eq 201
     end
 
   end
