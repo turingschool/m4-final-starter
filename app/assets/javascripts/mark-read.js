@@ -1,37 +1,62 @@
 var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
+  $('#links-list').on('click', 'button.mark-read', markRead)
+  $('#links-list').on('click', 'button.mark-unread', markUnread)
+});
 
-  $('#links-list').on('click', 'button.mark-read', toggleRead)
+function markRead(event){
+  event.preventDefault();
 
-  function toggleRead(event){
-    event.PreventDefault();
+  var $link = $(this).parents('.link')
+  var linkId = $link.data('id');
 
-    var $this = $(this);
-    var $link = $this.parents('.link')
-    var linkId = $link.data('id');
-debugger 
-    $.ajax({
-      url: '/api/v1/links/' + linkId,
-      method: 'PATCH',
-      data: {read: true}
-    }).then( updateLink
-    ).fail();
-  })
-})
-
-function updateLink() {
-  toggleClass()
-  changeCallback()
-  toggleText()
+  $.ajax({
+    url: '/api/v1/links/' + linkId,
+    method: 'PATCH',
+    data: {read: true}
+  }).then( updateLink($link)
+  )
 }
-function toggleClass() {
-  debugger;
-  if (this.hasClass('mark-read')) {
-    this.removeClass('mark-read')
-    this.addClass('mark-unread')
+
+function markUnread(event){
+  event.preventDefault();
+
+  var $link = $(this).parents('.link')
+  var linkId = $link.data('id');
+
+  $.ajax({
+    url: '/api/v1/links/' + linkId,
+    method: 'PATCH',
+    data: {read: false}
+  }).then( updateLink($link)
+  )
+}
+//
+// function updateLink(link) {
+//   toggleButton(link)
+//
+// }
+function updateLink(link) {
+  var $button = link.find('button').first()
+  var $status = link.find('.link-read')
+  if (link.hasClass('unread')) {
+    link.removeClass('unread')
+    $button.removeClass('mark-read')
+
+    link.addClass('read')
+    $button.addClass('mark-unread')
+
+    $status.text('true')
+    $button.text('Mark as Unread')
   } else {
-    this.removeClass('mark-unread')
-    this.addClass('mark-read')
+    link.removeClass('read')
+    $button.removeClass('mark-unread')
+
+    link.addClass('unread')
+    $button.addClass('mark-read')
+
+    $status.text('false')
+    $button.text('Mark as Read')
   }
 }
