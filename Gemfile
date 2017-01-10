@@ -39,4 +39,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'faraday'
 end
