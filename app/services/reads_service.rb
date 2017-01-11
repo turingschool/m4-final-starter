@@ -37,7 +37,7 @@ class ReadsService
   end
 
   def conn
-    Faraday.new(url: 'http://localhost:3001/')
+    Faraday.new(url: 'https://hotter-reads.herokuapp.com/')
   end
 
   def format_params(url)
