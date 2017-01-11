@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_action :require_login
   def index
     @hot_links = Link.hot
-    @links = Link.all
+    @links = current_user.links
   end
 
   def edit
