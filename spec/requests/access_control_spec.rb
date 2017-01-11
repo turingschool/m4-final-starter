@@ -31,7 +31,7 @@ RSpec.describe SessionsController do
     before do
       @me = create :user, email: 'bcgoss@example.com'
       app_controller = double("ApplicationHelper")
-      allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@me)
 
     end
 

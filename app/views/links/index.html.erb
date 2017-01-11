@@ -1,3 +1,10 @@
+<div id='filters' class='row'>
+  <span>Filter by: </span>
+  <%= button_tag 'Read', class: 'filter', id: 'read' %>
+  <%= button_tag 'Unread', class: 'filter', id: 'unread' %>
+  <%= text_field_tag 'search', '', id: 'search_text'  %>
+  <%= button_tag 'Search', class: 'search'%>
+</div>
 <form id="new-link">
   <label>URL:
     <input id="link-url">
@@ -7,6 +14,7 @@
   </label>
   <input type="submit" value="Add Link">
 </form>
+
 
 <div id="links-list" class='row'>
   <% @links.each do |link| %>

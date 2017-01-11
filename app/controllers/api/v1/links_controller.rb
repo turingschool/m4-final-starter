@@ -1,7 +1,11 @@
 class Api::V1::LinksController < ApplicationController
 
   def create
-    @link = Link.new link_params
+    if logged_in?
+      @link = current_user.links.new(link_params) 
+    else
+      @link = Link.new link_params
+    end
     if @link.save
       render json: @link, status: 201
     else

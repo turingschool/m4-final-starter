@@ -20,6 +20,7 @@ RSpec.describe ReadsService, type: :model do
   end
 
   it "seamlessly replaces 'hot'" do
+    pending "reset after finished"
     VCR.use_cassette('get_hot_reads') do
       response = ReadsService.hot
 
