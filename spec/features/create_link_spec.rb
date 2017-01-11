@@ -33,7 +33,6 @@ RSpec.describe Link, :js => :true do
   end
 
   scenario 'can be marked read' do
-    pending 'Failed to load assets'
     me = create :user
     login me
     link = create :link, user: me
