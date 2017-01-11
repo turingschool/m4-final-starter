@@ -27,7 +27,7 @@ function filterUnread(args){
 function searchLinks(args){
   var text_to_match = $('#search_text').val()
   $('.link').each(function(){
-    var url = $(this).find('.link-title').text()
+    var url = $(this).find('.link-url').text()
     var title = $(this).find('.link-title').text()
     if (url.includes(text_to_match) || title.includes(text_to_match) ){
       $(this).show()
