@@ -6,11 +6,27 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'phantomjs'
+require 'support/factory_girl'
+require 'support/login_helper'
+require 'support/vcr_setup'
 
 Capybara.javascript_driver = :poltergeist
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
+end
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
 
+    with.library :rails
+  end
+end
 # Add additional requires below this line. Rails is not loaded until this point!
+RSpec.configure do |config|
+  config.include(LoginHelper)
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -40,7 +56,7 @@ RSpec.configure do |config|
   #### Database cleaner strategy
   #### Copied from https://github.com/DatabaseCleaner/database_cleaner#rspec-with-capybara-example
 
-  config.use_transactional_fixtures = false
+  # config.use_transactional_fixtures = false
 
   config.before(:suite) do
     if config.use_transactional_fixtures?

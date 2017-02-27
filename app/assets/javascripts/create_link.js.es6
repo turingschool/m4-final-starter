@@ -10,8 +10,6 @@ $(document).ready(function(){
 function createLink (event){
   event.preventDefault();
 
-  console.log("win")
-
   var link = getLinkData();
 
   $.post("/api/v1/links", link)
@@ -27,25 +25,8 @@ function getLinkData() {
 }
 
 function renderLink(link){
-  $("#links-list").append( linkHTML(link) )
-  // clearLink();
-}
 
-function linkHTML(link) {
-
-    return `<div class='link' data-id='${link.id}' id="link-${link.id}">
-              <p class='link-title'>${ link.title }</p>
-              <p class='link-url'>${ link.url }</p>
-
-              <p class="link_read">
-                ${ link.read }
-              </p>
-              <p class="link_buttons">
-                <button class="mark-read">Mark as Read</button>
-                <button class='edit-link'>Edit</button>
-                <button class='delete-link'>Delete</button>
-              </p>
-            </div>`
+  $("#links-list").prepend( linkHTML(link) )
 }
 
 function clearLink() {
