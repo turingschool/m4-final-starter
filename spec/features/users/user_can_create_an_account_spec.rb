@@ -11,5 +11,8 @@ describe "When a user visits the new user page" do
     click_on "Create User"
 
     expect(current_path).to eq links_path
+    expect(page).to have_content "You've successfully created a new Account!"
+    expect(User.count).to eq 1
+    expect(User.first.email).to eq "david@gmail.com"
   end
 end
