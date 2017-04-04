@@ -9,6 +9,7 @@ class LinksController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = current_user
     @link = @user.links.new(link_params)
     if @link.save

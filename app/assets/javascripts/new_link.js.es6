@@ -4,5 +4,18 @@ $(document).ready(function() {
 
     var title = $("input[name='link[title]'").val()
     var url = $("input[name='link[url]'").val()
+
+    var linkData = {
+      link: {
+        title: title,
+        url: url
+      }
+    }
+    
+    $.ajax({
+      type: "POST",
+      url: 'links/',
+      data: linkData
+    })
   })
 })
