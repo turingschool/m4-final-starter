@@ -46,5 +46,79 @@ describe 'New user Sign Up' do
       expect(page).to have_current_path(signup_path)
       expect(page).to have_content('Email has already been taken')
     end
+
+    it 'will fail if password fields are empty' do
+      test_email = 'test@email.com'
+
+      visit signup_path
+
+      fill_in 'user[email]', with: test_email
+      click_on 'Sign Up'
+
+      expect(User.count).to eq(0)
+      expect(page).to have_current_path(signup_path)
+      expect(page).to have_content("Password can't be blank")
+    end
+
+    it 'will fail if password confirmation field is empty' do
+      test_email = 'test@email.com'
+      test_password = 'password'
+
+      visit signup_path
+
+      fill_in 'user[email]', with: test_email
+      fill_in 'user[password]', with: test_password
+      click_on 'Sign Up'
+
+      expect(User.count).to eq(0)
+      expect(page).to have_current_path(signup_path)
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
+
+    it 'will fail if password confirmation field is different from password field' do
+      test_email = 'test@email.com'
+      test_password = 'password'
+
+      visit signup_path
+
+      fill_in 'user[email]', with: test_email
+      fill_in 'user[password]', with: test_password
+      fill_in 'user[password_confirmation]', with: 'notmatching'
+      click_on 'Sign Up'
+
+      expect(User.count).to eq(0)
+      expect(page).to have_current_path(signup_path)
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
+
+    it 'will fail if only password confirmation field is filled in' do
+      test_email = 'test@email.com'
+      test_password = 'password'
+
+      visit signup_path
+
+      fill_in 'user[email]', with: test_email
+      fill_in 'user[password_confirmation]', with: test_password
+      click_on 'Sign Up'
+
+      expect(User.count).to eq(0)
+      expect(page).to have_current_path(signup_path)
+      expect(page).to have_content("Password can't be blank")
+    end
+
+    it 'will fail without an email, but with matching passwords' do
+      test_password = 'password'
+
+      visit signup_path
+
+      fill_in 'user[password]', with: test_password
+      fill_in 'user[password_confirmation]', with: test_password
+      click_on 'Sign Up'
+
+      expect(User.count).to eq(0)
+      expect(page).to have_current_path(signup_path)
+      expect(page).to have_content("Email can't be blank")
+    end
+
   end
 end

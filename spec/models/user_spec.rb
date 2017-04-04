@@ -7,6 +7,12 @@ RSpec.describe User, type: :model do
 
       expect(test_user).to be_valid
     end
+    it 'must have an email entered' do
+      test_password = 'password'
+      test_user = User.create(password: test_password)
+
+      expect(test_user).not_to be_valid
+    end
     it 'cannot have two user with the same email' do
       test_email = 'test@email.com'
       test_password = 'password'
