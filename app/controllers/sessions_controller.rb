@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = 'Successfully logged in!'
       redirect_to links_path
+    else
+      flash[:danger] = 'Failed to login!'
+      render :new
     end
   end
 end
