@@ -16,5 +16,21 @@ describe 'Links API endpoints' do
       expect(Link.first.title).to eq(test_title)
       expect(Link.first.url).to eq(test_url)
     end
+
+    it 'cannot add an invalid link into the database' do
+      test_title = 'Test Link'
+      test_url = 'urlockbox-laszlo.herokuapp.com'
+      params = {
+        title: test_title,
+        url: test_url
+      }
+
+      post '/api/v1/links', params
+
+      expect(response.code).to eq('400')
+      expect(response.body).to include('URL is not valid')
+      expect(Link.count).to eq(0)
+    end
+
   end
 end

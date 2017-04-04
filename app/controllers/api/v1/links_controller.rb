@@ -7,6 +7,10 @@ include URI
 
     if valid_url?(new_link.url) && new_link.save
 
+    elsif
+      render json: {
+        error: "URL is not valid"
+      }, status: 400
     end
   end
 
