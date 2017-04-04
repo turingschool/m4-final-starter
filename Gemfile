@@ -29,6 +29,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
+  gem 'pry-state'
   gem 'simplecov', :require => false
   gem 'spring'
   gem 'database_cleaner'
