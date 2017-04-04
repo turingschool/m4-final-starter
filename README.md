@@ -20,7 +20,7 @@ This implementation relies on internal API endpoints to provide `link` related `
 The following endpoints have been implemented:  
 Create a link: `POST /api/v1/links`  
   - Functionality: add link to the `Link` table of the database. Request will go through URL validation.
-  - Arguments: `title` and `url`
+  - Arguments: `title`, `url`, `user_id` of current user
   - Response:  
     - Success: `HTTP status 204`  
     - Failure: `HTTP status 400` and JSON response  
