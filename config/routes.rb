@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :links, only: [:index]
   resources :login, only: [:new]
-  resources :users, only: [:new]
+  resources :users, only: [:new, :create]
 
   namespace :api do
     namespace :v1 do
