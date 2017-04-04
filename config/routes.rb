@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :links, only: [:index]
-  resources :login, only: [:new]
   resources :users, only: [:new, :create]
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
 
   namespace :api do
     namespace :v1 do
