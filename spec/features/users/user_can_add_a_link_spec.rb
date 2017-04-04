@@ -42,5 +42,60 @@ describe "seeing a form for links" do
 
       expect(Link.count).to eq(1)
     end
+
+    scenario "user submits a link without a title" do
+      visit "/links"
+      expect(Link.count).to eq(0)
+
+      fill_in "link[url]", with: "http://www.google.com"
+      fill_in "link[title]", with: ""
+
+      click_on "Submit"
+
+      expect(Link.count).to eq(0)
+      expect(page).to have_content("You didn't enter a title")
+    end
+
+    scenario "user submits a link without a url" do
+      visit "/links"
+
+      expect(Link.count).to eq(0)
+
+      fill_in "link[url]", with: ""
+      fill_in "link[title]", with: "Google Ninja"
+
+      click_on "Submit"
+
+      expect(Link.count).to eq(0)
+      expect(page).to have_content("You didn't enter a URL")
+    end
+
+    scenario "user submits a link with a bad link" do
+      visit "/links"
+
+      expect(Link.count).to eq(0)
+
+      fill_in "link[url]", with: "google.com"
+      fill_in "link[title]", with: "Google Ninja"
+
+      click_on "Submit"
+
+      expect(Link.count).to eq(0)
+      expect(page).to have_content("The url you have entered is incorrect")
+    end
+
+    scenario "user submits a form without filling in the fields" do
+      visit "/links"
+
+      expect(Link.count).to eq(0)
+
+      fill_in "link[url]", with: ""
+      fill_in "link[title]", with: ""
+
+      click_on "Submit"
+
+      expect(Link.count).to eq(0)
+      expect(page).to have_content("You didn't enter any information")
+    end
   end
 end
