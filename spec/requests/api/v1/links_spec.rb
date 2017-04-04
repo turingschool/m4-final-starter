@@ -8,7 +8,7 @@ describe "Links API" do
 
     post "/api/v1/links", params: {link: {title: "Google", url: "https://www.google.com/"}}
 
-    expect(response.status).to eq 500
+    expect(response.status).to eq 201
     expect(Link.count).to eq 1
   end
 end
