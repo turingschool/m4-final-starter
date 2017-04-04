@@ -10,12 +10,12 @@ class UsersController < ApplicationController
       redirect_to '/'
       flash[:notice] = 'You have successfully signed up!'
     else
+        flash[:notice] = "Uh oh, your passwords don't match!" if passwords_do_not_match?
         flash[:notice] = "Uh oh, you forgot to enter a password!" if password_missing?
         flash[:notice] = "Uh oh, you forgot to enter the password confirmation!" if password_confirmation_missing?
         flash[:notice] = "Uh oh, you forgot to enter a password and password confirmation!" if both_passwords_missing?
         flash[:notice] = "Uh oh, you forgot to enter an email address!" if email_missing?
         flash[:notice] = "Uh oh, you didn't enter any information!" if everything_missing?
-        flash[:notice] = "Uh oh, your passwords don't match!" if passwords_do_not_match?
       redirect_to '/signup'
     end
   end
