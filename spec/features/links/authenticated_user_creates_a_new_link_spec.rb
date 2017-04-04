@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Authenticated user creates a new link' do
+RSpec.feature 'Authenticated user creates a new link', js:true do
   before(:each) do
     user = create(:user)
     page.set_rack_session(user_id: user.id)
@@ -15,6 +15,8 @@ RSpec.feature 'Authenticated user creates a new link' do
         fill_in 'link[url]', with: 'http://someurl.com'
         click_on 'Create Link'
       end
+
+      sleep(1)
 
       expect(current_path).to eq(links_path)
       expect(page).to have_content('Some Title')
