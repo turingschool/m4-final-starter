@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     if valid_user?
       session[:user_id] = user.id
-      message = 'You succesfully logged in!'
+      message = "You've successfully logged in!"
       flash[:success] = message
       redirect_to links_path
     else
@@ -15,6 +15,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    reset_session
+    redirect_to login_path
+  end
+
   private
 
   def user
@@ -22,6 +27,10 @@ class SessionsController < ApplicationController
   end
 
   def valid_user?
-    user.authenticate(params[:password]).is_a?(User)
+    if user.nil?
+      false
+    elsif user.authenticate(params[:password]).is_a?(User)
+      true
+    end
   end
 end

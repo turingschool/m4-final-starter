@@ -8,10 +8,12 @@ class UsersController < ApplicationController
     @user = User.create!(user_params)
     if @user.valid?
       session[:user_id] = @user.id
-      redirect_to links_path , success: "You have successfully signed up!"
+      message = "You've successfully signed up!"
+      flash[:success] = message
+      redirect_to links_path
     else
       @errors = @user.errors
-      redirect_to signup_path, danger: "Failed to create account!"
+      redirect_to signup_path
     end
   end
 
