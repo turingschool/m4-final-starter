@@ -21,6 +21,14 @@ RSpec.describe User, type: :model do
       expect(test_link).not_to be_valid
     end
 
+    it 'is created with read status false' do
+      test_title = 'Test title'
+      test_url = 'https://urlockbox-laszlo.herokuapp.com'
+      test_user_id = 1
+      test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id)
 
+      expect(test_link.read).to eq(false)
+    end
+    
   end
 end
