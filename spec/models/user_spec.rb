@@ -27,6 +27,20 @@ RSpec.describe User, type: :model do
 
         expect(user).to be_invalid
       end
+
+      it 'is invalid if password confirmation does not match' do
+        user = User.new(email_address: 'd@d.com', password: 'password', password_confirmation: 'notpassword')
+
+        expect(user).to be_invalid
+      end
+    end
+
+    context 'valid attributes' do
+      it 'is valid with all attributes' do
+        user = User.new(email_address: 'd@d.com', password: 'password', password_confirmation: 'password')
+
+        expect(user).to be_valid
+      end
     end
   end
 end
