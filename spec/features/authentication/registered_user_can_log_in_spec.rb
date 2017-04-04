@@ -8,7 +8,7 @@ RSpec.feature 'Registered user logs in' do
 
   context 'successful login' do
     it 'they can login with correct credentials' do
-      within("form") do
+      within('form') do
         fill_in 'email_address', with: @user.email_address
         fill_in 'password', with: @user.password
         click_on 'Login'
