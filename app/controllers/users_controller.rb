@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # require 'pry'; binding.pry
-    @user = User.create!(user_params)
+    @user = User.create(user_params)
     if @user.valid?
       session[:user_id] = @user.id
       message = "You've successfully signed up!"
