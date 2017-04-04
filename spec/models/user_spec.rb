@@ -9,6 +9,13 @@ RSpec.describe User, type: :model do
         expect(user).to be_invalid
       end
 
+      it 'has a unique email' do
+        user = User.create(email_address: 'd@d.com', password: 'password')
+        user_2 = User.new(email_address: 'd@d.com', password: 'password')
+
+        expect(user_2).to be_invalid
+      end
+
       it 'is invalid without a password' do
         user = User.new(email_address: 'd@d.com')
 
