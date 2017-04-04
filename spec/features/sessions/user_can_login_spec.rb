@@ -4,7 +4,7 @@ describe "When a user visits the login page" do
   scenario "they can login if they enter valid information" do
     user = create(:user)
 
-    visit new_login_path
+    visit login_path
 
     fill_in :email, :with => user.email
     fill_in :password, :with => user.password

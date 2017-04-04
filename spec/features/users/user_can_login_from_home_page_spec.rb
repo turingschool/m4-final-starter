@@ -6,7 +6,7 @@ describe "When a guest visits the root path" do
 
     click_on "Login"
 
-    expect(current_path).to eq new_login_path
+    expect(current_path).to eq login_path
   end
 
   scenario "the can click create account and are redirected to the create account page" do
