@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
       session[:user] = user.id
       flash[:success] = "You've successfully logged in!"
       redirect_to links_path
+    else
+      flash[:danger] = "You've entered an invalid user/password combination"
+      redirect_to login_path
     end
   end
 
