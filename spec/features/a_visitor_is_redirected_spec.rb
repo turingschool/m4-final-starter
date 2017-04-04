@@ -1,4 +1,4 @@
-require 'rails_spec'
+require 'rails_helper'
 
 describe 'Unauthenticated visitor' do
   describe 'Visits home page' do
