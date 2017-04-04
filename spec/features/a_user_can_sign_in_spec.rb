@@ -33,5 +33,21 @@ describe 'Registered user Sign In' do
       expect(page).to have_current_path(signin_path)
       expect(page).to have_content('Unsuccessful sign in. Please try again!')
     end
+
+    it 'cannot sign in with incorrect password' do
+      test_email = 'test@email.com'
+      test_password = 'password'
+      test_user = User.create(email: test_email, password: test_password)
+
+      visit signin_path
+
+      fill_in 'user[email]', with: test_email
+      fill_in 'user[password]', with: 'wrongpassword'
+      click_on 'Sign In'
+
+      expect(page).to have_current_path(signin_path)
+      expect(page).to have_content('Unsuccessful sign in. Please try again!')
+    end
+
   end
 end
