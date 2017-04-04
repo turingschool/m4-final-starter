@@ -1,8 +1,7 @@
 # Laszlo's URLockBox
 
-Laszlo's implementation of URLockbox Turing BackEnd Mod4 final exam. The original ReadMe content is at the bottom of this document.
-
-
+Laszlo's implementation of URLockbox Turing BackEnd Mod4 final exam. The original ReadMe content is at the bottom of this document.  
+[Final assessment app requirements](https://gist.github.com/neight-allen/335dcfdc8fc258757357ce597eb9dbd1)
 
 
 # Original ReadMe content from Turing boilerplate repo
