@@ -1,4 +1,5 @@
 require 'capybara'
+require "rack_session_access/capybara"
 
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
