@@ -2,10 +2,15 @@ require "rails_helper"
 
 describe "User can create a link", :js => :true do
   scenario "When a user enters valid information a link is created" do
+    user = create(:user)
     link = create(:link, url: "https://www.google.com/", title: "Google", read: false)
 
-    fill_in :url, :with => link.url
-    fill_in :title, :with => link.title
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit links_path
+
+    fill_in :link_title, :with => link.title
+    fill_in :link_url, :with => link.url
 
     click_on "Add Link"
 
