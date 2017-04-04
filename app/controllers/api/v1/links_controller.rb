@@ -9,7 +9,8 @@ include URI
 
     elsif
       render json: {
-        error: "URL is not valid"
+        :error => "URL is not valid",
+        :other_errors => new_link.errors.full_messages
       }, status: 400
     end
   end
@@ -26,7 +27,7 @@ include URI
   private
 
     def link_params
-      params.permit(:title, :url)
+      params.permit(:title, :url, :user_id)
     end
 
     def valid_url?(uri)
