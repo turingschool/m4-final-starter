@@ -15,6 +15,7 @@ describe 'Registered user Sign In' do
 
       expect(page).to have_current_path(links_path)
       expect(page).to have_content('Successful sign in!')
+      expect(page).to have_selector(:link_or_button, 'Sign Out')
     end
   end
 
