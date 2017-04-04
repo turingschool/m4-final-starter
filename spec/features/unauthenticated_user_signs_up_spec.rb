@@ -17,8 +17,22 @@ RSpec.describe 'Unauthenticated User' do
       click_on('Create Account')
 
       expect(current_path).to eq(links_path)
-      save_and_open_page
       expect(page).to have_content("Successfully created acount!")
+    end
+  end
+
+  context 'unsucessful signup' do
+    it 'can not sign up if email address has been taken already' do
+      create(:user, email_address: 'd@d.com')
+
+      visit new_user_path
+
+      fill_in "user[email_address]", with: "d@d.com"
+      fill_in "user[password]", with: "password"
+      fill_in "user[password_confirmation]", with: "password"
+      click_on('Create Account')
+
+      expect(page).to have_content('Email address has already been taken')
     end
   end
 end

@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       flash[:success] = 'Successfully created acount!'
       redirect_to links_path
     else
-
+      flash[:danger] = @user.errors.full_messages
+      render :new
     end
   end
 
