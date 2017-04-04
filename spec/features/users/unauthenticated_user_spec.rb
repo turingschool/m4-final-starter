@@ -25,7 +25,7 @@ feature 'Unauthenticated user' do
     end
 
     scenario 'the user should see a option to sign up' do
-      expect(page).to have_selector(:link_or_button, 'Signup')
+      expect(page).to have_selector(:link_or_button, 'Sign up')
     end
   end
 end
