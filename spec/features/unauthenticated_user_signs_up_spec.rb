@@ -54,5 +54,16 @@ RSpec.describe 'Unauthenticated User' do
 
       expect(page).to have_content("Password can't be blank")
     end
+
+    it 'cannot sign up if password and password_confirmation do not match' do
+      visit new_user_path
+
+      fill_in "user[email_address]", with: "d@d.com"
+      fill_in "user[password]", with: "password"
+      fill_in "user[password_confirmation]", with: "notpassword"
+      click_on('Create Account')
+
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
   end
 end
