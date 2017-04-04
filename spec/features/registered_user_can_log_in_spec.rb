@@ -6,7 +6,7 @@ RSpec.feature 'Registered user logs in' do
     visit login_path
   end
 
-  context 'sucessful login' do
+  context 'successful login' do
     it 'they can login with correct credentials' do
       within("form") do
         fill_in 'email_address', with: @user.email_address
@@ -15,6 +15,18 @@ RSpec.feature 'Registered user logs in' do
       end
 
       expect(page).to have_content('Successfully logged in!')
+    end
+  end
+
+  context 'unsuccessful login' do
+    it 'they can not login with invalid credentials' do
+      within("form") do
+        fill_in 'email_address', with: @user.email_address
+        fill_in 'password', with: 'notpassword'
+        click_on 'Login'
+      end
+
+      expect(page).to have_content('Failed to login!')
     end
   end
 end
