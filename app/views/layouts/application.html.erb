@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+  <header>
+    <% if current_user %>
+      <%= link_to 'Sign Out', logout_path, method: :DELETE %>
+    <% else %>
+      <%= link_to 'Sign In', login_path %>
+    <% end %>
+  </header>
   <%= render partial: "/layouts/flash" %>
+<div class="container">
   <%= yield %>
 </div>
 
