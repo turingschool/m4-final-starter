@@ -3,15 +3,16 @@ class LinksController < ApplicationController
 
   def create
     link = params["link"]
-    created_link = Link.new(url: link["url"], title: link["title"], user_id: current_user.id)
-    if created_link.save
-      flash[:danger] = "Link #{link["title"]} has been saved!"
-      redirect_to '/'
+    if correct_url?(link["url"])
+      created_link = Link.new(url: link["url"], title: link["title"], user_id: current_user.id) if correct_url?(link["url"])
+      if created_link.save
+        flash[:danger] = "Link #{link["title"]} has been saved!"
+        redirect_to '/'
+      else
+        incorrect_information(link)
+      end
     else
-      flash[:danger] = "The url you have entered is incorrect" if !correct_url?(link["url"])
-      flash[:danger] = "You didn't enter a title" if title_missing?
-      flash[:danger] = "You didn't enter a URL" if url_missing?
-      flash[:danger] = "You didn't enter any information" if title_and_url_missing?
+      incorrect_information(link)
     end
   end
 
@@ -40,5 +41,13 @@ class LinksController < ApplicationController
 
   def title_and_url_missing?
     url_missing? && title_missing?
+  end
+
+  def incorrect_information(link)
+    flash[:danger] = "You didn't enter a title" if title_missing?
+    flash[:danger] = "The url you have entered is incorrect" if !correct_url?(link["url"])
+    flash[:danger] = "You didn't enter a URL" if url_missing?
+    flash[:danger] = "You didn't enter any information" if title_and_url_missing?
+    redirect_to '/'
   end
 end
