@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to links_path
     elsif
-      flash[:error] = @user.errors.full_messages
+      flash[:error] = 'Unsuccessful sign in. Please try again!'
+      @user = User.new
       render :new
     end
   end
