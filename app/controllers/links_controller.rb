@@ -7,4 +7,7 @@ class LinksController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def create
+  end
 end
