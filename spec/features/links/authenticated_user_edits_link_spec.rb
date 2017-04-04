@@ -15,11 +15,11 @@ RSpec.feature 'Authenticated user edits a link' do
       end
 
       expect(current_path).to eq(edit_link_path(@link))
-
+      
       within('form') do
         fill_in 'link[title]', with: 'New Title'
         fill_in 'link[url]', with: 'http://newurl.com'
-        click_on 'Submit'
+        click_on 'Update Link'
       end
 
       expect(current_path).to eq(links_path)
