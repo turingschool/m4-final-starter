@@ -11,10 +11,12 @@ RSpec.feature 'Unauthenticated user signs up' do
 
       expect(current_path).to eq(new_user_path)
 
-      fill_in "user[email_address]", with: "d@d.com"
-      fill_in "user[password]", with: "password"
-      fill_in "user[password_confirmation]", with: "password"
-      click_on('Create Account')
+      within('form') do
+        fill_in "user[email_address]", with: "d@d.com"
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "password"
+        click_on('Create Account')
+      end
 
       expect(current_path).to eq(links_path)
       expect(page).to have_content("Successfully created acount!")
