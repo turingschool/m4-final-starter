@@ -31,6 +31,7 @@ group :development, :test do
   gem 'pry'
   gem 'faker'
   gem 'simplecov', :require => false
+  gem 'validate_url'
   gem 'spring'
   gem 'database_cleaner'
   gem 'better_errors'
