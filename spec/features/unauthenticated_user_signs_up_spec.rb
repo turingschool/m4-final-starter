@@ -34,5 +34,25 @@ RSpec.describe 'Unauthenticated User' do
 
       expect(page).to have_content('Email address has already been taken')
     end
+
+    it 'can not sign up without an email address' do
+      visit new_user_path
+
+      fill_in "user[password]", with: "password"
+      fill_in "user[password_confirmation]", with: "password"
+      click_on('Create Account')
+
+      expect(page).to have_content("Email address can't be blank")
+    end
+
+    it 'can not sign up without a password' do
+      visit new_user_path
+
+      fill_in "user[email_address]", with: "d@d.com"
+      fill_in "user[password_confirmation]", with: "password"
+      click_on('Create Account')
+
+      expect(page).to have_content("Password can't be blank")
+    end
   end
 end
