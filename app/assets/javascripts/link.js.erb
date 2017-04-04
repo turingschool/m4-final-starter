@@ -1,9 +1,11 @@
-$(document).ready(() => {
+$(document).ready(function() {
   bindCreateLinkeListenerToCreateLink();
 })
 
 function bindCreateLinkeListenerToCreateLink(){
-  $(".add-link").on("click", function(){
+  debugger;
+  $(".add-link").on("click", function(event){
+    event.preventDefault();
     createLink();
   })
 }
@@ -16,13 +18,16 @@ function createLink(){
     }
   };
   $.ajax({
-    url: "/links",
+    url: "/api/v1/links",
     method: "POST",
     data: link
   })
   .done((newLink) => {
     $(".links").append(newLink);
     $("#link_title").val("");
-    $("#link_title").val("");
+    $("#link_url").val("");
+  })
+  .fail((error) => {
+    console.log(error);
   });
 }

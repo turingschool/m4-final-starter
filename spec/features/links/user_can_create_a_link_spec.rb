@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "User can create a link", :js => :true do
-  scenario "When a user enters valid information a link is created" do
+describe "User can create a link", :type => :feature, :js => true do
+  it "When a user enters valid information a link is created" do
     user = create(:user)
     link = create(:link, url: "https://www.google.com/", title: "Google", read: false)
 
@@ -12,9 +12,12 @@ describe "User can create a link", :js => :true do
     fill_in :link_title, :with => link.title
     fill_in :link_url, :with => link.url
 
-    click_on "Add Link"
+    click_link_or_button "add-link"
 
-    within ".link", match: :first do
+    expect(current_path).to eq links_path
+    expect(Link.count).to eq 2
+
+    within(".links") do
       expect(page).to have_content "Title: #{link.title}"
       expect(page).to have_content "URL: #{link.url}"
       expect(page).to have_content "Read?: false"

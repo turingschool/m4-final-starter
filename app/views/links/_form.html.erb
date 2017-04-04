@@ -1,10 +1,9 @@
-<%= form_for @current_user.links.new do |f| %>
+<%= form_for current_user.links.new do |f| %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
 
   <%= f.label :url %>
   <%= f.text_field :url %>
-
-  <%= f.submit "Add Link", class:"add-link" %>
 <% end %>
+<button class="add-link" id="add-link">Add Link</button>
