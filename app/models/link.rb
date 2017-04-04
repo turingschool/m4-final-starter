@@ -1,3 +1,4 @@
 class Link < ApplicationRecord
-  validates :title, presence: true
+  validates :title,
+            :url, presence: true
 end
