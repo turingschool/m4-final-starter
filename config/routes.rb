@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get '/login' => "sessions#new", as: 'login'
   post '/login' => "sessions#create"
   get '/signup' => 'users#new', as: 'signup'
- resources :users, only: [:new, :create] 
+  delete '/logout' => 'sessions#destroy', as: 'logout'
+  # delete '/logout' => 'sessions#destroy', as: 'logout'
+ resources :users, only: [:new, :create]
 
   namespace :api do
     namespace :v1 do

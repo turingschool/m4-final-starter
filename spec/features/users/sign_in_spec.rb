@@ -24,5 +24,4 @@ feature 'Sign in' do
       expect(page).to have_current_path(login_path)
     end
   end
-
 end
