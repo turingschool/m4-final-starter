@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xfeature 'User submits a link' do
+feature 'User submits a link' do
   context 'the user attempts to submit a link' do
 
     before do
@@ -9,6 +9,7 @@ xfeature 'User submits a link' do
     end
 
     scenario 'the user should see a url field' do
+      save_and_open_page
       expect(page).to have_field(:url)
     end
 
