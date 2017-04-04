@@ -27,8 +27,8 @@ describe 'Links API endpoints' do
 
       post '/api/v1/links', params
 
-      expect(response.code).to eq('400')
       expect(response.body).to include('URL is not valid')
+      expect(response.code).to eq('400')
       expect(Link.count).to eq(0)
     end
 
