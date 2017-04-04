@@ -1,3 +1,2 @@
 class LinksController < ApplicationController
-
 end
