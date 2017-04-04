@@ -23,7 +23,7 @@ RSpec.feature 'Authenticated user creates a new link' do
   end
 
   context 'failed creation' do
-    it 'they cannot create link without a title' do
+    it 'they cannot create a link without a title' do
       within('form') do
         fill_in 'link[url]', with: 'http://someurl.com'
         click_on 'Create Link'
@@ -31,6 +31,16 @@ RSpec.feature 'Authenticated user creates a new link' do
 
       expect(current_path).to eq(links_path)
       expect(page).to have_content("Title can't be blank")
+    end
+
+    it 'they cannot create a link without a url' do
+      within('form') do
+        fill_in 'link[title]', with: 'Some Title'
+        click_on 'Create Link'
+      end
+
+      expect(current_path).to eq(links_path)
+      expect(page).to have_content("Url can't be blank")
     end
   end
 end
