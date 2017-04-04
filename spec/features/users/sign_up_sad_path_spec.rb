@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 feature 'Sign up sad paths' do
   before { visit signup_path }
 

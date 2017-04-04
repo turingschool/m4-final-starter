@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to links_path
     else
       @errors = @user.errors
-      redirect_to signup_path
+      render :new
     end
   end
 
