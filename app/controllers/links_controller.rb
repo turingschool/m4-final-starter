@@ -2,10 +2,27 @@ class LinksController < ApplicationController
   before_action :require_login
 
   def index
-    @links = current_user.links
+    @links = current_user.reload.links
+    @link = current_user.links.new
+  end
+
+  def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    link = current_user.links.find(params[:id])
+    link.update_attributes(link_params)
+    if link.save
+      redirect_to links_path
+    end
   end
 
   private
+
+  def link_params
+    params.require(:link).permit(:title, :url, :read)
+  end
 
   def require_login
     unless current_user

@@ -3,7 +3,7 @@ $(document).ready(function() {
 })
 
 function bindCreateLinkeListenerToCreateLink(){
-  $(".add-link").on("click", function(event){
+  $("#add-link").on("click", function(event){
     event.preventDefault();
     createLink();
   })
@@ -49,7 +49,7 @@ function createLink(){
     data: getLink()
   })
   .done((newLink) => {
-    $(".links").append(newLink);
+    $(".links").prepend(newLink);
     $("#link_title").val("");
     $("#link_url").val("");
   })
