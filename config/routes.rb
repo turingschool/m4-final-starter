@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'signin' => 'sessions#new'
   post 'signin' => 'sessions#create'
   get 'signup' => 'users#new'
+  post 'signup' => 'users#create'
 
   resources :links, only: [:index]
 

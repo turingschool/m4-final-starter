@@ -21,9 +21,9 @@ describe 'Unauthenticated visitor' do
 
       expect(page).to have_current_path(signup_path)
       expect(page).to have_content('Sign Up with URLockbox')
-      expect(page).to have_field('email')
-      expect(page).to have_field('password')
-      expect(page).to have_field('password_confirmation')
+      expect(page).to have_field('user[email]')
+      expect(page).to have_field('user[password]')
+      expect(page).to have_field('user[password_confirmation]')
       expect(page).to have_selector(:link_or_button, 'Sign Up')
     end
   end
