@@ -28,4 +28,23 @@ describe 'New user Sign Up' do
       expect(page).to have_current_path(links_path)
     end
   end
+
+  describe 'User detail validation with error messages' do
+    it 'will fail if email is already registered' do
+      test_email = 'test@email.com'
+      test_password = 'password'
+      test_existing_user = User.create(email: test_email, password: test_password)
+
+      visit signup_path
+
+      fill_in 'user[email]', with: test_email
+      fill_in 'user[password]', with: test_password
+      fill_in 'user[password_confirmation]', with: test_password
+      click_on 'Sign Up'
+
+      expect(User.count).to eq(1)
+      expect(page).to have_current_path(signup_path)
+      expect(page).to have_content('Email has already been taken')
+    end
+  end
 end
