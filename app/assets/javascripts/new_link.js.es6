@@ -17,7 +17,7 @@ $(document).ready(function() {
       url: 'links/',
       data: linkData
     }).done(function(linkMarkup) {
-      console.log(linkMarkup)
+      $('table tbody').prepend(linkMarkup)
     })
   })
 })

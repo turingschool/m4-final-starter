@@ -2,16 +2,20 @@
 <%= render partial: 'shared/link_form', locals: {link: @link} %>
 
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Url</th>
-    <th></th>
-  </tr>
-  <% @user.links.each do |link| %>
-  <tr>
-    <td><%= link.title %></td>
-    <td><%= link.url %></td>
-    <td><%= link_to 'Edit', edit_link_path(link) %></td>
-  </tr>
-  <% end %>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.links.each do |link| %>
+    <tr>
+      <td><%= link.title %></td>
+      <td><%= link.url %></td>
+      <td><%= link_to 'Edit', edit_link_path(link) %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
