@@ -1,0 +1,10 @@
+<%= form_for @current_user.links.new do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit "Add Link", class:"add-link" %>
+<% end %>
