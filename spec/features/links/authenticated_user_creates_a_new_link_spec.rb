@@ -7,10 +7,10 @@ RSpec.feature 'Authenticated user creates a new link' do
     page.set_rack_session(user_id: user.id)
 
     visit links_path
-
+    
     within('form') do
-      fill_in 'title', with: 'Some Title'
-      fill_in 'url', with: 'http://someurl.com'
+      fill_in 'link[title]', with: 'Some Title'
+      fill_in 'link[url]', with: 'http://someurl.com'
       click_on 'Create Link'
     end
 
