@@ -42,5 +42,16 @@ RSpec.feature 'Authenticated user creates a new link' do
       expect(current_path).to eq(links_path)
       expect(page).to have_content("Url can't be blank")
     end
+
+    it 'they cannot create a link with an invalid url' do
+      within('form') do
+        fill_in 'link[title]', with: 'Some Title'
+        fill_in 'link[url]', with: 'someurl.com'
+        click_on 'Create Link'
+      end
+
+      expect(current_path).to eq(links_path)
+      expect(page).to have_content('Url is not a valid URL')
+    end
   end
 end
