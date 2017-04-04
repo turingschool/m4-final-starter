@@ -15,7 +15,7 @@ RSpec.feature 'Authenticated user edits a link' do
       end
 
       expect(current_path).to eq(edit_link_path(@link))
-      
+
       within('form') do
         fill_in 'link[title]', with: 'New Title'
         fill_in 'link[url]', with: 'http://newurl.com'
@@ -23,6 +23,7 @@ RSpec.feature 'Authenticated user edits a link' do
       end
 
       expect(current_path).to eq(links_path)
+      expect(page).to have_content('Successfully updated New Title')
       expect(page).to have_content('New Title')
       expect(page).to have_content('http://newurl.com')
       expect(page).to_not have_content('Old Title')
