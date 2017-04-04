@@ -10,8 +10,25 @@ class LinksController < ApplicationController
 
   def create
     @user = current_user
-    @link = current_user.links.new(link_params)
+    @link = @user.links.new(link_params)
     if @link.save
+      redirect_to links_path
+    else
+      flash[:danger] = @link.errors.full_messages
+      redirect_to links_path
+    end
+  end
+
+  def edit
+    @user = current_user
+    @link = @user.links.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    @link = @user.links.find(params[:id])
+    if @link.update(link_params)
+      flash[:success] = "Successfully updated #{@link.title}."
       redirect_to links_path
     else
       flash[:danger] = @link.errors.full_messages
