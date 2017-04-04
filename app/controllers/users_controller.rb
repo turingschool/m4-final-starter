@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     if user.save
       flash[:success] = "You've successfully created a new Account!"
       redirect_to links_path
+    else
+      flash[:danger] = user.errors.full_messages.first
+      redirect_to new_user_path
     end
   end
 
