@@ -7,6 +7,6 @@ describe "When a guest visits the root path" do
 
     click_on "Login"
 
-    expect(current_path).to eq login_path
+    expect(current_path).to eq new_login_path
   end
 end
