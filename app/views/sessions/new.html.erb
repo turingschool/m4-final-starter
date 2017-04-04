@@ -1,8 +1,8 @@
 <h1>Sign In to URLockbox</h1>
 
-<form action = "/signin", method = "post">
-  <input name = "email" placeholder = "Your email"/>
-  <input name = "password" placeholder = "Your password"/>
-  <button>Sign In</button>
-</form>
+<%= form_for @user, url: signin_path(@user) do |f| %>
+  <%= f.text_field :email, placeholder: "Your email" %>
+  <%= f.password_field :password, placeholder: "Your password" %>
+  <%= f.submit 'Sign In'%>
+<% end %>
 <a href = "/signup">Sign Up</a>
