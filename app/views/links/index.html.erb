@@ -9,8 +9,8 @@
   </tr>
   <% @user.links.each do |link| %>
   <tr>
-    <td><%= link.title %>
-    <td><%= link.url %>
+    <td><%= link.title %></td>
+    <td><%= link.url %></td>
     <td><%= link_to 'Edit', edit_link_path(link) %></td>
   </tr>
   <% end %>

@@ -9,11 +9,10 @@ class LinksController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = current_user
     @link = @user.links.new(link_params)
     if @link.save
-      redirect_to links_path
+      render partial: 'shared/link_markup', locals: {link: @link}
     else
       flash[:danger] = @link.errors.full_messages
       redirect_to links_path

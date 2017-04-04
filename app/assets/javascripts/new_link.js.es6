@@ -11,11 +11,13 @@ $(document).ready(function() {
         url: url
       }
     }
-    
+
     $.ajax({
       type: "POST",
       url: 'links/',
       data: linkData
+    }).done(function(linkMarkup) {
+      console.log(linkMarkup)
     })
   })
 })
