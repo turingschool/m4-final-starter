@@ -15,5 +15,19 @@ RSpec.describe Link, type: :model do
         expect(link).to be_invalid
       end
     end
+
+    context 'valid attributes' do
+      it 'is valid with all attributes' do
+        link = Link.new(title: 'Some Title', url: 'someurl@.com')
+
+        expect(link).to be_valid
+      end
+
+      it 'is not read by default' do
+        link = Link.new(title: 'Some Title', url: 'someurl@.com')
+
+        refute link.read
+      end
+    end
   end
 end
