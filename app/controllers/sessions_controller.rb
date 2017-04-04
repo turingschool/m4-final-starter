@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
   end
 
   def valid_user?
-    user && user.authenticate(params[:password])
+    user.authenticate(params[:password]).is_a?(User)
   end
 end
