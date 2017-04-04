@@ -1,11 +1,8 @@
 <h1>Sign In to URLockbox</h1>
 
-<% form_for @user do |f| %>
-  <% f.label :email %>
-  <% f.text_field :email %>
-
-  <% f.label :password %>
-  <% f.text_field :password %>
-
-  <% f.submit 'Sign In' %>
-<% end %>
+<form action = "/signin", method = "post">
+  <input name = "email" placeholder = "Your email"/>
+  <input name = "password" placeholder = "Your password"/>
+  <button>Sign In</button>
+</form>
+<a href = "/signup">Sign Up</a>

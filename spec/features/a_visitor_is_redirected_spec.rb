@@ -8,8 +8,6 @@ describe 'Unauthenticated visitor' do
 
       expect(page).to have_current_path(signin_path)
 
-      # save_and_open_page
-
       expect(page).to have_content('Sign In to URLockbox')
       expect(page).to have_field('email')
       expect(page).to have_field('password')

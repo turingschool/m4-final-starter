@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: "links#index"
 
-  get 'signin' => "sessions#new"
+  get 'signin' => 'sessions#new'
+  post 'signin' => 'sessions#create'
+  get 'signup' => 'users#new'
 
   resources :links, only: [:index]
 
