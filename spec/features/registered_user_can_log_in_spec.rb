@@ -11,7 +11,6 @@ RSpec.feature 'Registered user logs in' do
       within("form") do
         fill_in 'email_address', with: @user.email_address
         fill_in 'password', with: @user.password
-        fill_in 'password_confirmation', with: @user.password
         click_on 'Login'
       end
 
