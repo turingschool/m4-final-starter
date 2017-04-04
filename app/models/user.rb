@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  validates :email_address, presence: true
+  validates :email_address,
+            :password, presence: true
 end
