@@ -9,9 +9,17 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def create
+    @link = current_user.links.create(link_params)
+    if @link.save
+      render partial: 'links/comments', layout: false
+    end
+  end
+
   private
 
+
   def link_params
-    params.permit(:read)
+    params.require(:link).permit(:title, :url, :read)
   end
 end
