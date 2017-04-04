@@ -9,9 +9,12 @@ Sign In/Sign Up Behavior:
 If visiting this URL without being signed in, visitors will be redirected to the Sign In page.
 From that page an already registered user can sign in OR can visit the Sign UP page. The Sign Up page can be accessed through a direct link as well: [https://urlockbox-laszlo.herokuapp.com/signup](https://urlockbox-laszlo.herokuapp.com/signup)
 
-If a visitor registers throgh the [Sign Up page](https://urlockbox-laszlo.herokuapp.com/signup), that new user will remain logged in.
+If a visitor registers through the [Sign Up page](https://urlockbox-laszlo.herokuapp.com/signup), that new user will remain logged in.
 
-Upon successful completion of either a sign in or a sign up, users will be taken to the [Links Index page](https://urlockbox-laszlo.herokuapp.com/links).
+Upon successful completion of either a `sign in` or a `sign up`, users will be taken to the [Links Index page](https://urlockbox-laszlo.herokuapp.com/links).
+
+
+
 
 
 
