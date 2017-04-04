@@ -17,6 +17,7 @@ RSpec.describe 'Unauthenticated User' do
       click_on('Create Account')
 
       expect(current_path).to eq(links_path)
+      save_and_open_page
       expect(page).to have_content("Successfully created acount!")
     end
   end
