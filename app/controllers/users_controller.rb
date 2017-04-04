@@ -1,11 +1,22 @@
 class UsersController < ApplicationController
-  skip_before_action :login!, only: [:new, :create]
 
   def new
     @user = User.new
   end
 
   def create
-    require 'pry'; binding.pry
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to links_path , success: "You have successfully signed up!"
+    else
+      redirect_to signup_path, danger: "Failed to create account!"
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end
