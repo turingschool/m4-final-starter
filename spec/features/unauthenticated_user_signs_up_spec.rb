@@ -7,7 +7,6 @@ RSpec.describe 'Unauthenticated User' do
 
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Login or Sign Up")
-
       click_on('Create Account')
 
       expect(current_path).to eq(new_user_path)
