@@ -6,4 +6,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :links
+
+  has_secure_password
 end
