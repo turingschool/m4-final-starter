@@ -21,7 +21,7 @@ describe 'New user Sign Up' do
       fill_in 'user[password_confirmation]', with: test_password
       click_on 'Sign Up'
 
-      db_user = User.find(1)
+      db_user = User.first
 
       expect(User.count).to eq(1)
       expect(db_user.email).to eq(test_email)

@@ -5,6 +5,7 @@ describe 'Registered user Sign In' do
     it 'can sign in successfully' do
       test_email = 'test@email.com'
       test_password = 'password'
+      test_user = User.create(email: test_email, password: test_password)
 
       visit signin_path
 
