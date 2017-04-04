@@ -30,4 +30,12 @@ RSpec.describe Link, type: :model do
       end
     end
   end
+
+  describe 'associations' do
+    it 'belongs_to a user' do
+      link = create(:link)
+
+      expect(link).to respond_to(:user)
+    end
+  end
 end
