@@ -1,12 +1,4 @@
 <div class='signup'>
-<% if @errors %>
-    <h3><%= pluralize(@errors.count, 'error') %> prevented this record from being saved.</h3>
-    <ul>
-      <% @errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
   <h3>Sign up</h3>
   <%= form_for(@user) do |f| %>
     <%= f.label :email %>

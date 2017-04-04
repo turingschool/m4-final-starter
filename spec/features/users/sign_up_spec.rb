@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Unauthenticated user' do
+feature 'Sign up' do
   before { visit signup_path }
   context 'the user create an account' do
     scenario 'the user should see a field to enter an email address' do

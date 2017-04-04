@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :links, only: [:index]
   get '/login' => "sessions#new", as: 'login'
+  post '/login' => "sessions#create"
   get '/signup' => 'users#new', as: 'signup'
  resources :users, only: [:new, :create] 
 

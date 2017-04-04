@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Unauthenticated user' do
+feature 'Sign up sad paths' do
   before { visit signup_path }
 
   context 'the user fails to create an account' do
