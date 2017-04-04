@@ -1,8 +1,20 @@
 $(document).ready(function() {
-  bindCreateLinkeListenerToCreateLink();
+  bindCreateLinkListenerToCreateLink();
+  bindEditLinkListenerToEditLink();
 })
 
-function bindCreateLinkeListenerToCreateLink(){
+function bindEditLinkListenerToEditLink(){
+  $(".edit-link").on("click", function(event){
+    console.log("hey")
+    if (!validLink()) {
+      event.preventDefault();
+      $(".message").slideDown();
+      return;
+    }
+  })
+}
+
+function bindCreateLinkListenerToCreateLink(){
   $("#add-link").on("click", function(event){
     event.preventDefault();
     createLink();

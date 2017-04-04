@@ -14,7 +14,7 @@ describe "When a user clicks the edit button on a link" do
 
     click_link_or_button "Edit", match: :first
 
-    expect(current_path).to eq edit_link_path(link2)
+    expect(current_path).to eq edit_link_path(link1)
 
     fill_in :link_title, :with => "Paul"
 
@@ -23,9 +23,9 @@ describe "When a user clicks the edit button on a link" do
     expect(current_path).to eq links_path
 
     within(".links") do
-      expect(page).to_not have_content "Title: John"
+      expect(page).to_not have_content "Title: David"
       expect(page).to have_content "Title: Paul"
-      expect(page).to have_content "Title: David"
+      expect(page).to have_content "Title: John"
     end
   end
 end

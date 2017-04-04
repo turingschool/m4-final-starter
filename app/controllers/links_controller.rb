@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_action :require_login
 
   def index
-    @links = current_user.reload.links
+    @links = current_user.reload.links.reverse
     @link = current_user.links.new
   end
 
@@ -14,6 +14,7 @@ class LinksController < ApplicationController
     link = current_user.links.find(params[:id])
     link.update_attributes(link_params)
     if link.save
+      flash[:success] = "You've successfully updated a link!"
       redirect_to links_path
     end
   end
