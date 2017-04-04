@@ -7,14 +7,18 @@ $(document).ready(function() {
 function bindEditReadLinkListenerToEditReadLink(){
   $(".edit-link-read").on("click", function(event){
     event.preventDefault();
-    if ($(this).siblings()[2].innerText == "Read?: false"){
-      $(this).siblings()[2].innerText = "Read?: true";
+    console.log($(this).prev().text());
+    if ($(this).prev().text() == "Read?: false"){
+      $(this).prev().text("Read?: true");
+      $(this).prev().css("color", "green");
     }
     else {
-      $(this).siblings()[2].innerText = "Read?: false";
+      $(this).prev().text("Read?: false");
+      $(this).prev().css("color", "red");
     }
   })
 }
+
 
 function bindEditLinkListenerToEditLink(){
   $(".edit-link").on("click", function(event){
