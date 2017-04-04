@@ -14,5 +14,11 @@ feature 'Logout' do
     scenario 'the user should not see a sign in button' do
       expect(page).to_not have_selector(:link_or_button, 'Sign In')
     end
+
+    scenario 'after signing out the user should be redirected to the login path' do
+      click_on 'Sign out'
+
+      expect(page).to have_current_path(login_path)
+    end
   end
 end
