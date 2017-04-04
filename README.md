@@ -3,15 +3,15 @@
 Laszlo's implementation of URLockbox Turing BackEnd Mod4 final exam. The original ReadMe content is at the bottom of this document.  
 [Final assessment app requirements](https://gist.github.com/neight-allen/335dcfdc8fc258757357ce597eb9dbd1)
 
-URL to site on Heroku: [TBD]()
+URL to site on Heroku: [https://urlockbox-laszlo.herokuapp.com](https://urlockbox-laszlo.herokuapp.com)
 
 Sign In/Sign Up Behavior:
 If visiting this URL without being signed in, visitors will be redirected to the Sign In page.
-From that page an already registered user can sign in OR can visit the Sign UP page. The Sign Up page can be accessed through a direct link as well: [TBD]()
+From that page an already registered user can sign in OR can visit the Sign UP page. The Sign Up page can be accessed through a direct link as well: [https://urlockbox-laszlo.herokuapp.com/signup](https://urlockbox-laszlo.herokuapp.com/signup)
 
-If a visitor registers throgh the [Sign Up page](), that new user will remain logged in.
+If a visitor registers throgh the [Sign Up page](https://urlockbox-laszlo.herokuapp.com/signup), that new user will remain logged in.
 
-Upon successful completion of either a sign in or a sign up, users will be taken to the [Links Index page]().
+Upon successful completion of either a sign in or a sign up, users will be taken to the [Links Index page](https://urlockbox-laszlo.herokuapp.com/links).
 
 
 
