@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="navbar">
+      <section class="navbar-section">
+          <% if current_user %>
+            <a href="/logout" class="btn btn-link user-status">Logout</a>
+          <% end %>
+      </section>
+  </header>
 <div class="container">
   <%= render partial: 'shared/flash' %>
   <%= yield %>
