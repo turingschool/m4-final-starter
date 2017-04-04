@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Unauthenticated User' do
+RSpec.feature 'Unauthenticated user signs up' do
   context 'sucessful signup' do
-    it 'can sign up' do
+    it 'they can sign up' do
       visit root_path
 
       expect(current_path).to eq(login_path)
@@ -22,7 +22,7 @@ RSpec.describe 'Unauthenticated User' do
   end
 
   context 'unsucessful signup' do
-    it 'can not sign up if email address has been taken already' do
+    it 'they can not sign up if email address has been taken already' do
       create(:user, email_address: 'd@d.com')
 
       visit new_user_path
@@ -35,7 +35,7 @@ RSpec.describe 'Unauthenticated User' do
       expect(page).to have_content('Email address has already been taken')
     end
 
-    it 'can not sign up without an email address' do
+    it 'they can not sign up without an email address' do
       visit new_user_path
 
       fill_in "user[password]", with: "password"
@@ -45,7 +45,7 @@ RSpec.describe 'Unauthenticated User' do
       expect(page).to have_content("Email address can't be blank")
     end
 
-    it 'can not sign up without a password' do
+    it 'they can not sign up without a password' do
       visit new_user_path
 
       fill_in "user[email_address]", with: "d@d.com"
@@ -55,7 +55,7 @@ RSpec.describe 'Unauthenticated User' do
       expect(page).to have_content("Password can't be blank")
     end
 
-    it 'cannot sign up if password and password_confirmation do not match' do
+    it 'they cannot sign up if password and password_confirmation do not match' do
       visit new_user_path
 
       fill_in "user[email_address]", with: "d@d.com"
