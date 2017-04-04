@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :links, only: [:index]
   get '/login' => "sessions#new", as: 'login'
+  get '/signup' => 'users#new', as: 'signup'
 
   namespace :api do
     namespace :v1 do
