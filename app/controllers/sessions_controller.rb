@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:success] = message
       redirect_to links_path
     else
-      message = 'You failed!'
+      message = 'You failed to log in!'
       flash[:danger] = message
       render :new
     end
