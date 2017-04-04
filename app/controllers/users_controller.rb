@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      session[:user] = user.id
       flash[:success] = "You've successfully created a new Account!"
       redirect_to links_path
     else
