@@ -14,7 +14,8 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to links_path
     else
-
+      flash[:danger] = @link.errors.full_messages
+      redirect_to links_path
     end
   end
 
