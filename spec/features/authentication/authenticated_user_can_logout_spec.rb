@@ -7,6 +7,7 @@ RSpec.feature 'Authenticated user logs out' do
     page.set_rack_session(user_id: user.id)
 
     visit links_path
+
     expect(page).to have_link('Sign Out')
     expect(page).to_not have_link('Sign In')
 
