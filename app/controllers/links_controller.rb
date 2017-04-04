@@ -31,7 +31,8 @@ class LinksController < ApplicationController
       flash[:success] = "Successfully updated #{@link.title}."
       redirect_to links_path
     else
-
+      flash[:danger] = @link.errors.full_messages
+      redirect_to links_path
     end
   end
 

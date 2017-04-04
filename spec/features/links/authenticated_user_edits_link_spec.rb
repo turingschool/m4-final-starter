@@ -30,4 +30,23 @@ RSpec.feature 'Authenticated user edits a link' do
       expect(page).to_not have_content('http://oldurl.com')
     end
   end
+
+  context 'failed edit' do
+    it 'they can not edit link without a title' do
+      within('table') do
+        click_on 'Edit'
+      end
+
+      expect(current_path).to eq(edit_link_path(@link))
+
+      within('form') do
+        fill_in 'link[title]', with: ''
+        fill_in 'link[url]', with: 'http://newurl.com'
+        click_on 'Update Link'
+      end
+
+      expect(current_path).to eq(links_path)
+      expect(page).to have_content("Title can't be blank")
+    end
+  end
 end
