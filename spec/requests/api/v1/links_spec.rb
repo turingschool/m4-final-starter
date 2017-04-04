@@ -11,6 +11,7 @@ describe 'Links API endpoints' do
       }
       post '/api/v1/links', params
 
+      expect(response.code).to eq('204')
       expect(Link.count).to eq(1)
       expect(Link.first.title).to eq(test_title)
       expect(Link.first.url).to eq(test_url)
