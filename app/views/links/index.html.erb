@@ -6,14 +6,23 @@
     <tr>
       <th>Title</th>
       <th>Url</th>
+      <th>Read?</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @user.links.each do |link| %>
-    <tr>
+    <tr class='link'>
       <td><%= link.title %></td>
       <td><%= link.url %></td>
+      <td class='read-status'><%= link.read %></td>
+      <% if link.read %>
+        <td class='mark-as-unread'><%= link_to 'Mark as Unread', edit_link_path(link), method: 'PATCH' %>
+        </td>
+      <% else %>
+        <td class='mark-as-read'><%= link_to 'Mark as Read', edit_link_path(link), method: 'PATCH' %>
+        </td>
+      <% end %>
       <td><%= link_to 'Edit', edit_link_path(link) %></td>
     </tr>
     <% end %>
