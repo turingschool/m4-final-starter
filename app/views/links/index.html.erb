@@ -20,7 +20,7 @@
         <td class='mark-as-unread'><%= link_to 'Mark as Unread', edit_link_path(link), method: 'PATCH' %>
         </td>
       <% else %>
-        <td class='mark-as-read'><%= link_to 'Mark as Read', edit_link_path(link), method: 'PATCH' %>
+        <td class='mark-as-read'><button>Mark as Read</button>
         </td>
       <% end %>
       <td><%= link_to 'Edit', edit_link_path(link) %></td>
