@@ -1,13 +1,41 @@
 $(document).ready(function() {
   bindCreateLinkListenerToCreateLink();
   bindEditLinkListenerToEditLink();
+  bindEditReadLinkListenerToEditReadLink();
 })
+
+function bindEditReadLinkListenerToEditReadLink(){
+  $(".edit-link-read").on("click", function(event){
+    event.preventDefault();
+    const link = {
+      link: {
+        read: false
+      }
+    };
+    if ($(this).prev().text() == "Read?: false"){
+      $(this).prev().text("Read?: true");
+      $(this).prev().css("color", "green");
+      link.link.read = true;
+    }
+    else {
+      $(this).prev().text("Read?: false");
+      $(this).prev().css("color", "red");
+      link.link.read = false;
+    }
+    const linkId = $(this).siblings(".link-id").text();
+    $.ajax({
+      url: "/api/v1/links/" + linkId,
+      method: "PATCH",
+      data: link
+    })
+  })
+}
+
 
 function bindEditLinkListenerToEditLink(){
   $(".edit-link").on("click", function(event){
     console.log("hey")
     if (!validLink()) {
-      event.preventDefault();
       $(".message").slideDown();
       return;
     }
@@ -61,6 +89,7 @@ function createLink(){
     data: getLink()
   })
   .done((newLink) => {
+    $(".success-message").slideDown();
     $(".links").prepend(newLink);
     $("#link_title").val("");
     $("#link_url").val("");
