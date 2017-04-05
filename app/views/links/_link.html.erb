@@ -1,0 +1,10 @@
+<div class='link'>
+  <h3>Title: <%= link.title%></h3>
+  <h3>URL: <%= link.url%></h3>
+  <h3 class="read-status">Read?: <%= link.read%></h3>
+  <% if link.id %>
+    <%= link_to "Mark as Read", edit_link_path(link.id), class: "edit-link-read" %>
+    <%= link_to "Edit", edit_link_path(link.id) %>
+    <h3 class="link-id"><%= link.id %></h3>
+  <% end %>
+</div>
