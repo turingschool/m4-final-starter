@@ -1,6 +1,6 @@
 $( document ).ready(function(){
-  $("body").on("click", ".mark-as-read", markAsRead)
-})
+  $("body").on("click", ".mark-as-read", markAsRead);
+});
 
 function markAsRead(e) {
   e.preventDefault();

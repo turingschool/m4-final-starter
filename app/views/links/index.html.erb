@@ -11,10 +11,14 @@
 </div>
 
 <div class='links'>
-<% @links.each do |link| %>
-  <li> Title: <%= link.title %> </li>
-  <li> URL: <%= link.url %> </li>
-  <li> Read?: <%= link.read %> </li>
-<% end %>
+  <% @links.each do |link| %>
+    <div class="card">
+      <div class="container">
+        <br>Title: <%= link.title %></br>
+        <br>URL: <%= link_to link.url %> </br>
+        <br>Read?: <%= link.read %></br>
+      </div>
+    </div>
+  <% end %>
 </div>
 
