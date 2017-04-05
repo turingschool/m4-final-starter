@@ -1,1 +1,24 @@
 <p><%= button_to "Sign out", logout_path, method: :delete %> </p>
+<div class='submit-url'>
+  <h3>Add a link</h3>
+  <%= form_tag() do %>
+    <%= label_tag(:url, 'Url') %>
+    <%= url_field_tag(:url, 'Enter Url', class: 'url-tag') %>
+    <%= label_tag(:title, 'Title') %>
+    <%= text_field_tag(:title, 'Enter title', class: 'title-tag') %>
+    <%= submit_tag 'Add Link', class: 'add-link'%>
+  <% end %>
+</div>
+
+<div class='links'>
+  <% @links.each do |link| %>
+    <div class="card">
+      <div class="container">
+        <br>Title: <%= link.title %></br>
+        <br>URL: <%= link_to link.url %> </br>
+        <br>Read?: <%= link.read %></br>
+      </div>
+    </div>
+  <% end %>
+</div>
+
