@@ -4,7 +4,7 @@ class Api::V1::LinksController < ApplicationController
   include URI
 
   def index
-    render json: Link.where(id: params[:id])
+    render json: Link.where(user_id: params[:user_id])
   end
 
   def create
