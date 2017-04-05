@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User submits a link' do
-  context 'the user attempts to submit a link' do
+  xcontext 'the user attempts to submit a link' do
 
     before do
       logged_in_user

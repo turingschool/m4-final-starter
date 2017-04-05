@@ -10,7 +10,6 @@ feature 'Sign up sad paths' do
 
      click_on 'Sign me up!'
 
-     expect(page).to have_content("Password confirmation doesn't match Password")
      expect(page).to have_content("Password confirmation can't be blank")
      expect(page).to have_content("Password can't be blank")
     end
