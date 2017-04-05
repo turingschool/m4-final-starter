@@ -5,6 +5,8 @@ $(document).ready(function() {
     var url = $('.url-tag').val();
     var title = $('.title-tag').val();
     var urlPath = "/api/v1/links/";
+    var link = $('<li>').text( url + " " + title);
+    $('.links').prepend(link);
     $.ajax({
       type: "POST",
       url: urlPath,

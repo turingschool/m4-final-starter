@@ -10,8 +10,9 @@
   <% end %>
 </div>
 
+<div class='links'>
 <% @links.each do |link| %>
-  <%= link.url %>
-  <%= link.title %>
+  <li> <%= link.title %> <%= link.url %> </li>
 <% end %>
+</div>
 
