@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Links API endpoints' do
   let!(:test_user) {User.create(email: 'test@email.com', password: 'password')}
+
   describe 'Add a new link - POST link' do
     it 'can add a link into the database when all details are correct' do
       test_title = 'Test Link'
@@ -36,7 +37,23 @@ describe 'Links API endpoints' do
     end
   end
 
-  describe 'Request list of all links' do
+  describe 'Request list of all links for current user' do
+    it "returns a JSON with the user's links" do
+      test_title = 'Test title'
+      test_url = 'https://urlockbox-laszlo.herokuapp.com'
+      test_user_id = test_user.id
+      test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id)
+
+      params = {
+        user_id: test_user.id
+      }
+
+      get '/api/v1/links', params
+
+      expect(response.body).to include(test_title)
+      expect(response.body).to include(test_url)
+      expect(response.code).to eq('200')
+    end
   end
 
 end

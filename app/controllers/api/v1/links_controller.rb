@@ -1,7 +1,12 @@
 require 'uri'
 
 class Api::V1::LinksController < ApplicationController
-include URI
+  include URI
+
+  def index
+    render json: Link.where(id: params[:id])
+  end
+
   def create
     new_link = Link.new(link_params)
 
