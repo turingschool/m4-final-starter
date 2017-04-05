@@ -7,15 +7,27 @@ $(document).ready(function() {
 function bindEditReadLinkListenerToEditReadLink(){
   $(".edit-link-read").on("click", function(event){
     event.preventDefault();
-    console.log($(this).prev().text());
+    const link = {
+      link: {
+        read: false
+      }
+    };
     if ($(this).prev().text() == "Read?: false"){
       $(this).prev().text("Read?: true");
       $(this).prev().css("color", "green");
+      link.link.read = true;
     }
     else {
       $(this).prev().text("Read?: false");
       $(this).prev().css("color", "red");
+      link.link.read = false;
     }
+    const linkId = $(this).siblings(".link-id").text();
+    $.ajax({
+      url: "/api/v1/links/" + linkId,
+      method: "PATCH",
+      data: link
+    })
   })
 }
 
