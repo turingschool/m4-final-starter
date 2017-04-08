@@ -1,10 +1,14 @@
 class Api::V1::LinksController < ApplicationController
+  def index
+    @links = Link.where(user_id: current_user.id).reverse
+  end
+
   def create
-    @link = Link.create(link_params)
+    @link = current_user.links.create(link_params)
     if @link.valid?
       render json: @link
     else
-      render json: @link.errors.full_messages, status: 500
+      @errors = @link.errors
     end
   end
 

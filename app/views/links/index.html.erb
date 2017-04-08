@@ -1,11 +1,12 @@
 <p><%= button_to "Sign out", logout_path, method: :delete %> </p>
 <div class='submit-url'>
   <h3>Add a link</h3>
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js" %>
   <%= form_tag() do %>
     <%= label_tag(:url, 'Url') %>
-    <%= url_field_tag(:url, 'Enter Url', class: 'url-tag') %>
-    <%= label_tag(:title, 'Title') %>
-    <%= text_field_tag(:title, 'Enter title', class: 'title-tag') %>
+    <%= url_field_tag(:url , '', class: 'url-tag', for: 'url_field') %>
+    <%= label_tag(:title, 'Title', for: 'label_field') %>
+    <%= text_field_tag(:title, '',  class: 'title-tag') %>
     <%= submit_tag 'Add Link', class: 'add-link'%>
   <% end %>
 </div>
@@ -17,6 +18,7 @@
         <br>Title: <%= link.title %></br>
         <br>URL: <%= link_to link.url %> </br>
         <br>Read?: <%= link.read %></br>
+        <%= button_to "Edit", link_path(link) %>
       </div>
     </div>
   <% end %>
