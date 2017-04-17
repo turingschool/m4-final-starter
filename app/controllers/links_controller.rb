@@ -7,23 +7,40 @@ class LinksController < ApplicationController
   end
 
   def create
-    if link_params.include?(:id)
-      @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
-      @link.title = link_params[:title]
-      @link.url = link_params[:url]
-      @link.read = false
-    else
+    # if link_params.include?(:id)
+    #   @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
+    #   @link.title = link_params[:title]
+    #   @link.url = link_params[:url]
+    #   @link.read = false
+    # else
       @link = Link.new(link_params)
       @link.user_id = session[:user_id].to_i
+    # end
+    if !@link.save
+      flash[:error] = @link.errors.full_messages
+      @links = current_user_links
+      render :partial => '/layouts/flash', :status => 400
+    else
+      flash[:success] = 'Link successfully saved'
+      render partial: '/links/link', locals: {link: @link}
+      # redirect_to links_path
     end
+  end
+
+  def update
+    @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
+    @link.title = link_params[:title]
+    @link.url = link_params[:url]
+    @link.read = false
     if !@link.save
       flash[:error] = @link.errors.full_messages
       @links = current_user_links
       render :index
     else
       flash[:success] = 'Link successfully saved'
-      render partial: '/links/link', locals: {link: @link}
       # redirect_to links_path
+      # render :json, {status: "duplicate", redirect_url: "/links"}
+      # redirect_to action: 'index'
     end
   end
 

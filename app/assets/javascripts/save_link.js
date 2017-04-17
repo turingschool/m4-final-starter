@@ -14,15 +14,25 @@ function saveLink(event) {
     $.ajax({
       type: "POST",
       url: "/links",
-      data: formData,
+      data: formData
     }).then(function(response){
       $('.link-list').prepend(response)
+      $('.flash-messages').html('Link successfully saved')
       clearLinkForm()
     }).fail(function(error){
-      console.log(error)
+      window.location = `/links`
     });
   } else {
-    console.log('this is to update a link...')
+    var updatePath = "/links/" + formData.id
+    $.ajax({
+      type: "PUT",
+      url: updatePath,
+      data: formData
+    }).done(function(response){
+      window.location = `/links`
+    }).fail(function(error){
+      console.log(error)
+    })
   }
 }
 

@@ -5,7 +5,7 @@ require 'rails_helper'
 # A valid URL for the link
 # A title for the link
 
-describe 'User adding a new link' do
+describe 'User adding a new link', js:true do
   let!(:test_user) {
     test_email = 'test@email.com'
     test_password = 'password'
