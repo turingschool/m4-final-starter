@@ -32,7 +32,9 @@ describe 'User editing a link', js: true do
     it 'will populate form with link details' do
       click_on 'Edit'
 
-      expect('link[title]').to have_content(Link.first.url)
+      expect(find_field('link[title]').value).to eq(Link.first.title)
+      expect(find_field('link[url]').value).to eq(Link.first.url)
+      expect(find('#link_id', visible: false).value).to eq(Link.first.id.to_s)
     end
   end
 

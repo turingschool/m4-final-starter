@@ -1,8 +1,7 @@
 <div class = 'link-box'>
-  <p>Title: <%= link.title %></p>
-  <p>URL: <%= link.url %></p>
+  <p>Title: <span class = 'link-box-title' ><%= link.title %></span></p>
+  <p>URL: <span class = 'link-box-url' ><%= link.url %></span></p>
   <p>Read? <%= link.read %></p>
-  <div>
-    <button>Edit</button>
-  </div>
+  <p><span class = 'link-box-id' hidden ><%= link.id %></span></p>
+  <button class = 'link-edit-btn' >Edit</button>
 </div>
