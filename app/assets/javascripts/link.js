@@ -1,6 +1,6 @@
 $(document).ready(function() {
   bindCreateLinkListenerToCreateLink();
-  // bindEditLinkListenerToEditLink();
+  bindEditLinkListenerToEditLink();
   bindEditReadLinkListenerToEditReadLink();
 })
 
@@ -30,15 +30,16 @@ function bindEditReadLinkListenerToEditReadLink(){
 }
 
 
-// function bindEditLinkListenerToEditLink(){
-//   $(".edit-link").on("click", function(event){
-//     console.log("hey")
-//     if (!validLink()) {
-//       $(".message").slideDown();
-//       return;
-//     }
-//   })
-// }
+function bindEditLinkListenerToEditLink(){
+  $(".edit-link").on("click", function(event){
+    if (!validLink()) {
+      $(".message").slideDown();
+      event.preventDefault();
+      return;
+    }
+    $(".message").slideUp();
+  })
+}
 
 function bindCreateLinkListenerToCreateLink(){
   $("#add-link").on("click", function(event){
