@@ -1,9 +1,15 @@
 <div class='link'>
   <h3>Title: <%= link.title%></h3>
   <h3>URL: <%= link.url%></h3>
-  <h3 class="read-status">Read?: <%= link.read%></h3>
+
   <% if link.id %>
-    <%= link_to "Mark as Read", edit_link_path(link.id), class: "edit-link-read" %>
+    <% if link.read == false %>
+      <h3 class="read-status false">Read?: <%= link.read%></h3>
+      <%= link_to "Mark as Read", root_path, class: "edit-link-read" %>
+    <% else %>
+      <h3 class="read-status true">Read?: <%= link.read%></h3>
+      <%= link_to "Mark as Unread", root_path, class: "edit-link-read" %>
+    <% end %>
     <%= link_to "Edit", edit_link_path(link.id) %>
     <h3 class="link-id"><%= link.id %></h3>
   <% end %>

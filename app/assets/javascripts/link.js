@@ -1,25 +1,23 @@
 $(document).ready(function() {
   bindCreateLinkListenerToCreateLink();
-  bindEditLinkListenerToEditLink();
+  // bindEditLinkListenerToEditLink();
   bindEditReadLinkListenerToEditReadLink();
 })
 
 function bindEditReadLinkListenerToEditReadLink(){
   $(".edit-link-read").on("click", function(event){
     event.preventDefault();
-    const link = {
-      link: {
-        read: false
-      }
-    };
+    const link = {link: {read: false}};
     if ($(this).prev().text() == "Read?: false"){
       $(this).prev().text("Read?: true");
       $(this).prev().css("color", "green");
       link.link.read = true;
+      $(this).prev().context.innerText = "Mark as Unread";
     }
     else {
       $(this).prev().text("Read?: false");
       $(this).prev().css("color", "red");
+      $(this).prev().context.innerText = "Mark as Read";
       link.link.read = false;
     }
     const linkId = $(this).siblings(".link-id").text();
@@ -32,15 +30,15 @@ function bindEditReadLinkListenerToEditReadLink(){
 }
 
 
-function bindEditLinkListenerToEditLink(){
-  $(".edit-link").on("click", function(event){
-    console.log("hey")
-    if (!validLink()) {
-      $(".message").slideDown();
-      return;
-    }
-  })
-}
+// function bindEditLinkListenerToEditLink(){
+//   $(".edit-link").on("click", function(event){
+//     console.log("hey")
+//     if (!validLink()) {
+//       $(".message").slideDown();
+//       return;
+//     }
+//   })
+// }
 
 function bindCreateLinkListenerToCreateLink(){
   $("#add-link").on("click", function(event){
