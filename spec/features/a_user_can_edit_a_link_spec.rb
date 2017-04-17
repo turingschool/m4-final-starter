@@ -45,6 +45,7 @@ describe 'User editing a link', js: true do
 
       test_updated_title = 'Test updated title'
       test_updated_url = 'https://updated-urlockbox-laszlo.herokuapp.com'
+
       fill_in 'link[title]', with: test_updated_title
       fill_in 'link[url]', with: test_updated_url
       click_on 'Save Link'
@@ -62,7 +63,10 @@ describe 'User editing a link', js: true do
 
   describe 'With incorrect details' do
     it 'will show an error message' do
+      click_on 'Edit'
+
       test_invalid_url = 'invalidURL'
+
       fill_in 'link[url]', with: test_invalid_url
       click_on 'Save Link'
 
@@ -74,25 +78,25 @@ describe 'User editing a link', js: true do
       expect(Link.first.read).to eq(test_link.read)
     end
 
-    # it 'will save after correction' do
-    #   test_title = 'Test title'
-    #   test_invalid_url = 'invalidURL'
-    #   test_valid_url = 'https://urlockbox-laszlo.herokuapp.com'
-    #   fill_in 'link[title]', with: test_title
-    #   fill_in 'link[url]', with: test_invalid_url
-    #   click_on 'Save Link'
+    it 'will save after correction' do
+      click_on 'Edit'
 
-    #   fill_in 'link[title]', with: test_title
-    #   fill_in 'link[url]', with: test_valid_url
-    #   click_on 'Save Link'
+      test_invalid_url = 'invalidURL'
+      test_valid_url = 'https://updated-urlockbox-laszlo.herokuapp.com'
 
-    #   expect(page).to have_current_path(links_path)
-    #   expect(page).to have_current_path(links_path)
-    #   expect(page).to have_content(test_title)
-    #   expect(page).to have_content(test_valid_url)
-    #   expect(Link.first.url).to eq(test_valid_url)
-    #   expect(Link.first.title).to eq(test_title)
-    # end
+      fill_in 'link[url]', with: test_invalid_url
+      click_on 'Save Link'
+
+      fill_in 'link[url]', with: test_valid_url
+      click_on 'Save Link'
+
+      expect(page).to have_current_path(links_path)
+      expect(page).to have_content(test_valid_url)
+      expect(Link.count).to eq(1)
+      expect(Link.first.url).to eq(test_valid_url)
+      expect(Link.first.title).to eq(test_link.title)
+      expect(Link.first.read).to eq(false)
+    end
   end
 
 end
