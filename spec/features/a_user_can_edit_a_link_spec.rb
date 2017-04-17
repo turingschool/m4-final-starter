@@ -87,6 +87,8 @@ describe 'User editing a link', js: true do
       fill_in 'link[url]', with: test_invalid_url
       click_on 'Save Link'
 
+      click_on 'Edit'
+
       fill_in 'link[url]', with: test_valid_url
       click_on 'Save Link'
 
