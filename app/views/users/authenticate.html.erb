@@ -1,0 +1,10 @@
+<h1 class="unauth-text">Welcome to URL Lockbox!</h1>
+
+<h1 class="unauth-text">
+   <% if current_user %>
+    <%= link_to "Logout", logout_path %>
+   <% else %>
+    <h4> Have an account with us? <%= link_to "Login", login_path %> </h4>
+    <h4> Or if you don't have and account, <%= link_to "create one", signup_path %> </h4>
+   <% end %>
+</h1>
