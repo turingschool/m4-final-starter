@@ -21,6 +21,7 @@ class LinksController < ApplicationController
       @links = Link.where(user_id: current_user.id)
       render :index
     else
+      flash[:success] = 'Link successfully saved'
       redirect_to links_path
     end
   end
