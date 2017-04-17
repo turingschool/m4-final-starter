@@ -14,6 +14,6 @@ describe Link do
     create(:link, url: "https://www.puppy.com", read: false)
 
     expect(Link.get_top_10.length).to eq 10
-    expect(Link.get_top_10.first.first).to eq "https://www.google1.com/"
+    expect(Link.get_top_10.first.first).to eq "https://www.google5.com/"
   end
 end

@@ -3,6 +3,7 @@ class LinksController < ApplicationController
 
   def index
     @links = current_user.reload.links.reverse
+    # @top_links = 
     @link = current_user.links.new
   end
 
