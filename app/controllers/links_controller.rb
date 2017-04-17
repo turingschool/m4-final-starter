@@ -7,7 +7,12 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.where(:user_id => session[:user_id].to_i).find_or_create_by(link_params)
+    # @link = Link.where(:user_id => session[:user_id].to_i).find_or_create_by(link_params)
+    @link = Link.new(link_params)
+    @link.user_id = session[:user_id].to_i
+    if !@link.save
+      flash[:error] = @link.errors.full_messages
+    end
     redirect_to links_path
   end
 
