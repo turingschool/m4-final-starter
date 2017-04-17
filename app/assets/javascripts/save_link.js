@@ -11,28 +11,9 @@ function saveLink(event) {
   }
 
   if (formData.id == ""){
-    $.ajax({
-      type: "POST",
-      url: "/links",
-      data: formData
-    }).then(function(response){
-      $('.link-list').prepend(response)
-      $('.flash-messages').html('Link successfully saved')
-      clearLinkForm()
-    }).fail(function(error){
-      window.location = `/links`
-    });
+    submitNewLink(formData)
   } else {
-    var updatePath = "/links/" + formData.id
-    $.ajax({
-      type: "PUT",
-      url: updatePath,
-      data: formData
-    }).done(function(response){
-      window.location = `/links`
-    }).fail(function(error){
-      console.log(error)
-    })
+    updateLink(formData)
   }
 }
 
@@ -40,4 +21,31 @@ function clearLinkForm() {
   $('#link_title').val('')
   $('#link_url').val('')
   $('#link_id').val('')
+}
+
+function submitNewLink(formData) {
+  $.ajax({
+    type: "POST",
+    url: "/links",
+    data: formData
+  }).then(function(response){
+    $('.link-list').prepend(response)
+    $('.flash-messages').html('Link successfully saved')
+    clearLinkForm()
+  }).fail(function(error){
+    window.location = `/links`
+  });
+}
+
+function updateLink(formData) {
+  var updatePath = "/links/" + formData.id
+  $.ajax({
+    type: "PUT",
+    url: updatePath,
+    data: formData
+  }).done(function(response){
+    window.location = `/links`
+  }).fail(function(error){
+    console.log(error)
+  })
 }
