@@ -11,6 +11,7 @@ class LinksController < ApplicationController
       @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
       @link.title = link_params[:title]
       @link.url = link_params[:url]
+      @link.read = false
     else
       @link = Link.new(link_params)
       @link.user_id = session[:user_id].to_i

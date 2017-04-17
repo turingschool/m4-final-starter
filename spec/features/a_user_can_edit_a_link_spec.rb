@@ -15,7 +15,8 @@ describe 'User editing a link', js: true do
     test_title = 'Test title'
     test_url = 'https://urlockbox-laszlo.herokuapp.com'
     test_user_id = test_user.id
-    test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id)
+    test_read = true
+    test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id, read: test_read)
   }
 
   before(:each) do
@@ -52,6 +53,7 @@ describe 'User editing a link', js: true do
       expect(Link.count).to eq(1)
       expect(Link.first.title).to eq(test_updated_title)
       expect(Link.first.url).to eq(test_updated_url)
+      expect(Link.first.read).to eq(false)
       expect(page).not_to have_content(test_link.url)
       expect(page).to have_content(test_updated_title)
       expect(page).to have_button('Edit')
