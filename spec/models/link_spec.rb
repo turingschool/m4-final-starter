@@ -45,6 +45,6 @@ RSpec.describe User, type: :model do
 
       expect(test_link.read).to eq(false)
     end
-    
+
   end
 end

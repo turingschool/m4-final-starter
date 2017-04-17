@@ -34,6 +34,7 @@ describe 'User adding a new link' do
       expect(page).to have_current_path(links_path)
       expect(page).to have_content(test_title)
       expect(page).to have_content(test_url)
+      expect(page).to have_button('Edit')
     end
   end
 

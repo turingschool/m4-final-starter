@@ -8,7 +8,7 @@ class Link < ActiveRecord::Base
       uri = URI.parse(self.url)
       if !(uri.kind_of? URI::HTTP)
         errors.add(:url, 'Invalid')
-        end
+      end
     end
 
 end

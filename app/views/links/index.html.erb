@@ -1,3 +1,5 @@
 <%= render partial: '/links/link_form' %>
 <hr/>
-<%= render partial: '/links/link_list' %>
+<% @links.each do |link|%>
+  <%= render partial: '/links/link', locals: { link: link } %>
+<% end %>
