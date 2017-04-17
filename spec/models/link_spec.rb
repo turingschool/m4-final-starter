@@ -65,6 +65,33 @@ RSpec.describe User, type: :model do
 
       expect(test_link).not_to be_valid
     end
+  end
+
+  describe 'Methods' do
+    let!(:link_unread) {
+      test_title = 'Test title'
+      test_url = 'https://urlockbox-laszlo.herokuapp.com'
+      test_user_id = 1
+      test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id)
+    }
+
+    let!(:link_read) {
+      test_title = 'Test title'
+      test_url = 'https://urlockbox-laszlo.herokuapp.com'
+      test_user_id = 1
+      test_read = true
+      test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id, read: test_read)
+    }
+
+    it 'returns MARK_READ_TEXT based on READ value' do
+      expect(link_unread.mark_read_text).to eq('Mark Read')
+      expect(link_read.mark_read_text).to eq('Mark Unread')
+    end
+
+    it 'returns MARK_READ_CLASS based on READ value' do
+      expect(link_unread.mark_read_class).to eq('link-unread')
+      expect(link_read.mark_read_class).to eq('link-read')
+    end
 
   end
 end

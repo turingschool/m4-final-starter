@@ -1,7 +1,10 @@
-<div class = 'link-box'>
+<div class = 'link-box <%= link.mark_read_class %>'>
   <p>Title: <span class = 'link-box-title' ><%= link.title %></span></p>
   <p>URL: <span class = 'link-box-url' ><%= link.url %></span></p>
   <p>Read? <%= link.read %></p>
   <p><span class = 'link-box-id' hidden ><%= link.id %></span></p>
+  <button class = 'mark-read-btn' >
+    <%= link.mark_read_text %>
+  </button>
   <button class = 'link-edit-btn' >Edit</button>
 </div>
