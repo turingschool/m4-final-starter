@@ -22,7 +22,8 @@ class LinksController < ApplicationController
       render :index
     else
       flash[:success] = 'Link successfully saved'
-      redirect_to links_path
+      render partial: '/links/link', locals: {link: @link}
+      # redirect_to links_path
     end
   end
 
@@ -33,10 +34,13 @@ class LinksController < ApplicationController
     end
 
     def link_params
-      if params[:link][:id] == ""
-        return params.require(:link).permit(:title, :url)
+      # if params[:link][:id] == ""
+      if params[:id] == ""
+        # return params.require(:link).permit(:title, :url)
+        return params.permit(:title, :url)
       else
-        return params.require(:link).permit(:title, :url, :id)
+        # return params.require(:link).permit(:title, :url, :id)
+        return params.permit(:title, :url, :id)
       end
     end
 
