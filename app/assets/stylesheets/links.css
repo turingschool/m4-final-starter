@@ -18,3 +18,16 @@
 .show {
   display: show;
 }
+
+.link {
+  width: 25%;
+  float: left;
+  margin:2%;
+}
+.link h3 {
+  font-size: 17px;
+}
+
+.edit-link-button {
+  float:right;
+}

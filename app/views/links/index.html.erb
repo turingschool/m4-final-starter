@@ -1,6 +1,6 @@
-<%= link_to "Sign Out", logout_path, method: "DELETE" %>
-<div class="message"><h4>Url must be valid and title cannot be blank.</h4></div>
-<div class="success-message"><h4>You've successfully made a link!</h4></div>
+<div class="center message alert alert-danger"><h4>Url must be valid and title cannot be blank.</h4></div>
+<div class="center success-message alert alert-success"><h4>You've successfully made a link!</h4></div>
+<%= link_to "Sign Out", logout_path, method: "DELETE", class:"btn btn-info btn-small" %>
 <%= render partial: "form" %>
 <h2>Filter:</h2>
 <%= label_tag "By text:" %>
