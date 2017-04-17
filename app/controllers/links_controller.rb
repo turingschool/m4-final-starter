@@ -7,13 +7,21 @@ class LinksController < ApplicationController
   end
 
   def create
-    # @link = Link.where(:user_id => session[:user_id].to_i).find_or_create_by(link_params)
-    @link = Link.new(link_params)
-    @link.user_id = session[:user_id].to_i
+    if link_params.include?(:id)
+      @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
+      @link.title = link_params[:title]
+      @link.url = link_params[:url]
+    else
+      @link = Link.new(link_params)
+      @link.user_id = session[:user_id].to_i
+    end
     if !@link.save
       flash[:error] = @link.errors.full_messages
+      @links = Link.where(user_id: current_user.id)
+      render :index
+    else
+      redirect_to links_path
     end
-    redirect_to links_path
   end
 
   private
@@ -23,6 +31,10 @@ class LinksController < ApplicationController
     end
 
     def link_params
-      params.require(:link).permit(:title, :url)
+      if params[:link][:id] == ""
+        return params.require(:link).permit(:title, :url)
+      else
+        return params.require(:link).permit(:title, :url, :id)
+      end
     end
 end

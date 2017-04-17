@@ -38,21 +38,25 @@ describe 'User editing a link', js: true do
     end
   end
 
+  describe 'With correct details' do
+    it 'can save it' do
+      click_on 'Edit'
 
-  # describe 'With correct details' do
-  #   it 'can save it' do
-  #     test_title = 'Test title'
-  #     test_updated_url = 'https://updated-urlockbox-laszlo.herokuapp.com'
-  #     fill_in 'link[title]', with: test_title
-  #     fill_in 'link[url]', with: test_updated_url
-  #     click_on 'Save Link'
+      test_updated_title = 'Test title'
+      test_updated_url = 'https://updated-urlockbox-laszlo.herokuapp.com'
+      fill_in 'link[title]', with: test_updated_title
+      fill_in 'link[url]', with: test_updated_url
+      click_on 'Save Link'
 
-  #     expect(page).to have_current_path(links_path)
-  #     expect(page).to have_content(test_title)
-  #     expect(page).to have_content(test_url)
-  #     expect(page).to have_button('Edit')
-  #   end
-  # end
+      expect(page).to have_current_path(links_path)
+      expect(Link.count).to eq(1)
+      expect(Link.first.title).to eq(test_updated_title)
+      expect(Link.first.url).to eq(test_updated_url)
+      expect(page).not_to have_content(test_link.url)
+      expect(page).to have_content(test_updated_title)
+      expect(page).to have_button('Edit')
+    end
+  end
 
   # describe 'With incorrect details' do
   #   it 'will show an error message' do
