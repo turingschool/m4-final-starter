@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_action :logged_in?
 
   def index
-    @links = Link.where(user_id: current_user.id)
+    @links = current_user_links
     @link = Link.new
   end
 
@@ -18,7 +18,7 @@ class LinksController < ApplicationController
     end
     if !@link.save
       flash[:error] = @link.errors.full_messages
-      @links = Link.where(user_id: current_user.id)
+      @links = current_user_links
       render :index
     else
       flash[:success] = 'Link successfully saved'
@@ -38,5 +38,9 @@ class LinksController < ApplicationController
       else
         return params.require(:link).permit(:title, :url, :id)
       end
+    end
+
+    def current_user_links
+      Link.where(user_id: current_user.id).order(id: :desc)
     end
 end
