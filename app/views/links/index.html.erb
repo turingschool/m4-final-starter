@@ -5,8 +5,8 @@
 <h2>Filter:</h2>
 <%= label_tag "By text:" %>
 <%= text_field_tag :q, '', class:"filter-by-text" %>
-<%= button_tag "Only Unread Links" %>
-<%= button_tag "Only Read Links" %>
+<%= button_tag "Only Unread Links", class:"filter-by-unread" %>
+<%= button_tag "Only Read Links", class:"filter-by-read" %>
 <div class="links">
   <% @links.each do |link| %>
     <%= render partial: "link", :locals => {link: link} %>
