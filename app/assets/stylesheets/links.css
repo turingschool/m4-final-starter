@@ -10,3 +10,11 @@
 .true {
   color: green;
 }
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: show;
+}
