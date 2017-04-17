@@ -1,5 +1,6 @@
-<%= form_for @link, url: links_path(@link) do |f| %>
+<%= form_for @link, url: links_path, method: 'POST' do |f| %>
   <%= f.text_field :title, placeholder: "Type here link title" %>
   <%= f.text_field :url, placeholder: "Type here link URL" %>
+  <%= f.hidden_field :id %>
   <%= f.submit 'Save Link'%>
 <% end %>
