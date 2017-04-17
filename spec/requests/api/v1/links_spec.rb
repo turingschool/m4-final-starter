@@ -4,7 +4,7 @@ describe 'Links API endpoints' do
   let!(:test_user) {User.create(email: 'test@email.com', password: 'password')}
 
   describe 'Add a new link - POST link' do
-    it 'can add a link into the database when all details are correct' do
+    xit 'can add a link into the database when all details are correct' do
       test_title = 'Test Link'
       test_url = 'https://urlockbox-laszlo.herokuapp.com'
       params = {
@@ -20,7 +20,7 @@ describe 'Links API endpoints' do
       expect(Link.first.url).to eq(test_url)
     end
 
-    it 'cannot add an invalid link into the database' do
+    xit 'cannot add an invalid link into the database' do
       test_title = 'Test Link'
       test_url = 'urlockbox-laszlo.herokuapp.com'
       params = {
@@ -38,7 +38,7 @@ describe 'Links API endpoints' do
   end
 
   describe 'Request list of all links for current user' do
-    it "returns a JSON with the user's links" do
+    xit "returns a JSON with the user's links" do
       test_title = 'Test title'
       test_url = 'https://urlockbox-laszlo.herokuapp.com'
       test_user_id = test_user.id

@@ -21,12 +21,15 @@ describe 'User adding a new link' do
   end
 
   describe 'With correct details' do
-    it 'can add a new link' do
+    it 'can save it' do
+
+      expect(page).to have_current_path(links_path)
+
       test_title = 'Test title'
       test_url = 'https://urlockbox-laszlo.herokuapp.com'
       fill_in 'link[title]', with: test_title
       fill_in 'link[url]', with: test_url
-      click_on 'Add link'
+      click_on 'Save Link'
 
       expect(page).to have_current_path(links_path)
       expect(page).to have_content(test_title)
