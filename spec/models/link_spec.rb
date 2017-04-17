@@ -46,5 +46,25 @@ RSpec.describe User, type: :model do
       expect(test_link.read).to eq(false)
     end
 
+    it 'cannot create a link without URL' do
+      test_title = 'Test title'
+      test_url = ''
+      test_user_id = 1
+
+      test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id)
+
+      expect(test_link).not_to be_valid
+    end
+
+    it 'cannot create a link without title' do
+      test_title = ''
+      test_url = 'https://urlockbox-laszlo.herokuapp.com'
+      test_user_id = 1
+
+      test_link = Link.create(title: test_title, url: test_url, user_id: test_user_id)
+
+      expect(test_link).not_to be_valid
+    end
+
   end
 end

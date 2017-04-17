@@ -1,5 +1,7 @@
 class Link < ActiveRecord::Base
   validates :user_id, presence: true
+  validates :title, presence: true
+  validates :url, presence: true
   validate :valid_url?
 
   private
