@@ -5,14 +5,37 @@ Laszlo's implementation of URLockbox Turing BackEnd Mod4 final exam. The origina
 
 URL to site on Heroku: [https://urlockbox-laszlo.herokuapp.com](https://urlockbox-laszlo.herokuapp.com)
 
-Sign In/Sign Up Behavior:
+##Sign In/Sign Up Behavior:
 If visiting this URL without being signed in, visitors will be redirected to the Sign In page.
 From that page an already registered user can sign in OR can visit the Sign UP page. The Sign Up page can be accessed through a direct link as well: [https://urlockbox-laszlo.herokuapp.com/signup](https://urlockbox-laszlo.herokuapp.com/signup)
 
-If a visitor registers throgh the [Sign Up page](https://urlockbox-laszlo.herokuapp.com/signup), that new user will remain logged in.
+If a visitor registers through the [Sign Up page](https://urlockbox-laszlo.herokuapp.com/signup), that new user will remain logged in.
 
-Upon successful completion of either a sign in or a sign up, users will be taken to the [Links Index page](https://urlockbox-laszlo.herokuapp.com/links).
+Upon successful completion of either a `sign in` or a `sign up`, users will be taken to the [Links Index page](https://urlockbox-laszlo.herokuapp.com/links).
 
+
+##Interal API behavior:
+This implementation relies on internal API endpoints to provide `link` related `CRUD` functionality on the FrontEnd side.
+
+The following endpoints have been implemented:  
+Create a link: `POST /api/v1/links`  
+  - Functionality: add link to the `Link` table of the database. Request will go through URL validation.  
+  - Arguments: `title`, `url`, `user_id` of current user  
+  - Response:  
+    - Success: `HTTP status 204`  
+    - Failure: `HTTP status 400` and JSON response  
+    ```
+    {
+      error: "URL is not valid"
+    }
+    ```
+
+Create a link: `GET /api/v1/links`  
+  - Functionality: requests all links for a given user  
+  - Arguments: none  
+  - Response:  
+    - Success: `HTTP status 204`  
+    - Failure: N/A  
 
 
 # Original ReadMe content from Turing boilerplate repo
