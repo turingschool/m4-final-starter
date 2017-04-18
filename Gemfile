@@ -18,6 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'execjs'
 gem 'therubyracer'
+gem 'libv8'
 
 # gem 'unicorn'
 
