@@ -43,6 +43,11 @@ class LinksController < ApplicationController
     @link.url = link_params[:url]
     @link.read = link_params[:read]
     @link.save
+
+    if @link.read
+      conn = Faraday.new(:url => 'http://localhost:3001')
+      conn.post '/api/v1/links', { :url => @link.url }
+    end
   end
 
   private
