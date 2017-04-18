@@ -39,15 +39,12 @@ class LinksController < ApplicationController
 
   def updatelink
     @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
-    @link.title = link_params[:title]
-    @link.url = link_params[:url]
-    @link.read = link_params[:read]
-    @link.save
+    @link.update(link_params)
 
     if @link.read
-      # conn = Faraday.new(:url => 'http://localhost:3001')
-      conn = Faraday.new(:url => 'https://hotreads-laszlo.herokuapp.com')
-      conn.post '/api/v1/links', { :url => @link.url }
+      hot_reads = HotreadsService.new
+      hot_reads.send_link(@link.url)
+      top10 = hot_reads.get_top10
     end
   end
 
