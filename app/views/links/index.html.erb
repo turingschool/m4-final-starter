@@ -2,12 +2,13 @@
 <div class='submit-url'>
   <h3>Add a link</h3>
   <%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js" %>
-  <%= form_tag() do %>
-    <%= label_tag(:url, 'Url') %>
-    <%= url_field_tag(:url , '', class: 'url-tag', for: 'url_field') %>
-    <%= label_tag(:title, 'Title', for: 'label_field') %>
-    <%= text_field_tag(:title, '',  class: 'title-tag') %>
-    <%= submit_tag 'Add Link', class: 'add-link'%>
+
+  <%= form_for Link.new, remote: true do |form| %>
+    <%= form.label(:url) %>
+    <%= form.url_field(:url , class: 'url-tag', for: 'url_field') %>
+    <%= form.label(:title, 'Title') %>
+    <%= form.text_field(:title, class: 'title-tag') %>
+    <%= form.submit('Add Link', class: 'add-link') %>
   <% end %>
 </div>
 

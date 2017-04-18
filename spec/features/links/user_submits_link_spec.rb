@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User submits a link' do
-  xcontext 'the user attempts to submit a link' do
+  context 'the user attempts to submit a link' do
 
     before do
       logged_in_user
@@ -19,7 +19,6 @@ feature 'User submits a link' do
     scenario 'the user fills in the fields' do
       fill_in :url , with: 'https://www.pinkbike.com'
       fill_in :title, with: 'PinkBike'
-      save_and_open_page
       click_on 'Add Link'
       expect(page).to have_content('PinkBike')
     end

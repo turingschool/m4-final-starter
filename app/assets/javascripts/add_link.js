@@ -4,7 +4,7 @@ $(document).ready(function() {
     var url = $('.url-tag').val();
     var title = $('.title-tag').val();
     var urlPath = "/api/v1/links/";
-    var validUrl = /^[a-z]+:\/\//i.test(url);
+    var validUrl = /^[https]+:\/\//i.test(url);
     if (validUrl) {
       $.ajax({
         type: "POST",
