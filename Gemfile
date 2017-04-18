@@ -13,8 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'responders'
 gem 'awesome_print'
-gem 'sprockets-es6'
-# gem 'bcrypt', '~> 3.1.7'
+# gem 'sprockets-es6'
+gem 'bcrypt', '~> 3.1.7'
 
 # gem 'unicorn'
 
@@ -32,7 +32,7 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'spring'
   gem 'database_cleaner'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver', '~> 2.53.4'

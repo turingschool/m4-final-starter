@@ -1,0 +1,33 @@
+.message, .success-message, .link-id {
+  display: none;
+}
+
+.false {
+  color: red;
+}
+
+
+.true {
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: show;
+}
+
+.link {
+  width: 25%;
+  float: left;
+  margin:2%;
+}
+.link h3 {
+  font-size: 17px;
+}
+
+.edit-link-button {
+  float:right;
+}

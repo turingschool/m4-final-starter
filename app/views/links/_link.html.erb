@@ -1,0 +1,21 @@
+<div class='link panel panel-default'>
+  <% if link.read == false %>
+    <h3 class="hidden popular"><%= popular %></h3>
+  <% else %>
+    <h3 class="popular"><%= popular %></h3>
+  <% end %>
+  <h3>Title: <%= link.title%></h3>
+  <h3>URL: <%= link.url%></h3>
+
+  <% if link.id %>
+    <% if link.read == false %>
+      <h3 class="read-status false">Read?: <%= link.read%></h3>
+      <%= link_to "Mark as Read", root_path, class: "edit-link-read btn btn-primary btn-xs" %>
+    <% else %>
+      <h3 class="read-status true">Read?: <%= link.read%></h3>
+      <%= link_to "Mark as Unread", root_path, class: "edit-link-read btn btn-primary btn-small" %>
+    <% end %>
+    <%= link_to "Edit", edit_link_path(link.id), class:"edit-link-button btn btn-warning btn-xs" %>
+    <h3 class="link-id"><%= link.id %></h3>
+  <% end %>
+</div>

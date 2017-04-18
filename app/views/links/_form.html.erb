@@ -1,0 +1,14 @@
+<%= form_for @link do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, value: @link.title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url, value: @link.url %>
+
+  <% if params[:action] == "index" %>
+    <%= f.submit "Add Link", class:"add-link", id:"add-link" %>
+  <% else %>
+    <%= f.submit class:"edit-link" %>
+  <% end %>
+<% end %>
