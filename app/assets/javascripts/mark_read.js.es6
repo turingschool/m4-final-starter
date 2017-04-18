@@ -10,12 +10,13 @@ function markLink(event) {
 
   if (linkData.find('.link-read').text() == 'true') {
     linkData.find('.link-read').text('false');
+    linkData.parent().css('background-color', 'White' );
     updateRead = false;
   } else {
     linkData.find('.link-read').text('true');
+    linkData.parent().css('background-color', 'SlateGray' );
     updateRead = true;
   }
-  linkData.find('.link-read').text(updateRead);
 
   $.ajax({
       method: "PATCH",
@@ -26,4 +27,5 @@ function markLink(event) {
       },
     }).then()
     .fail();
+  linkData.find('.link-read').text(updateRead);
 }
