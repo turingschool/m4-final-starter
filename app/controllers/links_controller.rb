@@ -6,11 +6,11 @@ class LinksController < ApplicationController
   end
 
   def edit
-    @link = Link.find(params[:id])
+    @link = found_link
   end
 
   def update
-    @link = Link.find(params[:id])
+    @link = found_link
     if @link.update(link_params)
       flash[:success] = "You successfully updated your link."
       redirect_to links_path
@@ -24,5 +24,9 @@ class LinksController < ApplicationController
 
   def link_params
     params.require(:link).permit(:title, :url)
+  end
+
+  def found_link
+    Link.find(params[:id])
   end
 end
