@@ -53,4 +53,26 @@ describe 'Filtering links', js: true do
     end
   end
 
+  describe 'Clicking on Only Read Links button' do
+    it 'shows relevant link only' do
+      visit links_path
+
+      click_on 'Only Read Links'
+
+      expect(page).to have_content(test_link2.title)
+      expect(page).not_to have_content(test_link1.title)
+    end
+  end
+
+  describe 'Clicking on Only Unread Links button' do
+    it 'shows relevant link only' do
+      visit links_path
+
+      click_on 'Only Unread Links'
+
+      expect(page).to have_content(test_link1.title)
+      expect(page).not_to have_content(test_link2.title)
+    end
+  end
+
 end
