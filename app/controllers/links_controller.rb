@@ -15,7 +15,7 @@ class LinksController < ApplicationController
       flash[:success] = "You successfully updated your link."
       redirect_to links_path
     else
-      # flash_message_failed_update
+      @errors = @link.errors
       render :edit
     end
   end
