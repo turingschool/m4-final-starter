@@ -1,17 +1,39 @@
 $( document ).ready(function(){
-  $("body").on("click", ".mark-as-read", markAsRead)
+  $("body").on("click", ".mark-read-btn", markAsRead)
 })
 
-function markAsRead(e) {
-  e.preventDefault();
+function markAsRead(event) {
+  // e.preventDefault();
+  var newReadStatus = false
 
-  var $link = $(this).parents('.link');
-  var linkId = $link.data('link-id');
+  if ($(this).parent().hasClass('link-unread')) {
+    $(this).parent().removeClass('link-unread').addClass('link-read')
+    $(this).parent().find('.mark-read-btn').text('Mark as Unread')
+    newReadStatus = true
+  } else {
+    $(this).parent().removeClass('link-read').addClass('link-unread')
+    $(this).parent().find('.mark-read-btn').text('Mark as Read')
+    newReadStatus = false
+  }
+  $(this).parent().find('.link-box-read').text(newReadStatus)
+
+  var formData = {
+    title: $(this).parent().find('.link-box-title').text(),
+    url: $(this).parent().find('.link-box-url').text(),
+    id: $(this).parent().find('.link-box-id').text(),
+    read: newReadStatus
+  }
+  var updatePath = "/updatelink/" + formData.id
 
   $.ajax({
-    type: "PATCH",
-    url: "/api/v1/links/" + linkId,
-    data: { read: true },
+    type: "PUT",
+    url: updatePath,
+    data: {
+      title: formData.title,
+      url: formData.url,
+      id: formData.id,
+      read: formData.read
+    },
   }).then(updateLinkStatus)
     .fail(displayFailure);
 }

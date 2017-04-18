@@ -23,7 +23,11 @@ class LinksController < ApplicationController
     @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
     @link.title = link_params[:title]
     @link.url = link_params[:url]
-    @link.read = false
+    if link_params.keys.include?(:read)
+      @link.read = link_params[:read]
+    else
+      @link.read = false
+    end
     if !@link.save
       flash[:error] = @link.errors.full_messages
       @links = current_user_links
@@ -33,6 +37,14 @@ class LinksController < ApplicationController
     end
   end
 
+  def updatelink
+    @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
+    @link.title = link_params[:title]
+    @link.url = link_params[:url]
+    @link.read = link_params[:read]
+    @link.save
+  end
+
   private
 
     def logged_in?
@@ -40,13 +52,10 @@ class LinksController < ApplicationController
     end
 
     def link_params
-      # if params[:link][:id] == ""
       if params[:id] == ""
-        # return params.require(:link).permit(:title, :url)
-        return params.permit(:title, :url)
+        return params.permit(:read, :title, :url)
       else
-        # return params.require(:link).permit(:title, :url, :id)
-        return params.permit(:title, :url, :id)
+        return params.permit(:read, :title, :url, :id)
       end
     end
 

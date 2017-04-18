@@ -84,8 +84,8 @@ RSpec.describe User, type: :model do
     }
 
     it 'returns MARK_READ_TEXT based on READ value' do
-      expect(link_unread.mark_read_text).to eq('Mark Read')
-      expect(link_read.mark_read_text).to eq('Mark Unread')
+      expect(link_unread.mark_read_text).to eq('Mark as Read')
+      expect(link_read.mark_read_text).to eq('Mark as Unread')
     end
 
     it 'returns MARK_READ_CLASS based on READ value' do

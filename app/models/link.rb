@@ -5,8 +5,8 @@ class Link < ActiveRecord::Base
   validate :valid_url?
 
   def mark_read_text
-    return "Mark Unread" if self.read
-    return "Mark Read" if !self.read
+    return "Mark as Unread" if self.read
+    return "Mark as Read" if !self.read
   end
 
   def mark_read_class
