@@ -3,24 +3,24 @@ $( document ).ready(function(){
 })
 
 function markAsRead(event) {
-  // e.preventDefault();
   var newReadStatus = false
+  var $this = $(this).parent()
 
-  if ($(this).parent().hasClass('link-unread')) {
-    $(this).parent().removeClass('link-unread').addClass('link-read')
-    $(this).parent().find('.mark-read-btn').text('Mark as Unread')
+  if ($this.hasClass('link-unread')) {
+    $this.removeClass('link-unread').addClass('link-read')
+    $this.find('.mark-read-btn').text('Mark as Unread')
     newReadStatus = true
   } else {
-    $(this).parent().removeClass('link-read').addClass('link-unread')
-    $(this).parent().find('.mark-read-btn').text('Mark as Read')
+    $this.removeClass('link-read').addClass('link-unread')
+    $this.find('.mark-read-btn').text('Mark as Read')
     newReadStatus = false
   }
-  $(this).parent().find('.link-box-read').text(newReadStatus)
+  $this.find('.link-box-read').text(newReadStatus)
 
   var formData = {
-    title: $(this).parent().find('.link-box-title').text(),
-    url: $(this).parent().find('.link-box-url').text(),
-    id: $(this).parent().find('.link-box-id').text(),
+    title: $this.find('.link-box-title').text(),
+    url: $this.find('.link-box-url').text(),
+    id: $this.find('.link-box-id').text(),
     read: newReadStatus
   }
   var updatePath = "/updatelink/" + formData.id

@@ -4,6 +4,7 @@ class LinksController < ApplicationController
   def index
     @links = current_user_links
     @link = Link.new
+    @top10 = top10_links
   end
 
   def create
@@ -31,6 +32,7 @@ class LinksController < ApplicationController
     if !@link.save
       flash[:error] = @link.errors.full_messages
       @links = current_user_links
+      @top10 = top10_links    
       render :index
     else
       flash[:success] = 'Link successfully saved'
@@ -39,10 +41,12 @@ class LinksController < ApplicationController
 
   def updatelink
     @link = Link.where(:user_id => session[:user_id].to_i).find(link_params[:id].to_i)
-    @link.title = link_params[:title]
-    @link.url = link_params[:url]
-    @link.read = link_params[:read]
-    @link.save
+    @link.update(link_params)
+
+    if @link.read
+      hot_reads = HotreadsService.new
+      hot_reads.send_link(@link.url)
+    end
   end
 
   private
@@ -61,5 +65,9 @@ class LinksController < ApplicationController
 
     def current_user_links
       Link.where(user_id: current_user.id).order(id: :desc)
+    end
+
+    def top10_links
+      HotreadsService.new.get_top10
     end
 end

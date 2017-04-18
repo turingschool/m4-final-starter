@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: urlockbox_production
-  username: urlockbox
-  password: <%= ENV['Urlockbox_DATABASE_PASSWORD'] %>
+  # username: urlockbox
+  # password: <%= ENV['Urlockbox_DATABASE_PASSWORD'] %>
