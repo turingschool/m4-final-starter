@@ -13,6 +13,8 @@ class HotreadsService
 
   def get_top10
     response = @conn.get HOT_READS_ENDPOINT_LINK_INDEX
-    return JSON.parse(response.body)
+    top10 = JSON.parse(response.body).map do |hotreads_link|
+      hotreads_link['url']
+    end
   end
 end

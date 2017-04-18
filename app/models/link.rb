@@ -14,6 +14,12 @@ class Link < ActiveRecord::Base
     return "link-unread" if !self.read
   end
 
+  def top10?(top10_list)
+    return 'TOP LINK!!!' if top10_list.first.eql?(self.url)
+    return 'HOT!!!' if top10_list.include?(self.url)
+    ''
+  end
+
   private
 
     def valid_url?

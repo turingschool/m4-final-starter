@@ -1,4 +1,5 @@
 <div class = 'link-box <%= link.mark_read_class %>'>
+  <p><%= link.top10?(@top10) %></p>
   <p>Title: <span class = 'link-box-title' ><%= link.title %></span></p>
   <p>URL: <span class = 'link-box-url' ><%= link.url %></span></p>
   <p>Read? <span class = 'link-box-read' ><%= link.read %></span></p>

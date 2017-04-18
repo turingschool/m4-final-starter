@@ -4,6 +4,7 @@ class LinksController < ApplicationController
   def index
     @links = current_user_links
     @link = Link.new
+    @top10 = HotreadsService.new.get_top10
   end
 
   def create
@@ -44,7 +45,6 @@ class LinksController < ApplicationController
     if @link.read
       hot_reads = HotreadsService.new
       hot_reads.send_link(@link.url)
-      top10 = hot_reads.get_top10
     end
   end
 
