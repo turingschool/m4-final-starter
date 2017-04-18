@@ -45,7 +45,8 @@ class LinksController < ApplicationController
     @link.save
 
     if @link.read
-      conn = Faraday.new(:url => 'http://localhost:3001')
+      # conn = Faraday.new(:url => 'http://localhost:3001')
+      conn = Faraday.new(:url => 'https://hotreads-laszlo.herokuapp.com')
       conn.post '/api/v1/links', { :url => @link.url }
     end
   end
