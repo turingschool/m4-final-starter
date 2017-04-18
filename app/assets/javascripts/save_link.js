@@ -33,7 +33,7 @@ function submitNewLink(formData) {
     $('.flash-messages').html('Link successfully saved')
     clearLinkForm()
   }).fail(function(error){
-    window.location = `/links`
+    window.location = '/links'
   });
 }
 
@@ -44,7 +44,7 @@ function updateLink(formData) {
     url: updatePath,
     data: formData
   }).done(function(response){
-    window.location = `/links`
+    window.location = '/links'
   }).fail(function(error){
     console.log(error)
   })
