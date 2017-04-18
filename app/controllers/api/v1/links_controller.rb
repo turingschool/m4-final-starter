@@ -3,15 +3,6 @@ class Api::V1::LinksController < ApplicationController
     @links = Link.where(user_id: current_user.id).reverse
   end
 
-  # def create
-  #   @link = current_user.links.create(link_params)
-  #   require 'pry'; binding.pry
-  #   if @link.valid?
-  #     render json: @link
-  #   else
-  #     render errors:  @link.errors
-  #   end
-  # end
   def create
     @link = current_user.links.create(link_params)
     if @link.valid?
@@ -35,6 +26,6 @@ class Api::V1::LinksController < ApplicationController
   private
 
   def link_params
-    params.permit(:title, :url, :read)
+    params.permit(:id, :title, :url, :read)
   end
 end

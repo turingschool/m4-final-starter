@@ -12,15 +12,17 @@
   <% end %>
 </div>
 
-<div class='links'>
+  <div class = 'link-container' >
   <% @links.each do |link| %>
     <div class="card">
       <div class="container">
-        <br>Title: <%= link.title %></br>
-        <br>URL: <%= link_to link.url %> </br>
-        <br>Read?: <%= link.read %></br>
-        <%= button_to "Edit", edit_link_path(link), method: :get %>
+        <p>Title: <span class = 'link-title' ><%= link.title %></span></p>
+        <p>URL: <span class = 'link-url' ><%= link.url %></span></p>
+        <p>Read? <span class = 'link-read' ><%= link.read %></span></p>
+        <p><span class = 'link-id' hidden ><%= link.id %></span></p>
+        <button class = 'flag-link' > Flag link </button>
       </div>
+      <%= button_to "Edit", edit_link_path(link), method: :get %>
     </div>
   <% end %>
 </div>
