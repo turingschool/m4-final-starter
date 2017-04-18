@@ -37,11 +37,3 @@ function markAsRead(event) {
   }).then()
     .fail();
 }
-
-// function updateLinkStatus(link) {
-//   $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
-// }
-
-// function displayFailure(failureData){
-//   console.log("FAILED attempt to update Link: " + failureData.responseText);
-// }
