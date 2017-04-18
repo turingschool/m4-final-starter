@@ -2,8 +2,7 @@ class LinksController < ApplicationController
   before_action :require_login
 
   def index
-    @links = current_user.reload.links.reverse
-    # @top_links = 
+    @links = Link.top_links_for(current_user)
     @link = current_user.links.new
   end
 
