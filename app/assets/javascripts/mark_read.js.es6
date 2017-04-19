@@ -17,7 +17,7 @@ function markLink(event) {
     linkData.find('.link-read').text('true');
     linkData.parent().css('background-color', 'SlateGray' );
     updateRead = true;
-    thing(linkURL);
+    // thing(linkURL);
   }
 
   $.ajax({
@@ -33,6 +33,7 @@ function markLink(event) {
   $.ajax({
       method: "POST",
       url: "https://hot-reads-smith.herokuapp.com/read",
+      // url: "https://localhost:5000/read",
       data: {
         url: linkURL
       },
