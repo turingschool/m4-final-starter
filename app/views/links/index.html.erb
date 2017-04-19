@@ -1,7 +1,6 @@
 <p><%= button_to "Sign out", logout_path, method: :delete %> </p>
 <div class='submit-url'>
   <h3>Add a link</h3>
-  <%# <%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js" %1> %>
 
   <%= form_for Link.new, remote: true do |form| %>
     <%= form.label(:url) %>
@@ -15,7 +14,7 @@
   <label id="link-filter">Search Links
     <input type="text" name="search" id="search"/>
   </label>
-  <button class = 'show-read' > Show Read </button>
+  <br><button class = 'show-read' > Show Read </button>
   <button class = 'show-unread' > Show Unread </button>
   <button class = 'show-all' > Show All </button>
   <% @links.each do |link| %>
