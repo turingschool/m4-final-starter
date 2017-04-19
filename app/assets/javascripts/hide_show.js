@@ -1,15 +1,19 @@
 $(document).ready(function() {
-  $('.link-container').on('click', '.show-read', function() {
+  showRead();
+  showUnread();
+  showAll();
+});
+
+function showAll() {
+  $('.link-container').on('click', '.show-all', function() {
     var children = $(this).nextAll();
     children.each(function() {
-      if ($(this).find('.link-read').text() == 'false') {
-        $(this).hide();
-      } else if ($(this).find('.link-read').text() == 'true') {
-        $(this).show();
-      }
+      $(this).show();
     });
   });
+}
 
+function showUnread() {
   $('.link-container').on('click', '.show-unread', function() {
     var children = $(this).nextAll();
     children.each(function() {
@@ -21,13 +25,16 @@ $(document).ready(function() {
     });
   });
 
-  $('.link-container').on('click', '.show-all', function() {
+}
+function showRead() {
+  $('.link-container').on('click', '.show-read', function() {
     var children = $(this).nextAll();
     children.each(function() {
+      if ($(this).find('.link-read').text() == 'false') {
+        $(this).hide();
+      } else if ($(this).find('.link-read').text() == 'true') {
         $(this).show();
-      });
+      }
+    });
   });
-});
-
-function clearFields() {
 }
