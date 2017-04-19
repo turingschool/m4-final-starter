@@ -7,6 +7,7 @@ function markLink(event) {
   var linkData = $(this).parent();
   var id = linkData.find('.link-id').text();
   var URL = "/api/v1/links/" + id;
+  var linkURL = linkData.find('.link-url').text();
 
   if (linkData.find('.link-read').text() == 'true') {
     linkData.find('.link-read').text('false');
@@ -16,6 +17,7 @@ function markLink(event) {
     linkData.find('.link-read').text('true');
     linkData.parent().css('background-color', 'SlateGray' );
     updateRead = true;
+    thing(linkURL);
   }
 
   $.ajax({
@@ -24,6 +26,15 @@ function markLink(event) {
       data: {
         id: id,
         read: updateRead
+      },
+    }).then()
+    .fail();
+
+  $.ajax({
+      method: "POST",
+      url: "http://localhost:3000/read",
+      data: {
+        url: linkURL
       },
     }).then()
     .fail();
