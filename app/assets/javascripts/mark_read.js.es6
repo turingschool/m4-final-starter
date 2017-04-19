@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.flag-link').on('click', markLink );
+  $('.link-container').on('click', '.flag-link', markLink );
 });
 
 function markLink(event) {
@@ -17,7 +17,6 @@ function markLink(event) {
     linkData.find('.link-read').text('true');
     linkData.parent().css('background-color', 'SlateGray' );
     updateRead = true;
-    // thing(linkURL);
   }
 
   $.ajax({

@@ -14,23 +14,24 @@ $(document).ready(function() {
           url: url,
           read: false
         }
+      }).done(function(response) {
+        console.log(response);
+        $('.link-container').prepend("<div class= 'card'>" +
+          "<div class= 'container'>" + "<br> Title: " +
+          response.title + "</br>" + "<br> URL: " + response.url + "</br>" +
+          "<br> Read?: false" + "</br>" + "<button class = 'flag-link' > Flag link </button>" + "</div>" + "</div>");
+        // prependData(response.url, response.title);
+        clearFields();
       });
     } else {
       return alert("You must enter a valid url.");
     }
-    prependData(url, title);
-    clearFields();
   });
 });
 
-function prependData(url, title) {
-  $('.links').prepend("<div class= 'card'>" +
-    "<div class= 'container'>" + "<br> Title: " +
-    title + "</br>" + "<br> URL: " + url + "</br>" +
-    "<br> Read?: false" + "</br>" + "</div>" + "</div>");
-}
+function prependData(url, title) {}
 
 function clearFields() {
-    $('.url-tag').val(null);
-    $('.title-tag').val(null);
+  $('.url-tag').val(null);
+  $('.title-tag').val(null);
 }
