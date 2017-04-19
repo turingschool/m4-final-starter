@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  searchFilter();
+});
+
+function searchFilter() {
   $('#search').keyup(function() {
     $('.link-container').children('.card').filter(function(){
       var searchValue = $('#search').val();
@@ -11,4 +15,4 @@ $(document).ready(function() {
       }
     });
   });
-});
+}

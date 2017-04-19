@@ -10,13 +10,13 @@
     <%= form.submit('Add Link', class: 'add-link') %>
   <% end %>
 </div>
-<div class = 'link-container' >
   <label id="link-filter">Search Links
     <input type="text" name="search" id="search"/>
   </label>
   <br><button class = 'show-read' > Show Read </button>
   <button class = 'show-unread' > Show Unread </button>
   <button class = 'show-all' > Show All </button>
+<div class = 'link-container' >
   <% @links.each do |link| %>
     <div class="card">
       <div class="container">

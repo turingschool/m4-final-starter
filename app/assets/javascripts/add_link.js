@@ -15,12 +15,7 @@ $(document).ready(function() {
           read: false
         }
       }).done(function(response) {
-        console.log(response);
-        $('.link-container').prepend("<div class= 'card'>" +
-          "<div class= 'container'>" + "<br> Title: " +
-          response.title + "</br>" + "<br> URL: " + response.url + "</br>" +
-          "<br> Read?: false" + "</br>" + "<button class = 'flag-link' > Flag link </button>" + "</div>" + "</div>");
-        // prependData(response.url, response.title);
+        prependData(response.url, response.title);
         clearFields();
       });
     } else {
@@ -29,7 +24,13 @@ $(document).ready(function() {
   });
 });
 
-function prependData(url, title) {}
+function prependData(url, title) {
+  $('.link-container').prepend(
+    "<div class= 'card'><div class= 'container'><br> Title: " +
+    title + "</br><br> URL: " + url +
+    "</br><br> Read?: false </br><button class = 'flag-link' > Flag link </button></div></div>"
+  );
+}
 
 function clearFields() {
   $('.url-tag').val(null);

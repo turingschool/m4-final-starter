@@ -5,8 +5,8 @@ $(document).ready(function() {
 });
 
 function showAll() {
-  $('.link-container').on('click', '.show-all', function() {
-    var children = $(this).nextAll();
+  $('.show-all').on('click', function() {
+    var children = $('.link-container').children();
     children.each(function() {
       $(this).show();
     });
@@ -14,8 +14,8 @@ function showAll() {
 }
 
 function showUnread() {
-  $('.link-container').on('click', '.show-unread', function() {
-    var children = $(this).nextAll();
+  $('.show-unread').on('click', function() {
+    var children = $('.link-container').children();
     children.each(function() {
       if ($(this).find('.link-read').text() == 'true') {
         $(this).hide();
@@ -27,8 +27,8 @@ function showUnread() {
 
 }
 function showRead() {
-  $('.link-container').on('click', '.show-read', function() {
-    var children = $(this).nextAll();
+  $('.show-read').on('click', function() {
+    var children = $('.link-container').children();
     children.each(function() {
       if ($(this).find('.link-read').text() == 'false') {
         $(this).hide();
