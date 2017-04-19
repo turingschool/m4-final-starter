@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("body").on("click", ".flag-link", markLink);
+  $('.flag-link').on('click', markLink );
 });
 
 function markLink(event) {
