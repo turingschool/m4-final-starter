@@ -32,7 +32,7 @@ function markLink(event) {
 
   $.ajax({
       method: "POST",
-      url: "http://localhost:3000/read",
+      url: "https://hot-reads-smith.herokuapp.com/read",
       data: {
         url: linkURL
       },
