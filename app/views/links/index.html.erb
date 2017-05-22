@@ -1,1 +1,18 @@
 <a href='/logout' id='logout-link'>Sign out</a>
+
+<%= form_for Link.new do |f| %>
+  <%= f.label 'URL'  %>
+  <%= f.url_field :url %>
+  <%= f.label 'Title' %>
+  <%= f.text_field :title %>
+  <%= f.submit 'Add Link' %>
+<% end %>
+
+<div id='links'>
+  <% @links.each do |link| %>
+   <div class='link'>
+     <a href=<%=link.url %>><h4><%= link.url %></h4></a>
+     <h4><%= link.title %></h4>
+   </div>
+   <% end %>
+</div>

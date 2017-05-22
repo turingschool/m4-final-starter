@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "links#index"
 
-  resources :links, only: [:index]
+  resources :links, only: [:index, :create]
   resources :guests, only: [:index]
   resources :users, only: [:new, :create]
   post 'users/new', to: 'users#create'
