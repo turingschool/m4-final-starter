@@ -8,4 +8,12 @@ feature 'guest visits root and clicks Sign Up link' do
 
     expect(current_path).to eq('/users/new')
   end
+  
+  scenario 'guest sees a registration form' do
+    visit '/'
+
+    click_link 'Sign Up'
+
+    expect(current_path).to eq('/users/new')
+  end
 end
