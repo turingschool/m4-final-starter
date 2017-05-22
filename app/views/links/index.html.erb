@@ -1,1 +1,6 @@
-<h1>Links index</h1>
+<%= form_for @link do |f| %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+<% end %>
