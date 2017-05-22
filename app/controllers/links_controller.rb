@@ -13,7 +13,7 @@ class LinksController < ApplicationController
     if link.save
       redirect_to links_path
     else
-      flash.now['warning'] = 'Link not saved'
+      link_error_checker
       redirect_to links_path
     end
   end
@@ -24,4 +24,11 @@ class LinksController < ApplicationController
     params.require(:link).permit(:url,
                                  :title)
   end
+
+  def link_error_checker
+    if link_params[:title]
+      flash['warning'] = 'A link must have a valid URL'
+    end
+  end
+
 end
