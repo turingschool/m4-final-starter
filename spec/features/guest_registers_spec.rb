@@ -88,4 +88,18 @@ feature 'guest visits root and clicks Sign Up link' do
       expect(page).to have_content('Password and password confirmation must match')
     end
   end
+  scenario 'guest cannot register if email is blank during registration attempt' do
+
+    visit '/'
+
+    click_link 'Sign Up'
+
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+
+    expect {click_button "Register"}.to change {User.count}.by(0)
+
+    expect(current_path).to eq('/users/new')
+    
+  end
 end
