@@ -24,8 +24,10 @@ feature 'user views index and decides to edit link' do
 
     click_button 'Edit Google'
 
-    page.find('input#link_url').set('http://www.yahoo.com')
-    page.find('input#link_title').set('Yahoo')
+    page.find('input[id="link_url"]').set('http://www.yahoo.com')
+    page.find('input[id="link_title"]').set('Yahoo')
+
+    save_and_open_page
 
     click_button 'Edit Link'
 

@@ -22,6 +22,13 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
   end
 
+  def update
+    link = Link.find(params[:id])
+    if link.update_attributes(link_params)
+      redirect_to links_path
+    end
+  end
+
   private
 
   def link_params
