@@ -14,12 +14,12 @@ By text: <input type="text" placeholder="Filter by URL or Title"/>
 <br>
 <hr>
 <% current_user.links.each do |link| %>
-  <article id="link <%= link.id %>" class="<%= link.read ? "read" : "" %>"><br>
+  <article id="link<%= link.id %>" class="<%= link.read ? "read" : "" %>"><br>
     Title: <%= link.title %><br>
     <%= hidden_field_tag "link_id", link.id %>
     URL: <%= link_to link.url, link.url %><br>
     Read? <%= link.read %><br>
     <%= button_to "Mark as #{link.read ? "Unread" : "Read"}", link_path(link), method: 'patch' %>
-    <%= button_to "Edit", edit_link_path(link) %>
+    <%= button_to "Edit", edit_link_path(link), method: 'get' %>
   </article>
 <% end %>

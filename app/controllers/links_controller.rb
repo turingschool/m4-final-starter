@@ -16,16 +16,20 @@ class LinksController < ApplicationController
   end
 
   def update
-    @link = Link.find(params[:id])
-    if @link.upate(link_params)
+    @link.update(link_params)
+    if @link.save
+      flash[:success] = "Link updated!"
       redirect_to links_path
+    else
+      flash[:notice] = @link.errors.full_messages.join(". ")
+      render :edit
     end
   end
 
   def edit
     @link = Link.find(params[:id])
   end
-  
+
   private
 
   def require_login
