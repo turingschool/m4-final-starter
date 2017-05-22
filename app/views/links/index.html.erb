@@ -5,15 +5,15 @@
   <%= f.text_field :title %>
   <%= f.submit "Add Link" %>
 <% end %>
-
 <hr>
+<% if !current_user.links.nil?  %>
 <% current_user.links.each do |link| %>
   <div class="id-<%= link.title.downcase %>">
-
-  URL: <%= link.url %><br>
-  Title: <%= link.title %><br>
-  Read?: <%= link.read %><br>
-  <%= link_to "Edit", edit_link_path(link) %>
+    URL: <%= link.url %><br>
+    Title: <%= link.title %><br>
+    Read?: <%= link.read %><br>
+    <%= link_to "Edit", edit_link_path(link) %>
   </div>
-  <hr>
+<hr>
+<% end %>
 <% end %>
