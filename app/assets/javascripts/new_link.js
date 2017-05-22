@@ -13,7 +13,9 @@ function handleNewLink () {
     method: "POST",
     data: form
   })
-  .then(clearFormValues)
+  .then(function(){
+    $('.new-link').trigger("reset");
+  })
   .fail( (error) => {
     console.error(error)
   });
@@ -30,7 +32,3 @@ function addNewLink(form) {
   `
   $("#my-links").prepend(linkCard)
 };
-
-function clearFormValues () {
-
-}
