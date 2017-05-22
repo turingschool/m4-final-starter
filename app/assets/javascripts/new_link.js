@@ -23,5 +23,12 @@ function handleNewLink () {
 };
 
 function addNewLink(form) {
-  
+  let linkCard = `
+    <div class="col-md-4">
+      <p>Title: ${form.title}</p>
+      <p>URL: ${form.url}</p>
+      <p>Read? false</p>
+    </div>
+  `
+  $("#my-links").prepend(linkCard)
 };
