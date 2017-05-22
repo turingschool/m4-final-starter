@@ -15,7 +15,7 @@ feature 'user views index and decides to edit link' do
   scenario 'user clicks edit link and is taken to edit page for that link' do
     visit '/'
 
-    click_link 'Edit Google'
+    click_button 'Edit Google'
 
     expect(current_path).to eq(edit_link_path(link))
   end
