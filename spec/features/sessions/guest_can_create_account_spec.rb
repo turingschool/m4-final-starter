@@ -25,11 +25,11 @@ describe 'guest creates an account' do
         expect(current_path).to eq new_user_path
         expect(page).to have_content 'Signup!'
         expect(page).to have_content 'Already a user?'
-        expect(page).to have_link 'Log in by clicking here'
-        expect(page).to have_field 'email'
-        expect(page).to have_field 'password'
-        expect(page).to have_field 'password_confirmation'
-        expect(page).to have_field 'Password'
+        expect(page).to have_link 'Log in by clicking here', href: login_path
+        expect(page).to have_field 'user_email'
+        expect(page).to have_field 'user_password'
+        expect(page).to have_field 'user_password_confirmation'
+        expect(page).to have_button 'Submit'
       end
     end
   end
