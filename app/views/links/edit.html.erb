@@ -1,6 +1,6 @@
 <h2>Edit <%= @link.title %> Link</h2>
 
-<%= form_for :link do |f| %>
+<%= form_for  :link, :method => "put" do |f| %>
 <%= f.label 'URL'  %>
 <%= f.url_field :url, value: @link.url %>
 <%= f.label 'Title' %>

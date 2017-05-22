@@ -31,6 +31,8 @@ feature 'user views index and decides to edit link' do
 
     expect(current_path).to eq('/links')
 
+    expect(page).to have_selector('.link', count: 1)
+
     within all('.link').first do
       expect(page).to have_link('http://www.yahoo.com', href: 'http://www.yahoo.com')
       expect(page).to have_content('Yahoo')
