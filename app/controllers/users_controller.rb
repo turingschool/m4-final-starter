@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome: #{@user.email}"
-      redirect_to root_path
+      redirect_to links_path
     else
       render :new
     end
