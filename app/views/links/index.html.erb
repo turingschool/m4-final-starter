@@ -1,0 +1,9 @@
+<%= link_to "Add a Link", new_link_path %>
+
+<hr>
+<% current_user.links.each do |link| %>
+  <%= link.url %>
+  <%= link.title %>
+  <%= link.read %>
+  <br>
+<% end %>
