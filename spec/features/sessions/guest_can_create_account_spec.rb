@@ -32,5 +32,24 @@ describe 'guest creates an account' do
         expect(page).to have_button 'Submit'
       end
     end
+
+    describe 'when I fill out sign up form' do
+      before do
+        visit new_user_path
+
+        fill_in 'user_email', with: 'sample@email.com'
+        fill_in 'user_password', with: 'password'
+        fill_in 'user_password_confirmation', with: 'password'
+        click_on 'Submit'
+      end
+
+      it 'I get directed to links index page' do
+        expect(current_path).to eq links_path
+      end
+
+      it 'I am added to the db' do
+        expect(User.count).to eq 1
+      end
+    end
   end
 end
