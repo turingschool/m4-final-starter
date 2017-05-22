@@ -40,16 +40,4 @@ feature 'user visits link index' do
       expect(page).to have_content('A link must have a valid URL')
     end
   end
-  scenario 'cannot create a link without a title' do
-
-    visit '/'
-
-    page.find('input#link_url').set('http:/www.yahoo.com')
-
-    expect {click_button "Add Link"}.to change {Link.count}.by(0)
-
-    within('.alert') do
-      expect(page).to have_content('A link must have a valid title')
-    end
-  end
 end
