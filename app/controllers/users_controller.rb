@@ -10,23 +10,18 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully signed up!"
       session[:user_id] = @user.id
       redirect_to root_path
-    else
-      if !@user.errors.details[:email].nil? && @user.errors.details[:email][0][:error] == :blank
-        flash[:error] = "Email cannot be blank"
-        redirect_to new_user_path
-      elsif @user.errors.details[:password][0][:error] == :blank
-        flash[:error] = "Password cannot be blank"
-        redirect_to new_user_path
-      elsif @user.errors.details[:password_confirmation][0][:error] == :blank
-        flash[:error] = "Password Confirmation cannot be blank"
-        redirect_to new_user_path
-      elsif @user.errors.details[:email][0][:error] == :taken
-        flash[:error] = "#{@user.errors.details[:email][0][:value]} is already taken"
-        redirect_to new_user_path
-      elsif @user.errors.details[:password_confirmation][0][:error] == :confirmation
-        flash[:error] = "Password and Password Confirmation do not match"
-        redirect_to new_user_path
-      end
+    elsif User.exists?(['email LIKE ?', "%#{@user.email}%"])
+      flash[:error] = "Email is already registered!"
+      redirect_to new_user_path
+    elsif password_blank?
+      flash[:error] = "Password cannot be blank"
+      redirect_to new_user_path
+    elsif password_confirmation_blank?
+      flash[:error] = "Password confirmation cannot be blank"
+      redirect_to new_user_path
+    elsif password_and_confirmation_equal?
+      flash[:error] = "Password confirmation and password do not match"
+      redirect_to new_user_path
     end
   end
 
@@ -34,5 +29,17 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def password_blank?
+    params[:user][:password] == ""
+  end
+
+  def password_confirmation_blank?
+    params[:user][:password_confirmation] == ""
+  end
+
+  def password_and_confirmation_equal?
+    params[:user][:password] != params[:user][:password_confirmation]
   end
 end
