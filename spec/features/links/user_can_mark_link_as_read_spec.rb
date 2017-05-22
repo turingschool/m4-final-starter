@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "AJAX" do
-  it "link can be marked as read: true" do
+  xit "link can be marked as read: true" do
     user = create(:user)
     link_1 = create(:link, user: user)
 
@@ -9,7 +9,9 @@ RSpec.feature "AJAX" do
 
     visit '/'
 
-    save_and_open_page
+    # save_and_open_page
+
+    expect(page).to have_link("Mark as Read")
 
   end
 end

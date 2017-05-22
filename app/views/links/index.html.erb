@@ -8,11 +8,12 @@
 <hr>
 <% if !current_user.links.nil?  %>
   <% @links.each do |link| %>
-    <div class="id-<%= link.title.downcase %>">
+    <div id="<%= link.id %>">
       URL: <%= link.url %><br>
       Title: <%= link.title %><br>
       Read?: <%= link.read %><br>
-      <%= link_to "Edit", edit_link_path(link) %>
+      <a href="/api/v1/links/"><button type="button" class="btn btn-success btn-small read-status">Mark as Read</button></a>
+      <%= link_to "Edit", edit_link_path(link), class:"btn btn-success btn-small" %>
     </div>
   <hr>
   <% end %>
