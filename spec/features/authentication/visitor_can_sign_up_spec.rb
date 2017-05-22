@@ -19,10 +19,12 @@ describe "User can create an account" do
 
         expect(current_path).to eq(new_user_path)
 
-        fill_in "user[email]", with: "johndoe@gmail.com"
+        fill_in "user[email]", with: "we@thebest.com"
         fill_in "user[password]", with: "password"
         fill_in "user[password_confirmation]", with: "password"
         click_on "Sign Up"
+
+        expect(current_path).to eq(root_path)
 
         expect(page).to have_content "Sign Out"
         expect(page).to have_content "URL"
@@ -30,6 +32,24 @@ describe "User can create an account" do
         expect(page).to have_button "Add Link"
         expect(page).to have_content "Filters"
         expect(current_path).to eq '/'
+      end
+    end
+
+    context "when they click on create account" do
+      scenario "and their email address is already registered" do
+        user = User.create(
+                           email: "we@the_best.com",
+                           password: "password"
+                           )
+        visit new_user_path
+
+        fill_in "user[email]", with: "we@the_best.com"
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "password"
+        click_on "Sign Up"
+
+        expect(page).to have_content "Email already registered with an account!"
+        expect(current_path).to eq new_user_path
       end
     end
   end

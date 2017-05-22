@@ -8,8 +8,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Successfully signed up!"
+      session[:user_id] = @user.id
       redirect_to root_path
-    # elsif User.exists?(['email LIKE ?'], "%#{@user.email}%")
+    # elsif User.exists?(['email LIKE ?', "%#{@user.email}%"])
     #   flash[:error] = "Email is already registered!"
     #   redirect_to new_user_path
     else
