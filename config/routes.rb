@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "links#index"
 
+  resources :home, only: [:index]
+
   resources :links, only: [:index]
 
   namespace :api do
