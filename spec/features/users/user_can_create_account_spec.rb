@@ -6,6 +6,7 @@ describe "when a user visits the root page, and they click on sign up" do
     click_on "Sign Up"
     expect(current_path).to eq(new_user_path)
 
+    
 
   end
 end
