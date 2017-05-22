@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_action :require_login
 
   def index
-    @links = Link.all
+    @links = current_user.links.order(id: :desc)
   end
 
 
