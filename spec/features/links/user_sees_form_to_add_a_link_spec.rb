@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Links" do
-  xit "registered user sees form to add a link" do
+  it "registered user sees form to add a link" do
     user = create(:user, email_address: "me@email.com")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -9,5 +9,7 @@ RSpec.feature "Links" do
 
     expect(page).to have_content("Url")
     expect(page).to have_content("Title")
+    expect(page).to have_button("Add Link")
+    expect(current_path).to eq(links_path)
   end
 end
