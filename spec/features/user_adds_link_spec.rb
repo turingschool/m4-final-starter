@@ -23,8 +23,8 @@ feature 'user visits link index' do
 
     visit '/'
 
-    fill_in 'Url', with: 'http://www.google.com'
-    fill_in 'Title', with: 'Google'
+    page.find('input#link_url').set('http://www.google.com')
+    page.find('input#link_title').set('Google')
 
     expect {click_button "Add Link"}.to change {Link.count}.by(1)
   end
