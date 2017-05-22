@@ -5,7 +5,7 @@ class LinksController < ApplicationController
 
   def require_login
     unless current_user
-      flash[:warning] = "You must be logged in to access this page."
+      flash.now[:warning] = "You must be logged in to access this page."
       redirect_to home_index_path
     end
   end
