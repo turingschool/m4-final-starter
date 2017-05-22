@@ -13,10 +13,7 @@ function handleNewLink () {
     method: "POST",
     data: form
   })
-  .then(function(data){
-    console.log(data)
-    debugger
-  })
+  .then(clearFormValues)
   .fail( (error) => {
     console.error(error)
   });
@@ -28,7 +25,12 @@ function addNewLink(form) {
       <p>Title: ${form.title}</p>
       <p>URL: ${form.url}</p>
       <p>Read? false</p>
+      <br>
     </div>
   `
   $("#my-links").prepend(linkCard)
 };
+
+function clearFormValues () {
+
+}

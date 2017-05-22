@@ -5,15 +5,7 @@
   <hr>
   <%= render "new_link" %>
   <hr>
-  <div class="row" id="my-links">
-    <% current_user.links.each do |link| %>
-      <div class="col-md-4">
-        <p>Title: <%= link.title %></p>
-        <p>URL: <%= link.url %></p>
-        <p>Read? <%= link.read %></p>
-      </div>
-    <% end %>
-  </div>
+  <%= render "links" %>
 <% end %>
 
 <% if !current_user %>
