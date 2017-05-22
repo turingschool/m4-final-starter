@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash['warning'] = 'Successful Login. Welcome!'
       redirect_to '/links'
+    else
+      flash['warning'] = 'Unsuccessful Login'
+      render :new
     end
   end
 end

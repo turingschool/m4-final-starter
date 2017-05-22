@@ -24,4 +24,21 @@ feature 'registered user signs in' do
       expect(page).to have_content('Successful Login. Welcome!')
     end
   end
+  scenario 'registered user unsuccessful login' do
+    visit '/'
+
+    click_link 'Log In'
+
+    expect(current_path).to eq('/sessions/new')
+
+    fill_in 'email', with: 'test@test.com'
+    fill_in 'password', with: 'wrong_password'
+    click_button 'Login'
+
+    expect(current_path).to eq('/sessions/new')
+
+    within('.alert') do
+      expect(page).to have_content('Unsuccessful Login')
+    end
+  end
 end
