@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-
   end
 
   def create
@@ -12,7 +11,12 @@ class SessionsController < ApplicationController
       redirect_to links_path
     else
       flash[:notice] = "Sorry, password and username don't match"
-      redirect_to login_path
+      render :new
     end
   end
-end 
+
+  def destroy
+    session.clear
+    redirect_to login_path
+  end
+end
