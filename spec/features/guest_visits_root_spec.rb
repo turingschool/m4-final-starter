@@ -11,10 +11,15 @@ feature 'guest visits root' do
   scenario '/guests prompts guest to log-in or sign up' do
     visit '/'
 
-    expect(current_path).to eq('/guests')
-
     within('#guest-message') do
       expect(page).to have_content('Log In or Sign Up')
     end
+  end
+  scenario 'guest sees links to login and signup' do
+    visit '/'
+
+    expect(current_path).to eq('/guests')
+
+    expect(page).to have_link('Sign Up', href: '/users/new')
   end
 end
