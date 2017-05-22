@@ -21,11 +21,11 @@ feature 'logged in user' do
     visit '/links'
 
     click_link 'Sign out'
-
+    
     within('.alert') do
       expect(page).to have_content('Successful sign-out. Come back soon')
     end
 
-    expect(current_path).to eq('/guests')
+    expect(current_path).to eq('/')
   end
 end

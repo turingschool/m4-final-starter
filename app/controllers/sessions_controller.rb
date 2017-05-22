@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to root
+    flash['warning'] = 'Successful sign-out. Come back soon'
+    redirect_to '/'
   end
 end
