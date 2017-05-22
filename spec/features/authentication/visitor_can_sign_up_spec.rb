@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe "User can create an account" do
+
+
     context "when an UNauthenticate user visits the root path" do
       scenario "and they click on sign up" do
           visit root_path
@@ -27,11 +29,6 @@ describe "User can create an account" do
         expect(current_path).to eq(root_path)
 
         expect(page).to have_content "Sign Out"
-        expect(page).to have_content "URL"
-        expect(page).to have_content "Title"
-        expect(page).to have_button "Add Link"
-        expect(page).to have_content "Filters"
-        expect(current_path).to eq '/'
       end
     end
 
