@@ -20,6 +20,17 @@ describe 'user sign in' do
       end
     end
 
-    describe 'when I try to sign in with invalid credentials'
+    describe 'when I try to sign in with invalid credentials' do
+      it 'I see a flash telling me wrong credentials' do
+        fill_in 'email', with: user.email
+        fill_in 'password', with: "invalidpassword"
+
+        click_on 'Submit'
+
+        expect(page).to have_field 'email'
+        expect(page).to have_field 'password'
+        expect(page).to have_content "Sorry, password and username don't match"
+      end
+    end
   end
 end
