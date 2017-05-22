@@ -5,6 +5,7 @@ feature 'user visits link index' do
     @user = User.create(email: 'test@test.com',
                        password: 'password',
                        password_confirmation: 'password')
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
   end
