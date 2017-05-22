@@ -2,9 +2,12 @@
 
 <hr>
 <% current_user.links.each do |link| %>
+  <div class="id-<%= link.title.downcase %>">
+
   URL: <%= link.url %><br>
-  <%= link.title %><br>
-  <%= link.read %><br>
-  <% link_to "Edit", edit_link_path(link)  %>
+  Title: <%= link.title %><br>
+  Read?: <%= link.read %><br>
+  <%= link_to "Edit", edit_link_path(link)  %>
+  </div>
   <hr>
 <% end %>

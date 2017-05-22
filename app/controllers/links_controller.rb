@@ -21,6 +21,22 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    @link = Link.find(params[:id])
+    @link.update_attributes(link_params)
+    if @link.save
+      flash[:success] = "The link has been updated."
+      redirect_to links_path
+    else
+      flash[:error] = @link.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   private
 
   def require_login

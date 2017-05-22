@@ -8,8 +8,21 @@ RSpec.feature "Links" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit links_path
-    binding.pry
-    save_and_open_page
+
+    expect(page).to have_content("Title: Turing")
+    within(".id-turing") do
+      click_link "Edit"
+    end
+
+    expect(current_path).to eq(edit_link_path(link_1))
+
+    fill_in "Title", with: "Home Page"
+    click_button "Update Link"
+    expect(current_path).to eq(links_path)
+    expect(page).to have_content("The link has been updated.")
+    # expect(page).to_not have_content("Turing")
   end
+
+  it 
 
 end
