@@ -7,13 +7,13 @@ function handleNewLink () {
   let form = new Object
   form['url']   = $("input[id=link_url]").val();
   form['title'] = $("input[id=link_title]").val();
-  addNewLink(form)
   $.ajax({
     url: "http://localhost:3000/api/v1/links",
     method: "POST",
     data: form
   })
-  .then(function(){
+  .then(function(data){
+    addNewLink(data)
     $('.new-link').trigger("reset");
   })
   .fail( (error) => {
@@ -21,12 +21,17 @@ function handleNewLink () {
   });
 };
 
-function addNewLink(form) {
+function addNewLink(newLink) {
   let linkCard = `
-    <div class="col-md-4">
-      <p>Title: ${form.title}</p>
-      <p>URL: ${form.url}</p>
+    <div class="col-md-4" id="${newLink.id}">
+      <p>Title: ${newLink.title}</p>
+      <p>URL: ${newLink.url}</p>
       <p>Read? false</p>
+      <p>
+        <a class="btn btn-default" href="/links/${newLink.id}/edit">
+         Edit
+        </a>
+      </p>  
       <br>
     </div>
   `
