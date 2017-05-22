@@ -4,7 +4,7 @@ class LinksController < ApplicationController
     if current_user
       @links = current_user.links
     else
-      redirect_to 'guests#index'
+      redirect_to guests_path
     end
   end
 end
