@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
       render '/sessions/new'
     end
   end
+
+  def destroy
+    session.clear
+    redirect_to root
+  end
 end
