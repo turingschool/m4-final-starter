@@ -35,7 +35,7 @@ feature 'registered user signs in' do
     fill_in 'password', with: 'wrong_password'
     click_button 'Login'
 
-    expect(current_path).to eq('/sessions/new')
+    expect(current_path).to eq('/login')
 
     within('.alert') do
       expect(page).to have_content('Unsuccessful Login')
