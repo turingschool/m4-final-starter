@@ -7,7 +7,6 @@ class LinksController < ApplicationController
 
   def create
     @link = current_user.links.new(link_params)
-
     if @link.save
       redirect_to links_path
     else
@@ -16,6 +15,17 @@ class LinksController < ApplicationController
     end
   end
 
+  def update
+    @link = Link.find(params[:id])
+    if @link.upate(link_params)
+      redirect_to links_path
+    end
+  end
+
+  def edit
+    @link = Link.find(params[:id])
+  end
+  
   private
 
   def require_login
