@@ -1,5 +1,8 @@
 
+<% if current_user %>
 <% @links.each do |link| %>
     <%=  link.title %>
     <%=  link.url %>
+<% end %>
+<% else  %>
 <% end %>
