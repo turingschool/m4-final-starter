@@ -13,8 +13,8 @@ class LinksController < ApplicationController
       flash[:success] = "A new link has been added."
       redirect_to links_path
     else
-      flash.now[:error] = @link.errors.full_messages.to_sentence
-      render :edit
+      flash[:error] = @link.errors.full_messages.to_sentence
+      redirect_to links_path
     end
   end
 
