@@ -5,9 +5,6 @@ class LinksController < ApplicationController
     @links = Link.all
   end
 
-  def new
-    @link = Link.new
-  end
 
   def create
     @user = current_user

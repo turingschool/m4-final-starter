@@ -7,11 +7,11 @@ RSpec.feature "Links" do
 
     visit links_path
 
-    fill_in "Url", with: "www.turing.io"
-    fill_in "Title", with: "Turing"
+    fill_in "Url", with: "http://www.turing.io"
+    fill_in "Title", with: ""
     click_button "Add Link"
 
 
-    expect(page).to have_content("Url is not a valid URL")
+    expect(page).to have_content("Title can't be blank")
   end
 end

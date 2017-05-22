@@ -36,9 +36,10 @@ RSpec.feature "Links" do
     end
 
     fill_in "Title", with: ""
+    click_button "Update Link"
 
-    expect(current_path).to eq(edit_link_path(link_1.id))
-    # expect(page).to have_content("Title can't be blank")
+    expect(current_path).to eq(link_path(link_1.id))
+    expect(page).to have_content("Title can't be blank")
   end
 
   it "doesnt' update link if requirements not met to update it" do
@@ -54,9 +55,10 @@ RSpec.feature "Links" do
     end
 
     fill_in "Url", with: "www.google.com"
+    click_button "Update Link"
 
-    expect(current_path).to eq(edit_link_path(link_1.id))
-    # expect(page).to have_content("Url is not a valid URL")
+    expect(current_path).to eq(link_path(link_1.id))
+    expect(page).to have_content("Url is not a valid URL")
   end
 
 end
