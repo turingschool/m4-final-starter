@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/links'
     else
+      flash['warning'] = 'That e-mail has already been registered'
       redirect_to '/users/new'
     end
   end
