@@ -12,9 +12,10 @@ feature 'registered user signs in' do
 
     click_link 'Log In'
 
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-
+    fill_in 'email', with: 'test@test.com'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    
     expect(current_path).to eq('/links/index')
 
     within('.alert') do
