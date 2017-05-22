@@ -12,7 +12,6 @@
       URL: <%= link.url %><br>
       Title: <%= link.title %><br>
       Read?: <%= link.read %><br>
-      <%= link_to "Mark as Read", api_v1_link_path(link), method: :update, class:"btn btn-default btn-small" %>
       <button type="button" class:"btn btn-default btn-small">Mark as Read</button>
       <%= link_to "Edit", edit_link_path(link), class:"btn btn-default btn-small" %>
     </div>
