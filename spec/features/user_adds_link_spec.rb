@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'user visits link index' do
+  attr_reader :user
   before(:each) do
     @user = User.create(email: 'test@test.com',
                        password: 'password',
@@ -26,7 +27,7 @@ feature 'user visits link index' do
 
     expect {click_button "Add Link"}.to change {Link.count}.by(1)
 
-    expect(@user.links.count).to eq(1)
+    expect(user.links.count).to eq(1)
   end
   scenario 'cannot create a link with an invalid url' do
 
