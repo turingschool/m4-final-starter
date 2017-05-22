@@ -34,4 +34,40 @@ feature 'guest visits root and clicks Sign Up link' do
 
     expect(current_path).to eq('/links')
   end
+  scenario 'when guest submits registration user is added and redirect to links index' do
+    visit '/'
+
+    click_link 'Sign Up'
+
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+
+    expect {click_button "Register"}.to change {User.count}.by(1)
+
+    new_user = User.last
+    expect(new_user.email).to eq('test@test.com')
+
+    expect(current_path).to eq('/links')
+  end
+  scenario 'guest cannot register with a previously registered email; error displayed' do
+    User.create(email: 'test@test.com',
+                password: 'password1',
+                password_confirmation: 'password1')
+    visit '/'
+
+    click_link 'Sign Up'
+
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+
+    expect {click_button "Register"}.to change {User.count}.by(0)
+
+    expect(current_path).to eq('/users/new')
+
+    within('.alert') do
+      expect(page).to have_content('That e-mail has already been registered')
+    end
+  end
 end
