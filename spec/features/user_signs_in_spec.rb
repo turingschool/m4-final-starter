@@ -12,11 +12,13 @@ feature 'registered user signs in' do
 
     click_link 'Log In'
 
+    expect(current_path).to eq('/sessions/new')
+
     fill_in 'email', with: 'test@test.com'
     fill_in 'password', with: 'password'
     click_button 'Login'
-    
-    expect(current_path).to eq('/links/index')
+
+    expect(current_path).to eq('/links')
 
     within('.alert') do
       expect(page).to have_content('Successful Login. Welcome!')
