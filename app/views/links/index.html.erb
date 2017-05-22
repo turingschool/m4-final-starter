@@ -13,24 +13,7 @@
   URL: <%= link.url %><br>
   Title: <%= link.title %><br>
   Read?: <%= link.read %><br>
-  <%= link_to "Edit", edit_link_path(link)  %>
+  <%= link_to "Edit", edit_link_path(link) %>
   </div>
   <hr>
 <% end %>
-
-
-<div class="row">
-  <% current_user.links.each do |link| %>
-  <div class="col-md-4">
-    <div class="list-group">
-      <a href="<%= link.url %>" class="list-group-item active">
-        URL: <%= link.url %>
-      </a>
-      <p class="list-group-item">Title: <%= link.title %></p>
-      <p class="list-group-item">Read?: <%= link.read %></p>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item">Vestibulum at eros</a>
-    </div>
-  </div>
-  <% end %>
-</div>
