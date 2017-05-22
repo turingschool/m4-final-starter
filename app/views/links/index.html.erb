@@ -1,9 +1,19 @@
-<h1>Login</h1>
 <% if current_user %>
   <%= link_to "Sign Out", logout_path, method: "DELETE" %>
+  <hr>
+  <%= form_for :link, :html => {:class => "new-link"} do |f| %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.submit "Add Link" %>
+  <% end %>
 <% end %>
 
 <% if !current_user %>
+  <h1>Login</h1>
   <%= render "login" %>
   <p>Create Account: <%=link_to "Sign Up", new_user_path %></p>
 <% end %>
