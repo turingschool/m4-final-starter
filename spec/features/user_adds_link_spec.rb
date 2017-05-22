@@ -28,4 +28,16 @@ feature 'user visits link index' do
 
     expect(@user.links.count).to eq(1)
   end
+  scenario 'cannot create a link without a title' do
+
+    visit '/'
+
+    page.find('input#link_url').set('http://www.test.com')
+
+    expect {click_button "Add Link"}.to change {Link.count}.by(0)
+
+    within('.alert') do
+      expect(page).to have_content('A link must have a title')
+    end
+  end
 end
