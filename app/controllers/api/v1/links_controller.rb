@@ -2,7 +2,10 @@ class Api::V1::LinksController < ApplicationController
 
   def create
     @link = Link.new
-    @link.save_link(link_params, current_user)
+
+      if @link.save_link(link_params, current_user)
+        render json: @link
+      end
   end
 
   def update
