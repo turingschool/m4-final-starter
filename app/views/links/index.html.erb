@@ -1,9 +1,15 @@
-<h1>Login</h1>
 <% if current_user %>
+
   <%= link_to "Sign Out", logout_path, method: "DELETE" %>
+  <h1 class="center-block">Manage Links</h1>
+  <hr>
+  <%= render "new_link" %>
+  <hr>
+  <%= render "links" %>
 <% end %>
 
 <% if !current_user %>
+  <h1>Login</h1>
   <%= render "login" %>
   <p>Create Account: <%=link_to "Sign Up", new_user_path %></p>
 <% end %>
