@@ -1,6 +1,6 @@
 <div class="row" id="my-links">
   <% current_user.links.each do |link| %>
-    <div class="col-md-4">
+    <div class="col-md-4" id="link.title">
       <p>Title: <%= link.title %></p>
       <p>URL: <%= link.url %></p>
       <p>Read? <%= link.read %></p>

@@ -9,7 +9,17 @@ describe "when a user is on links#index" do
 
       visit links_path
       click_on "Edit"
+
       expect(current_path).to eq(edit_link_path(link))
+      expect(page).to have_content("Edit Link #{link.title}")
+
+      fill_in "link[url]", :with => "https://www.bbc.co.uk/"
+      fill_in "link[title]", :with => "BBC"
+      click_on "Edit Link"
+
+      expect(current_path).to eq(links_path)
+      # expect(page).to have_content("BBC")
+      # expect(page).to have_content("https://www.bbc.co.uk/")
     end
   end
 end
