@@ -45,7 +45,7 @@ describe "User can create an account" do
         fill_in "user[password_confirmation]", with: "password"
         click_on "Sign Up"
 
-        expect(page).to have_content "Email already registered with an account!"
+        expect(page).to have_content "Email is already registered!"
         expect(current_path).to eq new_user_path
       end
     end
