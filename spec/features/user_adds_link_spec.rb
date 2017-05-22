@@ -11,10 +11,11 @@ feature 'user visits link index' do
   end
 
   scenario 'sees a form to submit a link' do
+
     visit '/'
 
-    expect(page).to have_field("URL")
-    expect(page).to have_field("Title")
-    expect(page).to have_field("Read")
+    expect(page).to have_css("input#link_url")
+    expect(page).to have_css("input#link_title")
+    expect(page).to have_css("input#link_read_checkedtrue_uncheckedfalse")
   end
 end
