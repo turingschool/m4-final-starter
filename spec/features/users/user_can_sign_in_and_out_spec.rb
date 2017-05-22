@@ -14,6 +14,14 @@ describe "when I visit the root page" do
       expect(page).to have_content("Welcome: me@me.com")
       expect(page).to have_content ("Sign Out")
       expect(page).to_not have_content("Sign In")
+
+      click_on "Sign Out"
+
+      expect(current_path).to eq(root_path)
+
+      within('.flash') do
+        expect(page).to have_content("Logged Out")
+      end
     end
   end
 end

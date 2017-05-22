@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <% if current_user %>
-  <%= link_to "Sign Out", logout_path %>
+  <%= link_to "Sign Out", logout_path, method: "DELETE" %>
 <% end %>
 
 <% if !current_user %>
