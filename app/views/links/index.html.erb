@@ -2,8 +2,9 @@
 
 <hr>
 <% current_user.links.each do |link| %>
-  <%= link.url %>
-  <%= link.title %>
-  <%= link.read %>
-  <br>
+  URL: <%= link.url %><br>
+  <%= link.title %><br>
+  <%= link.read %><br>
+  <% link_to "Edit", edit_link_path(link)  %>
+  <hr>
 <% end %>

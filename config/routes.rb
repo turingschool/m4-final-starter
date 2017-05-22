@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
-  resources :links, only: [:index, :new, :create, :edit]
+  resources :links, expect: [:delete]
 
   namespace :api do
     namespace :v1 do
