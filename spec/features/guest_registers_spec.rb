@@ -114,6 +114,18 @@ feature 'guest visits root and clicks Sign Up link' do
     expect {click_button "Register"}.to change {User.count}.by(0)
 
     expect(current_path).to eq('/users/new')
+  end
+  scenario 'guest cannot register if password  field is blank' do
 
+    visit '/'
+
+    click_link 'Sign Up'
+
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password confirmation', with: 'password'
+
+    expect {click_button "Register"}.to change {User.count}.by(0)
+
+    expect(current_path).to eq('/users/new')
   end
 end
