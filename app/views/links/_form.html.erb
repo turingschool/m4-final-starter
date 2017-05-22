@@ -1,0 +1,16 @@
+<% if type == "create" %>
+  <h4>Add Link</h4>
+<% else %>
+  <h4>Edit Link</h4>
+<% end %>
+
+<%= form_for @link do |f| %>
+  <%= f.url_field :url, placeholder: "URL", required: true %>
+  <%= f.text_field :title, placeholder: "Title", required: true %>
+
+  <% if type == "create" %>
+    <%= f.submit "Lock It Up" %>
+  <% else %>
+      <%= f.submit "Edit" %>
+  <% end %>
+<% end %>
