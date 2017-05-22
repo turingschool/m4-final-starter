@@ -34,4 +34,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'selenium-webdriver', '~> 2.53.4'
   gem 'faker'
+  gem 'rb-readline'
 end
