@@ -1,0 +1,16 @@
+<h1>Signup!</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email, required: true %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, required: true %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, required: true %>
+
+  <%= f.submit "Submit" %>
+<% end %>
+
+<p>Already a user? <%= link_to 'Log in by clicking here', login_path %></p>
