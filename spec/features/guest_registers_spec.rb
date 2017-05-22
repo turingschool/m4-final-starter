@@ -70,4 +70,22 @@ feature 'guest visits root and clicks Sign Up link' do
       expect(page).to have_content('That e-mail has already been registered')
     end
   end
+  scenario 'guest will see alert if registration failed due to passwords not matching' do
+
+    visit '/'
+
+    click_link 'Sign Up'
+
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password_oops'
+
+    expect {click_button "Register"}.to change {User.count}.by(0)
+
+    expect(current_path).to eq('/users/new')
+
+    within('.alert') do
+      expect(page).to have_content('Password and password confirmation must match')
+    end
+  end
 end

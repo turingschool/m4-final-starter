@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/links'
     else
-      flash['warning'] = 'That e-mail has already been registered'
+      user_registration_error
       redirect_to '/users/new'
     end
   end
@@ -21,5 +21,13 @@ class UsersController < ApplicationController
     params.require('user').permit(:email,
                                   :password,
                                   :password_confirmation)
+  end
+
+  def user_registration_error
+    if user_params[:password] != user_params[:password_confirmation]
+      flash['warning'] = "Password and password confirmation must match"
+    else
+      flash['warning'] = 'That e-mail has already been registered'
+    end
   end
 end
