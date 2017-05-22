@@ -16,16 +16,4 @@ describe 'guest creates an account' do
       end
     end
   end
-
-
-  # fill_in :Name, swith: 'Eric'
-  # fill_in :Email, with: 'sample@email.com'
-  # fill_in :Password, with: 'password'
-  # fill_in 'user[password_confirmation]', with: 'password'
-  #
-  # click_on 'Create Account'
-  #
-  # expect(page).to have_content('successfully logged in!')
-  # expect(current_path).to eq(links_path)
-  # expect(page).to have_content('Sign Out')
 end
