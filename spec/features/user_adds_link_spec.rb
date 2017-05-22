@@ -16,7 +16,6 @@ feature 'user visits link index' do
 
     expect(page).to have_css("input#link_url")
     expect(page).to have_css("input#link_title")
-    expect(page).to have_css("input#link_read_checkedtrue_uncheckedfalse")
   end
 
   scenario 'sees a form to submit a link' do

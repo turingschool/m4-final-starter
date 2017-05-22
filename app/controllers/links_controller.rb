@@ -7,4 +7,21 @@ class LinksController < ApplicationController
       redirect_to guests_path
     end
   end
+
+  def create
+    link = Link.new(link_params)
+    if link.save
+      redirect_to links_path
+    else
+      flash.now['warning'] = 'Link not saved'
+      redirect_to links_path
+    end
+  end
+
+  private
+
+  def link_params
+    params.require(:link).permit(:url,
+                                 :title)
+  end
 end
