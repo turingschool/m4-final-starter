@@ -2,10 +2,10 @@
 
 <%= form_for Link.new do |f| %>
   <%= f.label 'URL'  %>
-  <%= f.url_field 'url' %>
+  <%= f.url_field :url %>
   <%= f.label 'Title' %>
-  <%= f.text_field 'title' %>
+  <%= f.text_field :title %>
   <%= f.label 'Read?', value: false %>
-  <%= f.radio_button 'read', :checked => true, :unchecked => false %>
+  <%= f.radio_button :read, :checked => true, :unchecked => false %>
   <%= f.submit 'Add Link' %>
 <% end %>

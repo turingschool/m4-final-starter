@@ -18,4 +18,14 @@ feature 'user visits link index' do
     expect(page).to have_css("input#link_title")
     expect(page).to have_css("input#link_read_checkedtrue_uncheckedfalse")
   end
+
+  scenario 'sees a form to submit a link' do
+
+    visit '/'
+
+    fill_in 'Url', with: 'http://www.google.com'
+    fill_in 'Title', with: 'Google'
+
+    expect {click_button "Add Link"}.to change {Link.count}.by(1)
+  end
 end
