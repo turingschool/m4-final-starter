@@ -21,8 +21,8 @@ function markAsRead(e) {
 
 function updateReadButton(link) {
   $(`.link[id=${link.id}]`).find(".mark-as-read").text(`Mark as Unread`);
-  $(`.link[id=${link.id}]`).find(".btn").removeClass("mark-as-read");
-  $(`.link[id=${link.id}]`).find(".btn").addClass("mark-as-unread");
+  $(`.link[id=${link.id}]`).find(".read").removeClass("mark-as-read");
+  $(`.link[id=${link.id}]`).find(".read").addClass("mark-as-unread");
 }
 
 function updateLinkStatus(link) {

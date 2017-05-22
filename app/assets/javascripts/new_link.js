@@ -31,7 +31,8 @@ function addNewLink(newLink) {
         <a class="btn btn-default" href="/links/${newLink.id}/edit">
          Edit
         </a>
-      </p>  
+        <a class="btn btn-default read mark-as-read" href='#'>Mark as Read</a>
+      </p>
       <br>
     </div>
   `

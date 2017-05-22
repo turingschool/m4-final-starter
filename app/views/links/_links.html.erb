@@ -6,7 +6,11 @@
       <p class="read-status">Read? <%= link.read %></p>
       <p>
         <%= link_to "Edit", edit_link_path(link), class: "btn btn-default" %>
-        <a class="btn btn-default mark-as-read" href='#'>Mark as Read</a>
+        <% if link.read? %>
+          <a class="btn btn-default read mark-as-unread" href='#'>Mark as Unread</a>
+        <% else %>
+          <a class="btn btn-default read mark-as-read" href='#'>Mark as Read</a>
+        <% end %>
       </p>
       <br>
     </div>
