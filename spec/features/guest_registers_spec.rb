@@ -18,7 +18,7 @@ feature 'guest visits root and clicks Sign Up link' do
     expect(page).to have_field("Password")
     expect(page).to have_field("Password confirmation")
   end
-  scenario 'when guest submits completed form a user is persisted to the database' do
+  scenario 'when guest submits registration user is added and redirect to links index' do
     visit '/'
 
     click_link 'Sign Up'
@@ -31,5 +31,7 @@ feature 'guest visits root and clicks Sign Up link' do
 
     new_user = User.last
     expect(new_user.email).to eq('test@test.com')
+
+    expect(current_path).to eq('/links')
   end
 end
