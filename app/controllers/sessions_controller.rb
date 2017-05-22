@@ -7,11 +7,11 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:success] = "successfully logged in!"
       redirect_to links_path
+      flash[:success]   = "successfully logged in!"
     else
-      flash[:notice] = "Sorry, password and username don't match"
       render :new
+      flash[:alert] = "Sorry, password and username don't match"
     end
   end
 

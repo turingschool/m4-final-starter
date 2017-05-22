@@ -9,8 +9,8 @@ class LinksController < ApplicationController
 
   def require_login
     unless current_user
-      flash[:notice] = "You must log in to visit this page!"
       redirect_to login_path
+      flash[:notice] = "You must log in to visit this page!"
     end
   end
 end
