@@ -17,7 +17,7 @@ describe 'guest creates an account' do
     end
 
     describe 'when I click sign up link' do
-      it 'I am directed to the new user path' do
+      it 'I am redirected to the new user path' do
         visit login_path
 
         click_on 'Click here to make one!'
@@ -43,7 +43,7 @@ describe 'guest creates an account' do
         click_on 'Submit'
       end
 
-      it 'I get directed to links index page' do
+      it 'I get redirected to links index page' do
         expect(current_path).to eq links_path
       end
 
