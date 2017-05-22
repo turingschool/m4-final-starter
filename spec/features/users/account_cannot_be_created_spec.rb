@@ -36,7 +36,7 @@ RSpec.feature "Invalid information" do
     fill_in "Password confirmation", with: ""
     click_button "Create account"
 
-    expect(page).to have_content("Password can't be blank and Password can't be blank")
+    expect(page).to have_content("Password can't be blank")
   end
 
   it "cannot be created without an email" do
@@ -60,6 +60,6 @@ RSpec.feature "Invalid information" do
     fill_in "Password confirmation", with: ""
     click_button "Create account"
 
-    expect(page).to have_content("Password can't be blank, Password can't be blank, and Email address can't be blank")
+    expect(page).to have_content("Password can't be blank and Email address can't be blank")
   end
 end
