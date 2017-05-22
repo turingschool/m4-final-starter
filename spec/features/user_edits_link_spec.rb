@@ -19,4 +19,21 @@ feature 'user views index and decides to edit link' do
 
     expect(current_path).to eq(edit_link_path(link))
   end
+  scenario 'user clicks edits form and submits it to edit the link' do
+    visit '/'
+
+    click_button 'Edit Google'
+
+    page.find('input#link_url').set('http://www.yahoo.com')
+    page.find('input#link_title').set('Yahoo')
+
+    click_button 'Edit Link'
+
+    expect(current_path).to eq('/links')
+
+    within all('.link').first do
+      expect(page).to have_link('http://www.yahoo.com', href: 'http://www.yahoo.com')
+      expect(page).to have_content('Yahoo')
+    end
+  end
 end
