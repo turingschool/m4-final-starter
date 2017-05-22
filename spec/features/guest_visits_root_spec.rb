@@ -21,6 +21,6 @@ feature 'guest visits root' do
     expect(current_path).to eq('/guests')
 
     expect(page).to have_link('Sign Up', href: '/users/new')
-    expect(page).to have_link('Log In', href: '/sessions/new')
+    expect(page).to have_link('Log In', href: '/login')
   end
 end

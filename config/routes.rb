@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :links, only: [:index]
   resources :guests, only: [:index]
   resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create]
   post 'users/new', to: 'users#create'
+  get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   namespace :api do
     namespace :v1 do

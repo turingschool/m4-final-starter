@@ -12,7 +12,7 @@ feature 'registered user signs in' do
 
     click_link 'Log In'
 
-    expect(current_path).to eq('/sessions/new')
+    expect(current_path).to eq('/login')
 
     fill_in 'email', with: 'test@test.com'
     fill_in 'password', with: 'password'
@@ -29,7 +29,7 @@ feature 'registered user signs in' do
 
     click_link 'Log In'
 
-    expect(current_path).to eq('/sessions/new')
+    expect(current_path).to eq('/login')
 
     fill_in 'email', with: 'test@test.com'
     fill_in 'password', with: 'wrong_password'
