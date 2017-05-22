@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Visitor" do
-  it "can create an account" do
+  it "can create an account and it's redirected to Links Index" do
     visit '/'
     click_link "Sign Up"
 
