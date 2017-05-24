@@ -1,0 +1,8 @@
+<h1>Sign Up with URLockbox</h1>
+
+<%= form_for @user, url: signup_path(@user) do |f| %>
+  <%= f.text_field :email, placeholder: "Your email" %>
+  <%= f.password_field :password, placeholder: "Your password"%>
+  <%= f.password_field :password_confirmation, placeholder: "Re-type your password"%>
+  <%= f.submit 'Sign Up' %>
+<% end %>
