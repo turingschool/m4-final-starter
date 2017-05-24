@@ -1,4 +1,18 @@
 class Api::V1::LinksController < ApplicationController
+  def index
+    @links = Link.where(user_id: current_user.id).reverse
+  end
+
+  def create
+    @link = current_user.links.create(link_params)
+    if @link.valid?
+      render json: @link
+    else
+      @errors = @link.errors
+      format.json { render json: @errors, status: :unprocessable_entity }
+    end
+
+  end
 
   def update
     @link = Link.find(params[:id])
@@ -12,6 +26,6 @@ class Api::V1::LinksController < ApplicationController
   private
 
   def link_params
-    params.permit(:read)
+    params.permit(:id, :title, :url, :read)
   end
 end

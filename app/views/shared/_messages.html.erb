@@ -1,0 +1,6 @@
+<% flash.each do |name, message| %>
+    <div class="container">
+      <%= content_tag :div, sanitize(message) %>
+    </div>
+  </div>
+<% end %>

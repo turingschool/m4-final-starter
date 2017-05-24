@@ -1,25 +1,42 @@
-$( document ).ready(function(){
-  $("body").on("click", ".mark-as-read", markAsRead)
-})
+$(document).ready(function() {
+  $('.link-container').on('click', '.flag-link', markLink );
+});
 
-function markAsRead(e) {
-  e.preventDefault();
+function markLink(event) {
+  var updateRead = false;
+  var linkData = $(this).parent();
+  var id = linkData.find('.link-id').text();
+  var URL = "/api/v1/links/" + id;
+  var linkURL = linkData.find('.link-url').text();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link.data('link-id');
+  if (linkData.find('.link-read').text() == 'true') {
+    linkData.find('.link-read').text('false');
+    linkData.parent().css('background-color', 'White' );
+    updateRead = false;
+  } else {
+    linkData.find('.link-read').text('true');
+    linkData.parent().css('background-color', 'SlateGray' );
+    updateRead = true;
+  }
 
   $.ajax({
-    type: "PATCH",
-    url: "/api/v1/links/" + linkId,
-    data: { read: true },
-  }).then(updateLinkStatus)
-    .fail(displayFailure);
-}
+      method: "PATCH",
+      url: URL,
+      data: {
+        id: id,
+        read: updateRead
+      },
+    }).then()
+    .fail();
 
-function updateLinkStatus(link) {
-  $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
-}
-
-function displayFailure(failureData){
-  console.log("FAILED attempt to update Link: " + failureData.responseText);
+  $.ajax({
+      method: "POST",
+      url: "https://hot-reads-smith.herokuapp.com/read",
+      // url: "https://localhost:5000/read",
+      data: {
+        url: linkURL
+      },
+    }).then()
+    .fail();
+  linkData.find('.link-read').text(updateRead);
 }

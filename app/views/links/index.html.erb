@@ -1,0 +1,33 @@
+<p><%= button_to "Sign out", logout_path, method: :delete %> </p>
+<div class='submit-url'>
+  <h3>Add a link</h3>
+
+  <%= form_for Link.new, remote: true do |form| %>
+    <%= form.label(:url) %>
+    <%= form.url_field(:url , class: 'url-tag', for: 'url_field') %>
+    <%= form.label(:title, 'Title') %>
+    <%= form.text_field(:title, class: 'title-tag') %>
+    <%= form.submit('Add Link', class: 'add-link') %>
+  <% end %>
+</div>
+  <label id="link-filter">Search Links
+    <input type="text" name="search" id="search"/>
+  </label>
+  <br><button class = 'show-read' > Show Read </button>
+  <button class = 'show-unread' > Show Unread </button>
+  <button class = 'show-all' > Show All </button>
+<div class = 'link-container' >
+  <% @links.each do |link| %>
+    <div class="card">
+      <div class="container">
+        <p>Title: <span class = 'link-title' ><%= link.title %></span></p>
+        <p>URL: <span class = 'link-url' ><%= link.url %></span></p>
+        <p>Read? <span class = 'link-read' ><%= link.read %></span></p>
+        <p><span class = 'link-id' hidden ><%= link.id %></span></p>
+        <button class = 'flag-link' > Flag link </button>
+      </div>
+      <%= button_to "Edit", edit_link_path(link), method: :get %>
+    </div>
+  <% end %>
+</div>
+
