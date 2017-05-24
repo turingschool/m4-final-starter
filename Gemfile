@@ -14,7 +14,7 @@ gem 'rails_12factor', group: :production
 gem 'responders'
 gem 'awesome_print'
 gem 'sprockets-es6'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # gem 'unicorn'
 
@@ -29,11 +29,14 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
+  gem 'faker'
   gem 'simplecov', :require => false
+  gem 'validate_url'
   gem 'spring'
   gem 'database_cleaner'
   gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'rack_session_access'
   gem 'selenium-webdriver', '~> 2.53.4'
 end

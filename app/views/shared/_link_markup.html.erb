@@ -1,0 +1,13 @@
+<tr>
+  <td><%= @link.title %></td>
+  <td><%= @link.url %></td>
+  <td class='read-status'><%= link.read %></td>
+  <% if @link.read %>
+    <td class='mark-as-unread'><button>Mark as Unread</button>
+    </td>
+  <% else %>
+    <td class='mark-as-read'><button>Mark as Read</button>
+    </td>
+  <% end %>
+  <td><a href="/links/<%= @link.id %>/edit">Edit</a></td>
+</tr>
