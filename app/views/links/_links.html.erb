@@ -1,0 +1,18 @@
+<div class="row" id="my-links">
+  <% current_user.links.each do |link| %>
+    <div class="col-md-4 link" id="<%= link.id %>">
+      <p>Title: <%= link.title %></p>
+      <p>URL: <%= link.url %></p>
+      <p class="read-status">Read? <%= link.read %></p>
+      <p>
+        <%= link_to "Edit", edit_link_path(link), class: "btn btn-default" %>
+        <% if link.read? %>
+          <a class="btn btn-default read mark-as-unread" href='#'>Mark as Unread</a>
+        <% else %>
+          <a class="btn btn-default read mark-as-read" href='#'>Mark as Read</a>
+        <% end %>
+      </p>
+      <br>
+    </div>
+  <% end %>
+</div>
