@@ -8,15 +8,12 @@ function markAsRead() {
   if (readStatus === 'false'){
     markRead(id)
   }
-  var $link = $(this).parents('.link');
-  var linkId = $link.data('id');
-  //
-  // $.ajax({
-  //   type: "PATCH",
-  //   url: "/api/v1/links/" + linkId,
-  //   data: { read: true },
-  // }).then(updateLinkStatus)
-  //   .fail(displayFailure);
+  $.ajax({
+    type: "PATCH",
+    url: "/api/v1/links/" + id,
+    data: {link: { read: true }},
+  }).then(markRead(id))
+    .fail(displayFailure);
 }
 
 function markRead(id) {
