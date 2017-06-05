@@ -15,19 +15,21 @@ function printLinks(data) {
   let linkRow = `
   <div class="card card-default">
     <div class="col-md-3">
-    <div id="${link.id}">
-    <p>Title: ${link.title}</p><br>
-    <p>${link.url}</p><br>
-    <p class="read-status">Read: ${link.read}</p></br>
-    <input type="submit" value="Edit" class="btn btn-default" />
-  </div>
-</div>
-</div>`;
+      <div id="${link.id}">
+        <p>Title: ${link.title}</p><br>
+        <p>Url: <a href="${link.url}" target="_blank">${link.url}</a></p><br>
+        <p class="read-status">Read: ${link.read}</p></br>
+      </div>
+    </div>
+  </div>`;
   $('#links-list .row').prepend(linkRow);
   if (link.read === true){
       let markUnread = `
         <div>
           <button class="mark-as-unread btn btn-default" data-id="${link.id}" >Mark as Unread</button>
+          <form action="/links/${link.id}/edit" method="GET">
+            <input type="submit" value="Edit" class="btn btn-default" />
+          </form>
         </div>
         `;
     $(`#${link.id}`).append(markUnread);
@@ -36,6 +38,9 @@ function printLinks(data) {
     var markRead = `
     <div>
       <button class="mark-as-read btn btn-default" data-id="${link.id}" >Mark as Read</button>
+      <form action="/links/${link.id}/edit" method="GET">
+        <input type="submit" value="Edit" class="btn btn-default"/>
+      </form>
     </div>
     `;
   $(`#${link.id}`).append(markRead);

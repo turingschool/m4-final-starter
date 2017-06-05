@@ -15,9 +15,7 @@ function markAsRead(e) {
 }
 
 function updateLinkStatus(link) {
-  debugger
   $(`#${link.id} .read-status`).text("Read: true")
-  // $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
 }
 
 function displayFailure(failureData){
