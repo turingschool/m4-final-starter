@@ -12,5 +12,8 @@ function filterLinks(){
     if (!url.includes(queryString) || !title.includes(queryString)){
       link.hide()
     }
+    else{
+      link.show()
+    }
   })
 }
