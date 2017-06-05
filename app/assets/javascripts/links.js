@@ -3,9 +3,16 @@ $(document).ready(function(){
 });
 
 function fetchAllLinks(){
-  // debugger
   $.ajax({
     url: '/api/v1/links',
     method: 'GET'
-}).then(alert(response))
+}).then(printLinks)
+  .fail(displayError);
+}
+
+function printLinks(data) {
+  debugger  
+}
+function displayError(){
+  console.error(error);
 }
