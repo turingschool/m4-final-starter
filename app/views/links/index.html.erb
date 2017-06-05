@@ -1,0 +1,41 @@
+<a href='/logout' id='logout-link'>Sign out</a>
+
+<form>
+  URL: <input type="text" name="url" />
+  Title: <input type="text" name="title" />
+</form>
+<button id='add-link-button'>Add Link</button>
+
+<div id='links'>
+  <% @links.each do |link| %>
+    <% if link.read == true %>
+      <div class='link read'>
+        <p>
+          URL:<a href=<%=link.url %>><%= link.url %></a>
+        </p>
+         <p>
+           Title: <%= link.title %>
+         </p>
+         <p>
+           Read: <%= link.read %>
+         </p>
+        <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
+        <button class='change-read-button' data-read-status='<%= link.read %>'data-id=<%=link.id %>>Mark as Unread</button>
+      </div>
+    <% else %>
+     <div class='link'>
+       <p>
+         URL:<a href=<%=link.url %>><%= link.url %></a>
+       </p>
+        <p>
+          Title: <%= link.title %>
+        </p>
+        <p>
+          Read: <%= link.read %>
+        </p>
+       <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
+       <button class='change-read-button' data-read-status='<%= link.read %>'data-id=<%=link.id %>>Mark as Read</button>
+     </div>
+    <% end %>
+   <% end %>
+</div>
