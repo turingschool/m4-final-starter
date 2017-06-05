@@ -23,5 +23,6 @@ function saveLink() {
 
 function postLink(data) {
   debugger
-  $('')
+  $('#url').val('')
+$('#title').val('')
   }
