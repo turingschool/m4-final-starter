@@ -6,8 +6,12 @@ RSpec.describe "can mark links as read", :js => :true do
     @user = User.create(email: 'test@test.com',
                        password: 'password',
                        password_confirmation: 'password')
-    @link = @user.links.create(url: 'http://www.google.com',
-                               title: 'Google')
+    @user.links.create(url: 'http://www.google.com',
+                       title: 'Google')
+    @user.links.create(url:     'http://www.yahoo.com',
+                       title:   'Yahoo!',
+                       read:    true)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
   end
@@ -16,7 +20,17 @@ RSpec.describe "can mark links as read", :js => :true do
 
     click_button 'Mark as Read'
 
-    within('.link') do
+    within all('.link').first do
+      expect(page).to have_content("Read: true")
+    end
+  end
+
+  scenario "Mark a link as unread" do
+    visit "/"
+
+    click_button 'Mark as Unread'
+
+    within all('.link').last do
       expect(page).to have_content("Read: false")
     end
 
