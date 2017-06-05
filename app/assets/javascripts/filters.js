@@ -8,7 +8,13 @@ $(document).ready(function(){
 function filterUrl() {
   $('#filter').keyup( function(event) {
     $('.link').each(function (index, link){
-      // debugger
+      var cardTitle = $(link).find('.title').text().toLowerCase();
+      var cardUrl = $(link).find('.url-link').text().toLowerCase();
+      var searchValue = $('#filter').val().toLowerCase();
+
+      if (cardTitle.includes(searchValue) || cardUrl.includes(searchValue)) {
+      debugger
+      }
     });
   });
 }
