@@ -24,13 +24,12 @@ feature 'user views index and decides to edit link' do
 
     click_button 'Edit Google'
 
-    page.find('input[name="link[url]"]').set('http://www.yahoo.com')
-    page.find('input[name="link[title]"]').set('Yahoo')
-
+    fill_in 'link_url', with: 'http://www.yahoo.com'
+    fill_in 'link_title', with: 'Yahoo!'
     click_button 'Edit Link'
 
     expect(current_path).to eq('/links')
-
+    save_and_open_page
     expect(page).to have_selector('.link', count: 1)
 
     within all('.link').first do
