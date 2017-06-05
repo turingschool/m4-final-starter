@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.new-link').submit(handleNewLink)
+  $('.new-link').on("click", handleNewLink)
 });
 
 function handleNewLink () {
