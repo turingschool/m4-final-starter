@@ -7,6 +7,7 @@
 <button id='add-link-button'>Add Link</button><br />
 <br />
 <input type="text" name="filter-input" placeholder="Filter Links"/>
+<button id='hide-unread-links-button'>Show Read</button>
 <div id='links'>
   <% @links.each do |link| %>
     <% if link.read == true %>
