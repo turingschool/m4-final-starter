@@ -1,15 +1,8 @@
 $(document).ready(function() {
-  // addLink();
   $('#new-link').on('click', "#create-link", (event) => saveLink());
 });
 
-
-// function addLink() {
-//   $('#new-link').on('click', "#create-link", (event) => saveLink())
-// }
-
 function saveLink() {
-  debugger
   let linkData = {link: {url: $('#add-url').val(), title: $('#add-title').val() } }
   $.ajax({
     url: '/links',
@@ -17,12 +10,12 @@ function saveLink() {
     data: linkData
   }).then((data) => postLink(data))
   .fail((error)=>{
-    console.log(error)
+    console.log(error);
   });
 }
 
 function postLink(data) {
-  debugger
-  $('#url').val('')
-$('#title').val('')
-  }
+  $('#links-list .row').prepend(data);
+  $('#url').val('');
+  $('#title').val('');
+}
