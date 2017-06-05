@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-    $('input[name=filter-input]').on('keypress', filterLinks)
+    $('input[name=filter-input]').on('keyup', filterLinks)
 })
 
 function filterLinks(){
@@ -8,6 +8,9 @@ function filterLinks(){
     var link = $('.link').eq(index)
     var url = link.children().first().text().toLowerCase()
     var title = link.children().first().next().text().toLowerCase()
-    console.log(url, title)
+    var queryString = $('input[name=filter-input]').val().toLowerCase()
+    if (!url.includes(queryString) || !title.includes(queryString)){
+      link.hide()
+    }
   })
 }
