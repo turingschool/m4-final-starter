@@ -10,13 +10,13 @@ function markAsUnread(e) {
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
     data: { read: false },
-  }).then(updateLinkStatus)
+  }).then(location.reload())
+    .then(updateLinkStatus)
     .fail(displayFailure);
 }
 
 function updateLinkStatus(link) {
   $(`#${link.id} .read-status`).text("Read: false");
-  $(`#${link.id}`).addClass("alert alert-warning");
 }
 
 function displayFailure(failureData){

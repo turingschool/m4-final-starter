@@ -1,6 +1,6 @@
 $( document ).ready(function(){
-  $("body").on("click", ".mark-as-read", markAsRead)
-})
+  $("body").on("click", ".mark-as-read", markAsRead);
+});
 
 function markAsRead(e) {
   e.preventDefault();
@@ -10,7 +10,8 @@ function markAsRead(e) {
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
     data: { read: true },
-  }).then(updateLinkStatus)
+  }).then(location.reload())
+    .then(updateLinkStatus)
     .fail(displayFailure);
 }
 

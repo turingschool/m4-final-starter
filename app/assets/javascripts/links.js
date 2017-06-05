@@ -15,7 +15,7 @@ function printLinks(data) {
   let linkRow = `
   <div class="card card-default">
     <div class="col-md-3">
-      <div id="${link.id}">
+      <div class="link" id="${link.id}">
         <p>Title: ${link.title}</p><br>
         <p>Url: <a href="${link.url}" target="_blank">${link.url}</a></p><br>
         <p class="read-status">Read: ${link.read}</p></br>
