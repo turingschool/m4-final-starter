@@ -11,10 +11,10 @@
   <% @links.each do |link| %>
     <% if link.read == true %>
       <div class='link read'>
-        <p>
+        <p class='link-url'>
           URL:<a href=<%=link.url %>><%= link.url %></a>
         </p>
-         <p>
+         <p class='link-title'>
            Title: <%= link.title %>
          </p>
          <p class='read-status'>
