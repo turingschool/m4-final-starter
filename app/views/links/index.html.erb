@@ -4,16 +4,17 @@
   URL: <input type="text" name="url" />
   Title: <input type="text" name="title" />
 </form>
-<button id='add-link-button'>Add Link</button>
-
+<button id='add-link-button'>Add Link</button><br />
+<br />
+<input type="text" name="filter-input" placeholder="Filter Links"/>
 <div id='links'>
   <% @links.each do |link| %>
     <% if link.read == true %>
       <div class='link read'>
-        <p>
+        <p class='link-url'>
           URL:<a href=<%=link.url %>><%= link.url %></a>
         </p>
-         <p>
+         <p class='link-title'>
            Title: <%= link.title %>
          </p>
          <p class='read-status'>
