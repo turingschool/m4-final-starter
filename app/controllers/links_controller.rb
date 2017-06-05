@@ -39,6 +39,8 @@ class LinksController < ApplicationController
   def link_error_checker
     if link_params[:title]
       flash['warning'] = 'A link must have a valid URL'
+    else
+      flash['warning'] = 'A link must have a title'
     end
   end
 

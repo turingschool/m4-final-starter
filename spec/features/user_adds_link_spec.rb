@@ -29,7 +29,7 @@ feature 'user visits link index' do
 
     expect(@user.links.count).to eq(1)
   end
-  scenario 'cannot create a link with an invalid url' do
+  xscenario 'cannot create a link with an invalid url' do
 
     visit '/'
 
@@ -37,8 +37,18 @@ feature 'user visits link index' do
     page.find('input#link_title').set('Google')
     expect {click_button "Add Link"}.to change {Link.count}.by(0)
 
-    within('.alert') do
-      expect(page).to have_content('A link must have a valid URL')
+
+    end
+  end
+  scenario 'cannot create a link without a title' do
+
+    visit '/'
+
+    page.find('input#link_url').set('http://www.yahoo.com')
+    page.find('input#link_title').set('')
+
+    expect {click_button "Add Link"}.to change {Link.count}.by(0)
+
     end
   end
 end

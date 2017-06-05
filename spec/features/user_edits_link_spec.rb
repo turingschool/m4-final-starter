@@ -26,7 +26,7 @@ feature 'user views index and decides to edit link' do
 
     page.find('input[name="link[url]"]').set('http://www.yahoo.com')
     page.find('input[name="link[title]"]').set('Yahoo')
-save_and_open_page
+
     click_button 'Edit Link'
 
     expect(current_path).to eq('/links')
