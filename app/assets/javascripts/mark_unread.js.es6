@@ -16,6 +16,7 @@ function markAsUnread(e) {
 
 function updateLinkStatus(link) {
   $(`#${link.id} .read-status`).text("Read: false");
+  $(`#${link.id}`).addClass("alert alert-warning");
 }
 
 function displayFailure(failureData){
