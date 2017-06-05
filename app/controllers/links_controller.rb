@@ -25,7 +25,11 @@ class LinksController < ApplicationController
   def update
     link = Link.find(params[:id])
     if link.update_attributes(link_params)
+      flash['warning'] = 'Link successfully edited'
       redirect_to links_path
+    else
+      link_error_checker
+      redirect_to edit_link_path(link)
     end
   end
 
@@ -37,10 +41,10 @@ class LinksController < ApplicationController
   end
 
   def link_error_checker
-    if link_params[:title]
-      flash['warning'] = 'A link must have a valid URL'
-    else
+    if link_params[:title] == ''
       flash['warning'] = 'A link must have a title'
+    else
+      flash['warning'] = 'A link must have a valid URL'
     end
   end
 
