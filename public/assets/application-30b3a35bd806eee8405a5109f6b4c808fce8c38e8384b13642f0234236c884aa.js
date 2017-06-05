@@ -11603,11 +11603,16 @@ $(document).ready(function () {
   $("body").on("click", ".mark-as-read", markAsRead);
 });
 
+function determineId(data) {
+  var $link = $(data).parents('div');
+  var $linkId = $link[0].id;
+  return $linkId;
+}
+
 function markAsRead(e) {
   e.preventDefault();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link[0].id;
+  var linkId = determineId(this);
 
   $.ajax({
     type: "PATCH",

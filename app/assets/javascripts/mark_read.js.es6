@@ -2,11 +2,16 @@ $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
 })
 
+function determineId(data) {
+  let $link   = $(data).parents('div');
+  let $linkId =  $link[0].id
+  return $linkId;
+}
+
 function markAsRead(e) {
   e.preventDefault();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link[0].id;
+  var linkId = determineId(this);
 
   $.ajax({
     type: "PATCH",
