@@ -11603,11 +11603,16 @@ $(document).ready(function () {
   $("body").on("click", ".mark-as-read", markAsRead);
 });
 
+function determineId(data) {
+  var $link = $(data).parents('div');
+  var $linkId = $link[0].id;
+  return $linkId;
+}
+
 function markAsRead(e) {
   e.preventDefault();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link[0].id;
+  var linkId = determineId(this);
 
   $.ajax({
     type: "PATCH",
@@ -11672,6 +11677,14 @@ function addNewLink(newLink) {
   `
   $("#my-links").prepend(linkCard)
 };
+$(document).ready(function(){
+  $('.new-account').submit(handleFormErrors)
+});
+
+function handleFormErrors () {
+  debugger
+}
+;
 /* ========================================================================
  * Bootstrap: transition.js v3.3.7
  * http://getbootstrap.com/javascript/#transitions
