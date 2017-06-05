@@ -11562,9 +11562,11 @@ return jQuery;
   }
 
 })( jQuery );
-$( document ).ready(function(){
-  $("body").on("click", ".mark-as-unread", markAsUnread)
-})
+"use strict";
+
+$(document).ready(function () {
+  $("body").on("click", ".mark-as-unread", markAsUnread);
+});
 
 function markAsUnread(e) {
   e.preventDefault();
@@ -11575,28 +11577,28 @@ function markAsUnread(e) {
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
-    data: { read: false },
-  }).then(function(data){
-    updateLinkStatus(data)
-    updateUnreadButton(data)
-  })
-    .fail(displayFailure);
+    data: { read: false }
+  }).then(function (data) {
+    updateLinkStatus(data);
+    updateUnreadButton(data);
+  }).fail(displayFailure);
 }
 
 function updateUnreadButton(link) {
-  $(`.link[id=${link.id}]`).find(".mark-as-unread").text(`Mark as Read`);
-  $(`.link[id=${link.id}]`).find(".read").removeClass("mark-as-unread");
-  $(`.link[id=${link.id}]`).find(".read").addClass("mark-as-read");
+  $(".link[id=" + link.id + "]").find(".mark-as-unread").text("Mark as Read");
+  $(".link[id=" + link.id + "]").find(".read").removeClass("mark-as-unread");
+  $(".link[id=" + link.id + "]").find(".read").addClass("mark-as-read");
 }
 
 function updateLinkStatus(link) {
-  $(`.link[id=${link.id}]`).find(".read-status").text(`Read? ${link.read}`);
+  $(".link[id=" + link.id + "]").find(".read-status").text("Read? " + link.read);
+  $(".link[id=" + link.id + "]").removeClass("false");
+  $(".link[id=" + link.id + "]").addClass("true");
 }
 
-function displayFailure(failureData){
+function displayFailure(failureData) {
   console.log("FAILED attempt to update Link: " + failureData.responseText);
-}
-;
+};
 "use strict";
 
 $(document).ready(function () {
@@ -11604,7 +11606,7 @@ $(document).ready(function () {
 });
 
 function determineId(data) {
-  var $link = $(data).parents('div');
+  var $link = $(data).parents('.link');
   var $linkId = $link[0].id;
   return $linkId;
 }
@@ -11626,23 +11628,26 @@ function markAsRead(e) {
 
 function updateReadButton(link) {
   $(".link[id=" + link.id + "]").find(".mark-as-read").text("Mark as Unread");
-  $(".link[id=" + link.id + "]").find(".read").removeClass("mark-as-read");
-  $(".link[id=" + link.id + "]").find(".read").addClass("mark-as-unread");
+  $(".link[id=" + link.id + "]").removeClass("mark-as-read");
+  $(".link[id=" + link.id + "]").addClass("mark-as-unread");
 }
 
 function updateLinkStatus(link) {
   $(".link[id=" + link.id + "]").find(".read-status").text("Read? " + link.read);
+  $(".link[id=" + link.id + "]").removeClass("true");
+  $(".link[id=" + link.id + "]").addClass("false");
 }
 
 function displayFailure(failureData) {
   console.log("FAILED attempt to update Link: " + failureData.responseText);
 };
 $(document).ready(function(){
-  $('.new-link').submit(handleNewLink)
+  $('.new-link').on("click", ".add-link", handleNewLink)
 });
 
 function handleNewLink () {
   event.preventDefault();
+  $('.flash').empty();
   let form = new Object
   form['url']   = $("input[id=link_url]").val();
   form['title'] = $("input[id=link_title]").val();
@@ -11654,15 +11659,20 @@ function handleNewLink () {
   .then(function(data){
     addNewLink(data)
     $('.new-link').trigger("reset");
+    $('.flash').html("You have added a new link.")
   })
   .fail( (error) => {
+    const message = error.responseJSON.join(". ")
+    console.log(message)
+    $('.flash').html(message)
     console.error(error)
   });
 };
 
+
 function addNewLink(newLink) {
   let linkCard = `
-    <div class="col-md-4" id="${newLink.id}">
+    <div class="col-md-4 link false" id="${newLink.id}">
       <p>Title: ${newLink.title}</p>
       <p>URL: ${newLink.url}</p>
       <p>Read? false</p>

@@ -27,6 +27,8 @@ function updateUnreadButton(link) {
 
 function updateLinkStatus(link) {
   $(`.link[id=${link.id}]`).find(".read-status").text(`Read? ${link.read}`);
+  $(`.link[id=${link.id}]`).removeClass("false");
+  $(`.link[id=${link.id}]`).addClass("true");
 }
 
 function displayFailure(failureData){
