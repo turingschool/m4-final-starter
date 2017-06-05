@@ -9,6 +9,9 @@ function createLink(){
     if( data.url){
       displayLink(data)
     }
+    else {
+      displayErrors(data)
+    }
   })
 }
 
@@ -18,4 +21,13 @@ function displayLink(link){
                       <form class='button_to' method='get' action="/links/${link.id}/edit">
                       <input type="submit" value="Edit ${link.title}">
                       </form>`)
+}
+
+function displayErrors(errors){
+  $('.alert').html('')
+  errors.forEach(function(error) {
+    $('body').prepend(`<div class='alert'>
+                        <h3>${error}</h3>
+                      </div>`)
+  })
 }
