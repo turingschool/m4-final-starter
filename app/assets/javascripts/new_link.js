@@ -1,5 +1,6 @@
 $( document ).ready(function(){
   $('#add-link-button').on("click", createLink)
+
 })
 
 function createLink(){
@@ -22,7 +23,7 @@ function displayLink(link){
                       <form class='button_to' method='get' action="/links/${link.id}/edit">
                       <input type="submit" value="Edit ${link.title}">
                       </form>
-                      <button data-id='${link.id}'>Mark as Read</button>`)
+                      <button class='change-read-button' data-read-status='${link.read}' data-id='${link.id}'>Mark as Read</button>`)
 }
 
 function displayErrors(errors){

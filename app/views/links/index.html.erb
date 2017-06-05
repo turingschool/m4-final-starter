@@ -19,7 +19,7 @@
         Read: <%= link.read %>
       </p>
      <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
-     <button data-id=<%=link.id %>>Mark as Read</button>
+     <button class='change-read-button' data-read-status='<%= link.read %>'data-id=<%=link.id %>>Mark as Read</button>
    </div>
    <% end %>
 </div>
