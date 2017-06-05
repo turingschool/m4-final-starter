@@ -17,8 +17,7 @@ class LinksController < ApplicationController
 
   def update
     @link = Link.find(params[:id])
-    @link.update(link_params)
-    if @link.save
+    if @link.update(link_params)
       flash[:success] = "Link Updated!"
       redirect_to links_path
     else
