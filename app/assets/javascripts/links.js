@@ -14,7 +14,6 @@ class Links {
   markAsUnread(e) {
     e.preventDefault();
 
-    const linkId = $(e.target).siblings("#link_id").val()
     const link = { link: { read: false } }
 
     this.updateReadStatus(link, linkId)
@@ -23,7 +22,6 @@ class Links {
   markAsRead(e) {
     e.preventDefault();
 
-    const linkId = $(e.target).siblings("#link_id").val()
     const link = { link: { read: true } }
 
     this.updateReadStatus(link, linkId)
@@ -42,9 +40,9 @@ class Links {
   updateLinkStatus(link) {
     const buttonSwitch = link.read ? "Mark as Unread" : "Mark as Read"
     const wrapper = $(`#link${link.id}`)
-    link.read ? wrapper.addClass("read") : wrapper.removeClass("read")
+    link.read ? wrapper.addClass("unread") : wrapper.removeClass("read")
     wrapper.find('p').text(`Read? ${link.read}`)
-    wrapper.find('.read-unread').val(buttonSwitch)
+    wrapper.find('.switch').val(buttonSwitch)
   }
 
   displayFailure(failureData){
@@ -52,13 +50,13 @@ class Links {
   }
 
   contentFilter(e) {
-		const search = $("#link-filter").val().toLowerCase()
+		const search = $("#content-filter").val()
 
-		$("article").hide()
+		$(".links article").hide()
 
-		const matches = $("article").filter(article => {
-			const title = $("article")[article].querySelector("h4").innerText.toLowerCase()
-			const url = $("article")[article].querySelector("a").innerText.toLowerCase()
+		const matches = $(".links article").filter(article => {
+			const title = $(".links article")[article].querySelector("h3").innerText.toLowerCase()
+			const url = $(".links article")[article].querySelector("a").innerText.toLowerCase()
 			return title.includes(search) || url.includes(search)
 		})
 

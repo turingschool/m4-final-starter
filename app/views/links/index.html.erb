@@ -13,6 +13,8 @@ By text: <input type="text" id="content-filter" placeholder="Filter by URL or Ti
 <br>
 <br>
 <hr>
-<% current_user.links.each do |link| %>
+<div class="links">
+  <% current_user.links.each do |link| %>
   <%= render partial: 'link', locals: { link: link } %>
-<% end %>
+  <% end %>
+</div>
