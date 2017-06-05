@@ -11642,7 +11642,7 @@ function handleNewLink () {
   form['url']   = $("input[id=link_url]").val();
   form['title'] = $("input[id=link_title]").val();
   $.ajax({
-    url: "http://localhost:3000/api/v1/links",
+    url: "/api/v1/links/",
     method: "POST",
     data: form
   })
