@@ -9,8 +9,15 @@
 <div id='links'>
   <% @links.each do |link| %>
    <div class='link'>
-     <a href=<%=link.url %>><h4><%= link.url %></h4></a>
-     <h4><%= link.title %></h4>
+     <p>
+       URL:<a href=<%=link.url %>><%= link.url %></a>
+     </p>
+      <p>
+        Title: <%= link.title %>
+      </p>
+      <p>
+        Read: <%= link.read %>
+      </p>
      <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
      <button data-id=<%=link.id %>>Mark as Read</button>
    </div>
