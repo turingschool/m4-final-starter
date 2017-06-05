@@ -1,12 +1,10 @@
 <a href='/logout' id='logout-link'>Sign out</a>
 
-<%= form_for Link.new do |f| %>
-  <%= f.label 'URL'  %>
-  <%= f.url_field :url %>
-  <%= f.label 'Title' %>
-  <%= f.text_field :title %>
-  <%= f.submit 'Add Link' %>
-<% end %>
+<form>
+  URL: <input type="text" name="url" />
+  Title: <input type="text" name="title" />
+</form>
+<button id='add-link-button'>Add Link</button>
 
 <div id='links'>
   <% @links.each do |link| %>
