@@ -16,7 +16,7 @@ function printLinks(data) {
   let linkRow = `
   <div class="card card-default">
     <div class="col-md-3">
-    <div>
+    <div id="${link.id}">
     <p>Title: ${link.title}</p><br>
     <p>${link.url}</p><br>
     <p>Read: ${link.read}</p></br>
@@ -24,7 +24,16 @@ function printLinks(data) {
   </div>
 </div>
 </div>`;
-  $('#links-list .row').append(linkRow);
+  $('#links-list .row').prepend(linkRow);
+  debugger
+  if (link.read === true){
+      let markUnread = `
+        <div>
+          <button >Mark as Unread</button>
+        </div>
+        `;
+    $(`#${link.id}`).append(markUnread);
+  }
 })
 }
 function displayError(error){
