@@ -1,18 +1,20 @@
-<a href='/logout' id='logout-link'>Sign out</a>
+<a href='/logout' id='logout-link' align='right'>Sign out</a>
 
 <form>
   URL: <input type="text" name="url" />
   Title: <input type="text" name="title" />
-</form>
+</form><br />
 <button id='add-link-button'>Add Link</button><br />
 <br />
+<hr />
 <input type="text" name="filter-input" placeholder="Filter Links"/>
 <button id='hide-unread-links-button'>Show Read</button>
 <button id='hide-read-links-button'>Show Unread</button>
+<hr />
 <div id='links'>
   <% @links.each do |link| %>
     <% if link.read == true %>
-      <div class='link read'>
+      <div class='link read' align='center'>
         <p class='link-url'>
           URL:<a href=<%=link.url %>><%= link.url %></a>
         </p>
@@ -26,7 +28,7 @@
         <button class='change-read-button' data-read-status='<%= link.read %>'data-id=<%=link.id %>>Mark as Unread</button>
       </div>
     <% else %>
-     <div class='link unread'>
+     <div class='link unread' align='center'>
        <p>
          URL:<a href=<%=link.url %>><%= link.url %></a>
        </p>
