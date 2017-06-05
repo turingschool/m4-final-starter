@@ -11,7 +11,6 @@ function fetchAllLinks(){
 }
 
 function printLinks(data) {
-  // debugger
   data.forEach(function (link) {
   let linkRow = `
   <div class="card card-default">
@@ -25,16 +24,22 @@ function printLinks(data) {
 </div>
 </div>`;
   $('#links-list .row').prepend(linkRow);
-  debugger
   if (link.read === true){
       let markUnread = `
         <div>
-          <button >Mark as Unread</button>
+          <button class="mark-as-unread btn btn-default" data-id="${link.id}" >Mark as Unread</button>
         </div>
         `;
     $(`#${link.id}`).append(markUnread);
+  } else {
+    var markRead = `
+    <div>
+      <button class="mark-as-read btn btn-default" data-id="${link.id}" >Mark as Read</button>
+    </div>
+    `;
+  $(`#${link.id}`).append(markRead);
   }
-})
+});
 }
 function displayError(error){
   console.error(error);
