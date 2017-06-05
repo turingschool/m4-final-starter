@@ -16,8 +16,8 @@ function printLinks(data) {
   <div class="card card-default">
     <div class="col-md-3">
       <div class="link" id="${link.id}">
-        <p>Title: ${link.title}</p><br>
-        <p>Url: <a href="${link.url}" target="_blank">${link.url}</a></p><br>
+        <p class="title text-center">${link.title}</p><br>
+        <p><a href="${link.url}" target="_blank" class="url-link">${link.url}</a></p><br>
         <p class="read-status">Read: ${link.read}</p></br>
       </div>
     </div>
@@ -26,7 +26,7 @@ function printLinks(data) {
   if (link.read === true){
       let markUnread = `
         <div>
-          <button class="mark-as-unread btn btn-default" data-id="${link.id}" >Mark as Unread</button>
+          <button class="mark-as-unread btn btn-default" data-id="${link.id}">Mark as Unread</button>
           <form action="/links/${link.id}/edit" method="GET">
             <input type="submit" value="Edit" class="btn btn-default" />
           </form>
@@ -44,7 +44,7 @@ function printLinks(data) {
     </div>
     `;
   $(`#${link.id}`).append(markRead);
-  $(`#${link.id}`).addClass("alert alert-warning");
+  $(`#${link.id}`).addClass("alert alert-info");
   }
 });
 }
