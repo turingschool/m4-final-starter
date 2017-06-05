@@ -8,7 +8,7 @@ describe 'user creates link' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit links_path
     end
-
+    
     describe 'on links#index' do
       it 'I should see a form to create a link' do
         expect(page).to have_content 'Add URL'
@@ -44,22 +44,6 @@ describe 'user creates link' do
           expect(page).to have_content 'Read? false'
           expect(page).to have_button 'Edit'
         end
-      end
-
-      it 'page does not reload' do
-        page.driver.browser.execute_script %Q{
-          window.pageMessage = "it worked!"
-        }
-
-        fill_in 'link_url', with: 'http://google.com'
-        fill_in 'link_title', with: 'Google'
-        click_on 'Add Link'
-
-        signal = page.driver.browser.execute_script %Q{
-          return window.pageMessage
-        }
-
-        expect(signal).to eq 'it worked!'
       end
     end
   end
