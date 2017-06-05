@@ -12,7 +12,7 @@ class LinksController < ApplicationController
       flash[:success] = "You have updated a link"
       redirect_to links_path
     else
-      flash[:failure] = "Try Again"
+      flash[:failure] = @link.errors.full_messages.join(". ")
       render :edit
     end
   end
