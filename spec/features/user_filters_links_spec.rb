@@ -31,7 +31,7 @@ RSpec.describe "can filter links", :js => :true do
       expect(page).to have_content('false')
     end
   end
-  scenario 'can click Show Read and all read links will be hidden' do
+  scenario 'can click Show Read and all unread links will be hidden' do
     visit '/'
 
     click_button 'Show Read'
@@ -46,7 +46,20 @@ RSpec.describe "can filter links", :js => :true do
         expect(page).to have_content('http://www.yahoo.com')
         expect(page).to have_content('true')
       end
+  end
+  scenario 'can click Show Unread and all read links will be hidden' do
+    visit '/'
 
+    click_button 'Show Unread'
 
+    expect(page).to have_no_content('Yahoo!')
+    expect(page).to have_no_content('http://www.yahoo.com')
+    expect(page).to have_no_content('true')
+
+    within all('.link').first do
+      expect(page).to have_content('Google')
+      expect(page).to have_content('http://www.google.com')
+      expect(page).to have_content('false')
+    end
   end
 end
