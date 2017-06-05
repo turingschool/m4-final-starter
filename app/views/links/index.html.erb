@@ -4,8 +4,9 @@
   URL: <input type="text" name="url" />
   Title: <input type="text" name="title" />
 </form>
-<button id='add-link-button'>Add Link</button>
-
+<button id='add-link-button'>Add Link</button><br />
+<br />
+<input type="text" name="filter-input" placeholder="Filter Links"/>
 <div id='links'>
   <% @links.each do |link| %>
     <% if link.read == true %>
