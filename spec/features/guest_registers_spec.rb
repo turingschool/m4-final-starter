@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'guest visits root and clicks Sign Up link' do
-  scenario 'guest is redirected to new users path' do
+  xscenario 'guest is redirected to new users path' do
     visit '/'
 
     click_link 'Sign Up'
@@ -100,6 +100,9 @@ feature 'guest visits root and clicks Sign Up link' do
     expect {click_button "Register"}.to change {User.count}.by(0)
 
     expect(current_path).to eq('/users/new')
+    within('.alert') do
+      expect(page).to have_content('You must supply a valid email address to register')
+    end
 
   end
   scenario 'guest cannot register if password confirmation field is blank' do
@@ -114,6 +117,9 @@ feature 'guest visits root and clicks Sign Up link' do
     expect {click_button "Register"}.to change {User.count}.by(0)
 
     expect(current_path).to eq('/users/new')
+    within('.alert') do
+      expect(page).to have_content('Password and password confirmation must match')
+    end
   end
   scenario 'guest cannot register if password  field is blank' do
 
@@ -127,5 +133,8 @@ feature 'guest visits root and clicks Sign Up link' do
     expect {click_button "Register"}.to change {User.count}.by(0)
 
     expect(current_path).to eq('/users/new')
+    within('.alert') do
+      expect(page).to have_content('You must enter both a password and password confirmation to register')
+    end
   end
 end
