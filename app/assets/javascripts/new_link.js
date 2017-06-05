@@ -1,9 +1,10 @@
 $(document).ready(function(){
-  $('.new-link').submit(handleNewLink)
+  $('.new-link').on("click", ".add-link", handleNewLink)
 });
 
 function handleNewLink () {
   event.preventDefault();
+  $('.flash').empty();
   let form = new Object
   form['url']   = $("input[id=link_url]").val();
   form['title'] = $("input[id=link_title]").val();
@@ -15,11 +16,16 @@ function handleNewLink () {
   .then(function(data){
     addNewLink(data)
     $('.new-link').trigger("reset");
+    $('.flash').html("You have added a new link.")
   })
   .fail( (error) => {
+    const message = error.responseJSON.join(". ")
+    console.log(message)
+    $('.flash').html(message)
     console.error(error)
   });
 };
+
 
 function addNewLink(newLink) {
   let linkCard = `

@@ -5,6 +5,8 @@ class Api::V1::LinksController < ApplicationController
 
       if @link.save_link(link_params, current_user)
         render json: @link
+      else
+        render json: @link.errors.full_messages, status: 500
       end
   end
 
