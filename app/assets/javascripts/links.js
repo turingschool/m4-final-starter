@@ -11,8 +11,14 @@ function fetchAllLinks(){
 }
 
 function printLinks(data) {
-  debugger  
+  debugger
+  data.forEach(function (link) {
+    console.log(link)
+  let linkRow = `
+  <div class="card card-default">
+</div>`
+})
 }
-function displayError(){
+function displayError(error){
   console.error(error);
 }

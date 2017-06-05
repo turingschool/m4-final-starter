@@ -1,4 +1,10 @@
 class Api::V1::LinksController < ApplicationController
+  def index
+    binding.pry
+    @links = current_user.links
+    render json: @links
+  end
+
 
   def update
     @link = Link.find(params[:id])
