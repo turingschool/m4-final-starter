@@ -11677,14 +11677,6 @@ function addNewLink(newLink) {
   `
   $("#my-links").prepend(linkCard)
 };
-$(document).ready(function(){
-  $('.new-account').submit(handleFormErrors)
-});
-
-function handleFormErrors () {
-  debugger
-}
-;
 /* ========================================================================
  * Bootstrap: transition.js v3.3.7
  * http://getbootstrap.com/javascript/#transitions
