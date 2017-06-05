@@ -29,7 +29,7 @@ feature 'user views index and decides to edit link' do
     click_button 'Edit Link'
 
     expect(current_path).to eq('/links')
-    save_and_open_page
+    
     expect(page).to have_selector('.link', count: 1)
 
     within all('.link').first do

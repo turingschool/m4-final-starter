@@ -1,5 +1,6 @@
 $( document ).ready(function(){
   $('#add-link-button').on("click", createLink)
+
 })
 
 function createLink(){
@@ -16,11 +17,13 @@ function createLink(){
 }
 
 function displayLink(link){
-  $('#links').prepend(`<div class='link'> <a href=${link.url}><h4>${link.url}</h4>
-                      </a><h4>${link.title}</h4>
+  $('#links').prepend(`<div class='link'><p>URL:<a href=${link.url}>${link.url}
+                      </a></p><p>Title: ${link.title}</p>
+                      <p>Read: ${link.read}</p>
                       <form class='button_to' method='get' action="/links/${link.id}/edit">
                       <input type="submit" value="Edit ${link.title}">
-                      </form>`)
+                      </form>
+                      <button class='change-read-button' data-read-status='${link.read}' data-id='${link.id}'>Mark as Read</button>`)
 }
 
 function displayErrors(errors){
