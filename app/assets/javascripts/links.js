@@ -18,7 +18,7 @@ function printLinks(data) {
     <div id="${link.id}">
     <p>Title: ${link.title}</p><br>
     <p>${link.url}</p><br>
-    <p>Read: ${link.read}</p></br>
+    <p class="read-status">Read: ${link.read}</p></br>
     <input type="submit" value="Edit" class="btn btn-default" />
   </div>
 </div>
@@ -31,6 +31,7 @@ function printLinks(data) {
         </div>
         `;
     $(`#${link.id}`).append(markUnread);
+    $(`#${link.id}`).addClass("alert alert-danger");
   } else {
     var markRead = `
     <div>
@@ -38,6 +39,7 @@ function printLinks(data) {
     </div>
     `;
   $(`#${link.id}`).append(markRead);
+  $(`#${link.id}`).addClass("alert alert-warning");
   }
 });
 }

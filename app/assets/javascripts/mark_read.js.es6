@@ -4,7 +4,6 @@ $( document ).ready(function(){
 
 function markAsRead(e) {
   e.preventDefault();
-  // debugger
   var linkId = $(this).data('id');
 
   $.ajax({
@@ -17,7 +16,8 @@ function markAsRead(e) {
 
 function updateLinkStatus(link) {
   debugger
-  $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
+  $(`#${link.id} .read-status`).text("Read: true")
+  // $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
 }
 
 function displayFailure(failureData){
