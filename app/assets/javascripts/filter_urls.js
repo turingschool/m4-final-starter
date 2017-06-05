@@ -1,5 +1,6 @@
 $( document ).ready(function(){
     $('input[name=filter-input]').on('keyup', filterLinks)
+    $('#hide-unread-links-button').on('click', hideUnreadLinks)
 })
 
 function filterLinks(){
@@ -15,5 +16,12 @@ function filterLinks(){
     else{
       link.show()
     }
+  })
+}
+
+function hideUnreadLinks(){
+  var links = $('.link.unread')
+  links.each(function(index){
+    $('.link.unread').eq(index).hide()
   })
 }
