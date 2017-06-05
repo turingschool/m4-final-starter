@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user visits link index' do
+feature 'user visits link index', js: true do
   before(:each) do
     @user = User.create(email: 'test@test.com',
                        password: 'password',
@@ -14,16 +14,16 @@ feature 'user visits link index' do
 
     visit '/'
 
-    expect(page).to have_css("input#link_url")
-    expect(page).to have_css("input#link_title")
+    expect(page).to have_css("input[name=url]")
+    expect(page).to have_css("input[name=title]")
   end
 
   scenario 'can create a link that is then associated with that user' do
 
     visit '/'
 
-    page.find('input#link_url').set('http://www.google.com')
-    page.find('input#link_title').set('Google')
+    page.find('input[name=url]').set('http://www.google.com')
+    page.find('input[name=title]').set('Google')
 
     expect {click_button "Add Link"}.to change {Link.count}.by(1)
 
@@ -37,8 +37,6 @@ feature 'user visits link index' do
     page.find('input#link_title').set('Google')
     expect {click_button "Add Link"}.to change {Link.count}.by(0)
 
-
-    end
   end
   scenario 'cannot create a link without a title' do
 
@@ -49,6 +47,5 @@ feature 'user visits link index' do
 
     expect {click_button "Add Link"}.to change {Link.count}.by(0)
 
-    end
   end
 end
