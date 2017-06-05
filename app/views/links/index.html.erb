@@ -16,7 +16,7 @@
          <p>
            Title: <%= link.title %>
          </p>
-         <p>
+         <p class='read-status'>
            Read: <%= link.read %>
          </p>
         <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
