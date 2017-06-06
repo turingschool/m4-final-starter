@@ -14,11 +14,8 @@ gem 'rails_12factor', group: :production
 gem 'responders'
 gem 'awesome_print'
 gem 'sprockets-es6'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
-# gem 'unicorn'
-
-# gem 'capistrano-rails', group: :development
 group :development do
   gem 'web-console', '~> 2.0'
 end
@@ -36,4 +33,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver', '~> 2.53.4'
+  gem 'faker'
+  gem 'rb-readline'
 end

@@ -1,0 +1,16 @@
+<% if type.eql? "create" %>
+  <h4>Add URL</h4>
+<% else %>
+  <h4>Edit Link</h4>
+<% end %>
+
+<%= form_for @link do |f| %>
+  URL: <%= f.url_field :url, placeholder: "URL", required: true %>
+  Title: <%= f.text_field :title, placeholder: "Title", required: true %>
+
+  <% if type.eql? "create" %>
+    <%= f.submit "Add Link" %>
+  <% else %>
+      <%= f.submit "Update Link" %>
+  <% end %>
+<% end %>
