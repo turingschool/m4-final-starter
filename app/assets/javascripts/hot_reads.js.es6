@@ -13,18 +13,20 @@ function isHotRead(reads){
       $(link).children().first().html(`<h3>HOT READ!!<h3>`)
     }
   })
-  isTopRead(Object.keys(reads)[0])
+  isTopRead(reads)
 }
 
 function isTopRead(topReadUrl) {
+  console.log(topReadUrl)
   var links = $('.link')
   links.each(function(index){
     var link = $('.link').eq(index)
     var baseUrl = link.children().first().next().text().split(':')
     var url = (baseUrl[1] + ':' + baseUrl[2]).trim()
+    // console.log(topReadUrl, url)
     if (topReadUrl === url){
       $(link).children().first().html('')
-      $(link).children().first().html(`<h3 id='top-read'>TopRead</h3>`)
+      $(link).children().first().html(`<h3 id='top-read'>Top Read</h3>`)
     }
   })
 }
