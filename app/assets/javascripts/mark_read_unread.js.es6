@@ -5,10 +5,10 @@ $( document ).ready(function(){
 function changeReadStatus() {
   var id = this.getAttribute('data-id')
   var readStatus = this.getAttribute('data-read-status')
-  console.log(typeof readStatus)
   if (readStatus === 'false'){
     var updateStatus = true
     markRead(id)
+    addToHotReads(id)
   }
   else {
     var updateStatus = false
@@ -20,6 +20,12 @@ function changeReadStatus() {
     data: {link: { read: updateStatus }},
   }).then()
     .fail(displayFailure);
+}
+
+function addToHotReads(id){
+  var url = $(`.change-read-button[data-id=${id}]`).parent().children().first().text()
+  $.post("https://sheltered-cliffs-80557.herokuapp.com/api/v1/reads", {read: {url: url}}).then((data) =>{
+})
 }
 
 function markRead(id) {
