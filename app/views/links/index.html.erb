@@ -1,0 +1,48 @@
+<a href='/logout' id='logout-link' align='right'>Sign out</a>
+
+<form>
+  URL: <input type="text" name="url" />
+  Title: <input type="text" name="title" />
+</form><br />
+<button id='add-link-button'>Add Link</button><br />
+<br />
+<hr />
+<input type="text" name="filter-input" placeholder="Filter Links"/>
+<button id='hide-unread-links-button'>Show Read</button>
+<button id='hide-read-links-button'>Show Unread</button>
+<hr />
+<div id='links'>
+  <% @links.each do |link| %>
+    <% if link.read == true %>
+      <div class='link read' align='center'>
+        <div class='hot_read'></div>
+        <p class='link-url'>
+          URL:<a href=<%=link.url %>><%= link.url %></a>
+        </p>
+         <p class='link-title'>
+           Title: <%= link.title %>
+         </p>
+         <p class='read-status'>
+           Read: <%= link.read %>
+         </p>
+        <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
+        <button class='change-read-button' data-read-status='<%= link.read %>'data-id=<%=link.id %>>Mark as Unread</button>
+      </div>
+    <% else %>
+     <div class='link unread' align='center'>
+       <div class='hot_read'></div>
+       <p>
+         URL:<a class='link-url'href =<%=link.url %>><%= link.url %></a>
+       </p>
+        <p>
+          Title: <%= link.title %>
+        </p>
+        <p>
+          Read: <%= link.read %>
+        </p>
+       <%= button_to "Edit #{link.title}", edit_link_path(link), method: :get %>
+       <button class='change-read-button' data-read-status='<%= link.read %>'data-id=<%=link.id %>>Mark as Read</button>
+     </div>
+    <% end %>
+   <% end %>
+</div>

@@ -9,9 +9,18 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def create
+    @link = current_user.links.new(link_params)
+    if @link.save
+      render json: @link
+    else
+      render json: @link.errors.full_messages, status: 200
+    end
+  end
+
   private
 
   def link_params
-    params.permit(:read)
+    params.require(:link).permit(:read, :url, :title)
   end
 end
