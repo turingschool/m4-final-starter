@@ -12,10 +12,21 @@ function isHotRead(reads){
     if (urls.includes(url)){
       $(link).children().first().html(`<h3>HOT READ!!<h3>`)
     }
-    isTopRead(Object.keys(reads)[0])
   })
-  var top_url = Object.keys(reads)[0]
+  isTopRead(Object.keys(reads)[0])
+}
 
+function isTopRead(topReadUrl) {
+  var links = $('.link')
+  links.each(function(index){
+    var link = $('.link').eq(index)
+    var baseUrl = link.children().first().next().text().split(':')
+    var url = (baseUrl[1] + ':' + baseUrl[2]).trim()
+    if (topReadUrl === url){
+      $(link).children().first().html('')
+      $(link).children().first().html(`<h3 id='top-read'>TopRead</h3>`)
+    }
+  })
 }
 function getHotReads(){
   $.ajax({
