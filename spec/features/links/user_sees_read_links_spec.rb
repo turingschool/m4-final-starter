@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'unread button' do
   context 'as a user on links#index' do
-    let!(:user) { create(:user) }
+    let(:user) { create(:user) }
 
     before do
       create_list(:link, 2, user: user)
@@ -10,7 +10,7 @@ describe 'unread button' do
       visit links_path
     end
 
-    describe 'when I click: unread links' do
+    describe 'when I click: read links' do
       it 'reveals only unread links' do
         click_on "Read Links"
 

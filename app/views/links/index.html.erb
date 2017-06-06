@@ -4,7 +4,9 @@
   <%= link_to 'Sign Out', logout_path, method: "delete" %>
 <% end %>
 
-<%= render partial: "form", locals: { type: "create" } %>
+<div class="create-link">
+  <%= render partial: "form", locals: { type: "create" } %>
+</div>
 
 <h3>Filters:</h3>
 By text: <input type="text" id="content-filter" placeholder="Filter by URL or Title"/>
