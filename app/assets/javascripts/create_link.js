@@ -2,7 +2,7 @@ $(document).ready(() => {
   new CreateLink
 })
 
-class CreateLinks {
+class CreateLink {
   constructor() {
     $("input[value='Add Link']").on("click", this.addLink.bind(this))
   }
@@ -32,7 +32,7 @@ class CreateLinks {
   function handleErrors() {
     $(".create-link p").text("")
     const titleContent = $("#link_title")[0].validationMessage
-    const urlContent = $("#link_url")[0].validationMessage
+    const urlContent   = $("#link_url")[0].validationMessage
 
     titleContent && $("#link_title").after(`<p>${titleContent}</p>`)
     urlContent && $("#link_url").after(`<p>${urlContent}</p>`)
