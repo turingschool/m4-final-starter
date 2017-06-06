@@ -10,10 +10,10 @@ function isHotRead(reads){
     var baseUrl = link.children().first().next().text().split(':')
     var url = (baseUrl[1] + ':' + baseUrl[2]).trim()
     if (urls.includes(url)){
-      $(link).children().first().html(`<h3>HOT READ!!<h3>`)
+      $(link).children().first().html(`<h2 class='hot-read'>HOT READ!!<h2>`)
     }
   })
-  isTopRead(reads)
+  isTopRead(urls[0])
 }
 
 function isTopRead(topReadUrl) {
@@ -23,10 +23,9 @@ function isTopRead(topReadUrl) {
     var link = $('.link').eq(index)
     var baseUrl = link.children().first().next().text().split(':')
     var url = (baseUrl[1] + ':' + baseUrl[2]).trim()
-    // console.log(topReadUrl, url)
     if (topReadUrl === url){
       $(link).children().first().html('')
-      $(link).children().first().html(`<h3 id='top-read'>Top Read</h3>`)
+      $(link).children().first().html(`<h2 class='top-read'>Top Read!!</h2>`)
     }
   })
 }
