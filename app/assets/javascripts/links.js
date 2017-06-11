@@ -16,6 +16,7 @@ function printLinks(data) {
   <div class="card card-default">
     <div class="col-md-3">
       <div class="link" id="${link.id}">
+        <p class="feeling-hot text-center"></p></br>
         <p class="title text-center">${link.title}</p><br>
         <p><a href="${link.url}" target="_blank" class="url-link">${link.url}</a></p><br>
         <p class="read-status">Read: ${link.read}</p></br>
@@ -60,29 +61,25 @@ function findHotUrls(){
 
 function addHotLinks(data){
   var hotUrls = getUrls(data);
-  // debugger
   $('.link').each(function(index, link){
-
-    var regUrl = $(link).find('a').text()
+    var regUrl = $(link).find('a').text();
     if (hotUrls[0] == regUrl){
-      $(link).find('.title').prepend('<p>-------Top!-------</p>')
+      $(link).find('.feeling-hot').text("Top!");
     } else if (hotUrls.includes(regUrl)){
-      $(link).find('.title').prepend('<p>-------Hot!-------</p>')
+      $(link).find('.feeling-hot').text("Hot!");
     } else {
-      $(link).find('.title').prepend('<p></p>')
+      $(link).find('.feeling-hot').text("");
     }
-  })
+  });
 }
 
 function getUrls(data) {
-  var urls = []
+  var urls = [];
   data.forEach(function (link){
-    urls.push(link.url)
+    urls.push(link.url);
   });
-  return urls
+  return urls;
 }
-
-
 
 function displayError(error){
   console.error(error);
