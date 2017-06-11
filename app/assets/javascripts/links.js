@@ -59,14 +59,18 @@ function findHotUrls(){
 }
 
 function addHotLinks(data){
-  var onlyUrls = getUrls(data);
+  var hotUrls = getUrls(data);
   // debugger
   $('.link').each(function(index, link){
 
-    var allRegUrls = $(link).find('a').text()
-    if 
-    console.log(regUrls)
-
+    var regUrl = $(link).find('a').text()
+    if (hotUrls[0] == regUrl){
+      $(link).find('.title').prepend('<p>-------Top!-------</p>')
+    } else if (hotUrls.includes(regUrl)){
+      $(link).find('.title').prepend('<p>-------Hot!-------</p>')
+    } else {
+      $(link).find('.title').prepend('<p></p>')
+    }
   })
 }
 
