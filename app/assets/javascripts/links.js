@@ -37,7 +37,7 @@ function printLinks(data) {
   } else {
     var markRead = `
     <div>
-      <button class="mark-as-read btn btn-default" data-id="${link.id}" >Mark as Read</button>
+      <button class="mark-as-read hot-read btn btn-default" data-id="${link.id}" data-url="${link.url}" >Mark as Read</button>
       <form action="/links/${link.id}/edit" method="GET">
         <input type="submit" value="Edit" class="btn btn-default"/>
       </form>
