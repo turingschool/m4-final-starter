@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'support/factory_girl'
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(
@@ -82,6 +83,13 @@ RSpec.configure do |config|
 
   config.append_after(:each) do
     DatabaseCleaner.clean
+  end
+
+  Shoulda::Matchers.configure do |config_shoulda|
+    config_shoulda.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
