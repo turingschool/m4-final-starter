@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Links" do
+RSpec.feature "Links", js: true do
   it "can edit a link" do
     user = create(:user, email_address: "me@email.com")
     link_1 = create(:link, user: user)
@@ -8,11 +8,10 @@ RSpec.feature "Links" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit links_path
+    save_and_open_page
+    expect(page).to have_content("Turing")
 
-    expect(page).to have_content("Title: Turing")
-    within("##{link_1.id}") do
-      click_link "Edit"
-    end
+    click_link "Edit"
 
     expect(current_path).to eq(edit_link_path(link_1))
 
