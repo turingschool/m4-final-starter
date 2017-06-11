@@ -6,7 +6,7 @@ function fetchAllLinks(){
   $.ajax({
     url: '/api/v1/links',
     method: 'GET'
-}).then(printLinks)
+}).then((data) => printLinks(data, findHotUrls()))
   .fail(displayError);
 }
 
@@ -48,6 +48,38 @@ function printLinks(data) {
   }
 });
 }
+
+function findHotUrls(){
+  $.ajax({
+    // url: 'https://frozen-mesa-43893.herokuapp.com/api/v1/links'
+    url: 'http://localhost:3001/api/v1/links',
+    method: 'GET'
+  }).then((data) => addHotLinks(data))
+    .fail(displayError);
+}
+
+function addHotLinks(data){
+  var onlyUrls = getUrls(data);
+  // debugger
+  $('.link').each(function(index, link){
+
+    var allRegUrls = $(link).find('a').text()
+    if 
+    console.log(regUrls)
+
+  })
+}
+
+function getUrls(data) {
+  var urls = []
+  data.forEach(function (link){
+    urls.push(link.url)
+  });
+  return urls
+}
+
+
+
 function displayError(error){
   console.error(error);
 }
