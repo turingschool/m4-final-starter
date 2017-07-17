@@ -1,5 +1,6 @@
 $('#new-link-form').submit(function(e){
   e.preventDefault
+  $('#ajax-errors').empty()
   url = $('#new-link-form #link_url').val()
   title = $('#new-link-form #link_title').val()
   $.ajax({
@@ -8,7 +9,7 @@ $('#new-link-form').submit(function(e){
     data: {url: url, title: title},
     success: function(data){
       if (data.errors) {
-        $('body').prepend(data.errors)
+        $('#ajax-errors').append(data.errors)
       } else {
         $('.links-section').append(makeLink(data))
       }
