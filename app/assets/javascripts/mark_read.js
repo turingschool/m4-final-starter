@@ -5,8 +5,8 @@ $( document ).ready(function(){
 function markAsRead(e) {
   e.preventDefault();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link.data('link-id');
+  var thisLink = $(this).closest('.link')
+  var linkId = thisLink.data("link-id");
 
   $.ajax({
     type: "PATCH",
