@@ -13,7 +13,7 @@ RSpec.feature "as a guest on the site"  do
     click_on "Submit"
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Welcome: user@gmail.com")
+    expect(page).to have_content("Logout")
     expect(page).to_not have_content("Signup")
   end
 end

@@ -8,6 +8,17 @@
 </head>
 <body>
 <div class="container">
+  <% flash.each do |name, msg| %>
+      <h4><%= content_tag :div, msg.html_safe, class: name %></h4>
+    <% end %>
+
+    <h2><%= link_to "Register", new_user_path%></h2>
+        <% if current_user %>
+        <li class="navbar-right"><%= link_to "Logout", logout_path %></li>
+      <% else %>
+        <li class="navbar-right"><%= link_to "Login", login_path %></li>
+      <% end %>
+
   <%= yield %>
 </div>
 
