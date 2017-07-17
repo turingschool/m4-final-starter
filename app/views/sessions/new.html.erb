@@ -1,12 +1,12 @@
-
-<% if !@current_user %>
+<h1>Log In or Sign Up</h1>
+<% if !current_user %>
   <%= form_for :session, url: login_path do |f| %>
-    <%= f.label :email, required: true %>
-    <%= f.text_field :email, placeholder: "Email" %>
-    <%= f.label :password, required: true %>
-    <%= f.password_field :password, placeholder: "Password"%>
+    <%= f.label :email%>
+    <%= f.text_field :email, placeholder: "Email", required: true  %>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Password", required: true%>
     <%= f.submit "Login" %>
-    Need an account? <%= link_to "Register for an account", new_user_path %>
+    Need an account? <%= link_to "Sign Up", new_user_path %>
   <% end %>
 <% else %>
   <%= link_to "Logout", logout_path, method: :delete %>
