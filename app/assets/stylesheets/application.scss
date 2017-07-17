@@ -19,10 +19,18 @@
    background: linear-gradient(to right, #ece9e6, #ffffff);
   }
 
+
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
  $success: #008000;
+
+
+ td {
+   padding-right: 20px;
+}​
+
 
  .success {
    color: $success;

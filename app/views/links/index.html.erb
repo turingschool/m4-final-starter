@@ -21,7 +21,7 @@
 
 <div class="form-3">
 <h3>My Links</h3>
-<table >
+<table>
   <thread>
   <tr>
     <th>URL</th>
@@ -33,14 +33,16 @@
 
     <% current_user.links.each do |link| %>
     <% if link.read %>
-    <tr>
+    <tr class="row">
       <td class="link.url"><%=link.url%>
       <td class="link.title"><%=link.title%>
           <td class="link.title"><%= link_to "Mark as Unread", links_path(link, read: false), method: :patch %>
+            <td><%= link_to "Edit", edit_link_path(link) %></td>
             <%else %>
             <td class="link.url"><%=link.url%>
             <td class="link.title"><%=link.title%>
                 <td class="link.title"><%= link_to "Mark as Unread", links_path(link, read: true), method: :patch %>
+                  <td><%= link_to "Edit", edit_link_path(link) %></td>
 </tr>
     <%end%>
     <%end%>

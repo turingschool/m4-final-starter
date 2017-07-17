@@ -14,8 +14,7 @@ class LinksController < ApplicationController
     link = Link.new(link_params)
     link.user = current_user
 
-    if link.url
-      link.save
+    if link.save
       redirect_to links_path
     else
       flash[:error] = "Link is not valid"
@@ -26,17 +25,17 @@ end
 def update
     link = Link.find(params[:id])
 
-    if params[:read]
-      link.read = !link.read
-      link.save
-      redirect_to links_path
-    elsif link_params[:url]
-      link.update(link_params)
+    if link.update(link_params)
+      flash[:success] = "You successfully updated your link"
       redirect_to links_path
     else
-      flash[:error] = "Your link is not valid."
+      flash[:error] = "invalid link"
       redirect_to edit_link_path
     end
+  end
+
+  def edit
+    @link = Link.find(params[:id])
   end
 
     def link_params
