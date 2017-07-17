@@ -13,12 +13,13 @@ class LinksController < ApplicationController
   def create
     link = Link.new(link_params)
     link.user = current_user
+
     if link.url
       link.save
       redirect_to links_path
     else
       flash[:error] = "Link is not valid"
-      redirect_to link_path
+      redirect_to links_path
     end
 end
 

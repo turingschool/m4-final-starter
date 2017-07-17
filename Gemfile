@@ -17,6 +17,7 @@ gem 'responders'
 gem 'awesome_print'
 gem 'sprockets-es6'
 gem 'bcrypt', '~> 3.1.7'
+gem 'valid_url'
 
 # gem 'unicorn'
 
