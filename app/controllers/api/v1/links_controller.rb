@@ -9,9 +9,20 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def create
+    link = current_user.Link.new(new_link_params)
+    if link.save
+      render json: user
+    end
+  end
+
   private
 
   def link_params
     params.permit(:read)
+  end
+
+  def new_link_params
+    params.require(:link).permit(:URL, :title)
   end
 end
