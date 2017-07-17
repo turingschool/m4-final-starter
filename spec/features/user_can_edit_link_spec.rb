@@ -10,7 +10,7 @@ RSpec.describe "User can edit link", :js => :true do
     fill_in('Title', with: 'change')
     fill_in('URL', with: 'http://www.yahoo.com')
     click_on('save')
-    
+    wait_until { find(".link").text.should == 'change'}
     expect(page).to have_content('change')
     expect(page).to have_content('http://www.yahoo.com')
   end
