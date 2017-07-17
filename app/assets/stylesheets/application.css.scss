@@ -14,7 +14,7 @@
  *= require_self
  */
 
- fieldset { 
+ fieldset {
      display: inline-block;
      margin-left: 2px;
      margin-right: 2px;
@@ -23,4 +23,12 @@
      padding-left: 0.75em;
      padding-right: 0.75em;
      border: 2px groove (internal value);
+ }
+
+ a.button {
+     -webkit-appearance: button;
+     -moz-appearance: button;
+     appearance: button;
+
+     color: -webkit-link;
  }
