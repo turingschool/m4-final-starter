@@ -5,9 +5,7 @@ $( document ).ready(function(){
 function markAsRead(e) {
   e.preventDefault();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link.data('link-id');
-
+  var linkId = this.dataset.id
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
