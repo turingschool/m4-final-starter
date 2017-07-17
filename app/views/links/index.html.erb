@@ -1,3 +1,11 @@
 <% if current_user %>
   <p><%= link_to 'Log Out', login_path, method: :delete %></p>
 <% end %>
+
+<div>
+  <form>
+    URL:<input type="text" name="url">
+    Title:<input type="text" name="title">
+    <input type="submit" value="Add Link">
+  </form>
+</div>
