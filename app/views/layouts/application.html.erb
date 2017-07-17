@@ -15,6 +15,12 @@
   <% end %>
     </div>
   <%= yield %>
+
+    <br>
+    <% if current_user %>
+      <%= link_to "Sign Out", logout_path, method: :delete %>
+    <% end %>
+
 </div>
 
 </body>
