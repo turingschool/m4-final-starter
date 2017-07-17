@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfully logged in as #{@user.email}"
       redirect_to root_path
     else
-      flash[:failure] = @user.errors.full_messages
+      flash[:failure] = "Login Unsuccessful"
       redirect_to new_session_path
     end
   end

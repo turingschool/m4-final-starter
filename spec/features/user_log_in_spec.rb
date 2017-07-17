@@ -28,7 +28,43 @@ RSpec.describe 'User log in process' do
       click_on 'Log In'
 
       expect(current_path).to eq(new_session_path)
-      expect(page).to have_content("Email can't be blank")
+      expect(page).to have_content('Login Unsuccessful')
+    end
+
+    scenario 'password is blank' do
+      user = create(:user)
+
+      visit new_session_path
+
+      fill_in('session[email]', with: user.email)
+      click_on 'Log In'
+
+      expect(current_path).to eq(new_session_path)
+      expect(page).to have_content('Login Unsuccessful')
+    end
+
+    scenario "user doesn't exist" do
+      visit new_session_path
+
+      fill_in('session[email]', with: 'bademail@test.com')
+      fill_in('session[password]', with: 'password')
+      click_on 'Log In'
+
+      expect(current_path).to eq(new_session_path)
+      expect(page).to have_content('Login Unsuccessful')
+    end
+
+    scenario 'wrong password' do
+      user = create(:user)
+
+      visit new_session_path
+
+      fill_in('session[email]', with: user.email)
+      fill_in('session[password]', with: 'badpassword')
+      click_on 'Log In'
+
+      expect(current_path).to eq(new_session_path)
+      expect(page).to have_content('Login Unsuccessful')
     end
   end
 end
