@@ -6,31 +6,25 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # require 'pry'; binding.pry
-
     params[:user].each do |input|
       if params[:user][input].empty?
-        # flash[:failure] += "#{input} cannot be blank"
         flash[:failure] = "#{input} cannot be blank"
-        render :new
       end
     end
 
-    if @user.save
+    if params[:user][:password] != params[:user][:password_confirmation]
+      flash.now[:failure] = "Password and Password Confirmation must match"
+      render :new
+
+    elsif User.find_by(email: params[:user][:email])
+      flash.now[:failure] = "Email already taken"
+      render :new
+
+    elsif @user.save
       flash[:sucess] = "Account Created!"
       session[:user_id] = @user.id
       redirect_to links_path
-
-
-    elsif User.find_by(email: params[:email])
-      flash[:failure] = "Email already taken"
-      render :new
-
-    elsif params[:user][:password] != params[:user][:password_confirmation]
-      flash[:failure] = "Password and Password Confirmation must match"
-      render :new
     end
-
   end
 
   private
