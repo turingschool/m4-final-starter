@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 
   def check_login
-    render "sessions/new" unless current_user || request.path == "/users/new"
+    render "sessions/new" unless current_user || request.path[0..5] == "/users"
   end
 
 end

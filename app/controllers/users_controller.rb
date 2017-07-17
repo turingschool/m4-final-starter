@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
     params[:user].each do |input|
       if params[:user][input].empty?
+        # flash[:failure] += "#{input} cannot be blank"
         flash[:failure] = "#{input} cannot be blank"
         render :new
       end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:sucess] = "Account Created!"
+      session[:user_id] = @user.id
       redirect_to links_path
 
 
