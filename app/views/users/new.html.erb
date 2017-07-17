@@ -1,0 +1,8 @@
+<h1>Register a new account</h1>
+
+<%= form_for :user, url: '/users' do |f| %>
+  Email: <%= f.text_field :email, required: true %>
+  Password: <%= f.password_field :password, required: true %>
+  Password confirmation: <%= f.password_field :password_confirmation, required: true %>
+  <%= f.submit "Submit" %>
+<% end %>
