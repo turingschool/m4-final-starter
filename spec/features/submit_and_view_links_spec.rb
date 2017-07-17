@@ -7,7 +7,7 @@ RSpec.describe "Logged in user can", :js => :true do
     url = 'https://www.google.com'
     visit '/'
     expect(page).to have_current_path('/')
-    fill_in('link[URL]', with: url)
+    fill_in('link[url]', with: url)
     fill_in('link[title]', with: 'test link')
     click_on('Add Link')
     expect(page).to have_content(url)
