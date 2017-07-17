@@ -5,10 +5,11 @@
 <% end %>
 
 <hr>
-<div class="all_links">
+<div class="my_links">
   <p><% @links.each do |link| %>
-    <%= link.url %><br>
-    <%= link.title %><br>
+    Title: <%= link.title %><br>
+    URL: <%= link.url %><br>
+    Read?: <%= link.read %><br>
     <br><br>
     <% end %>
 

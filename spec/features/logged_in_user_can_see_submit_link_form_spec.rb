@@ -10,6 +10,8 @@ RSpec.feature "as an authenticated user" do
   end
   scenario "i can see a form to submit a link" do
     expect(current_path).to eq(root_path)
+    expect(page).to have_content("Welcome: #{@user.email}")
+    expect(page).to have_content("Signout")
 
     expect(page).to have_content("URL")
     expect(page).to have_content("Title")
