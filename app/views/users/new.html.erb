@@ -1,8 +1,18 @@
+<% if @user.errors.any? %>
+<div>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <div>
   <h1>Sign Up!</h1>
 </div>
 
-<div>
+
   <%= form_for @user do |f| %>
     <%= f.label :email  %>
     <%= f.text_field :email, placeholder: 'Email' %>
