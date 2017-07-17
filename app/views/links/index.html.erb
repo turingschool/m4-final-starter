@@ -6,12 +6,16 @@
 
 <hr>
 <div class="my_links">
-  <p><% @links.each do |link| %>
-    Title: <%= link.title %><br>
-    URL: <%= link.url %><br>
-    Read?: <%= link.read %><br>
-    <br><br>
-    <% end %>
+  <fieldset>
+    <p>
+      <% @links.each do |link| %>
+        Title: <%= link.title %><br>
+        URL: <%= link.url %><br>
+        Read?: <%= link.read %><br>
+        <br><br>
+      <% end %>
+    </p>
+  </fieldset>
 
   </p>
 </div>

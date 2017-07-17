@@ -4,4 +4,8 @@ FactoryGirl.define do
     password "some_password"
     password_confirmation "some_password"
   end
+  factory :link do
+    url "http://YouTube.com"
+    title "YouTube"
+  end
 end
