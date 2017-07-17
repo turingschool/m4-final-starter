@@ -2,7 +2,7 @@
 
 <h1>Welcome to links index, <%= current_user.email %>!</h1>
 
-<div class="form_field">
+<div class="link_form">
   <%= form_for @link do |f| %>
     <%= f.label :url %>
     <%= f.text_field :url %>
