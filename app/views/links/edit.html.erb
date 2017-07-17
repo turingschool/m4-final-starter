@@ -1,0 +1,20 @@
+<div class="form-2">
+<h1><span class="log-in">Edit Link</span></h1>
+
+<%= form_for(@link, url: link_path(@link), html: {multipart: true}, method: :put) do |f| %>
+
+  <p class="float">
+    <%= f.label :url %>
+    <%= f.text_field :url%>
+  </p>
+
+  <p class="float">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p class="clearfix">
+    <%= f.submit 'Submit' %>
+  </p>
+  <% end %>
+</div>

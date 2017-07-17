@@ -2,9 +2,18 @@
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
+require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'shoulda/matchers'
+
+Shoulda::Matchers.configure do |config|
+config.integrate do |with|
+with.test_framework :rspec
+with.library :rails
+end
+end
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(

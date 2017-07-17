@@ -1,0 +1,52 @@
+<div class="form-2">
+<h1><span class="log-in">Add a new Link</span></h1>
+
+<%= form_for (@add_link) do |f| %>
+
+  <p class="float">
+    <%= f.label :url %>
+    <%= f.text_field :url, placeholder: "url" %>
+  </p>
+
+  <p class="float">
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "title" %>
+  </p>
+
+  <p class="clearfix">
+    <%= f.submit 'Submit' %>
+  </p>
+  <% end %>
+</div>
+
+<div class="form-3">
+  <h3>Search</h3>
+  <input type="text" class="search">
+
+<h3>My Links</h3>
+<table>
+  <thread>
+  <tr>
+    <th>URL</th>
+    <th>Title</th>
+    <th>Read Status</th>
+  </tr>
+</thread>
+<tbody>
+
+    <% current_user.links.each do |link| %>
+
+    <tr class="link" data-link-id=<%=link.id%>>
+
+
+            <td class="link-url" ><%=link.url%>
+            <td class="link-title"><%=link.title%>
+              <td class="link-unread"><%=link.read%>
+                  <td ><button class="mark-as-read"> Mark as read</button></td>
+                  <td><%= link_to "Edit", edit_link_path(link) %></td>
+</tr>
+
+    <%end%>
+</tbody
+</table>
+</div>

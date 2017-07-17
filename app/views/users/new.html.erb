@@ -1,0 +1,27 @@
+<div class="form-2">
+<h1><span class="log-in">Create A New Account</span></h1>
+
+
+<%= form_for(@user) do |f| %>
+
+  <p class="float">
+    <%= f.label :email %>
+    <%= f.text_field :email, placeholder: "email" %>
+  </p>
+
+  <p class="float">
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Password" %>
+  </p>
+
+  <p class="float">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "Password confirmation" %>
+  </p>
+
+  <p class="clearfix">
+    <%= f.submit 'Submit' %>
+  </p>
+  <% end %>
+
+</div>
