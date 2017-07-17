@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "user can sign in" do
-  scenario "unauthenticated user can " do
+  scenario "unauthenticated user can register" do
 
     visit "/"
     expect(current_path).to eq("/signup")
