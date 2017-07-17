@@ -19,6 +19,7 @@
         null,
         1,
         1,
+        1,
         null
       ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/application_record.rb": [
@@ -44,11 +45,11 @@
         1,
         null,
         1,
-        21,
+        25,
         null,
         null,
         1,
-        6,
+        8,
         null,
         null
       ],
@@ -83,21 +84,24 @@
         null,
         null,
         1,
-        2,
-        2,
+        3,
+        3,
         1,
         1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        null,
         1,
         2,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        7,
         null,
         null
       ],
@@ -126,6 +130,6 @@
         0
       ]
     },
-    "timestamp": 1500310697
+    "timestamp": 1500318035
   }
 }
