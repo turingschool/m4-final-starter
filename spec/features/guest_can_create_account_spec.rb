@@ -26,7 +26,7 @@ describe "guest user" do
     click_on "Register"
 
     expect(current_path).to eq(new_user_path)
-    expect(page).to have_content("You must enter an email")
+    expect(page).to have_content("Email can't be blank")
   end
 
   it "cannot create account without password" do
@@ -36,7 +36,7 @@ describe "guest user" do
     click_on "Register"
 
     expect(current_path).to eq(new_user_path)
-    expect(page).to have_content("You must enter an password and password confirmation")
+    expect(page).to have_content("Password can't be blank")
   end
 
   it "cannot create account without matching password and password confirmation" do
@@ -48,6 +48,6 @@ describe "guest user" do
     click_on "Register"
 
     expect(current_path).to eq(new_user_path)
-    expect(page).to have_content("Password and password confirmation do not match")
+    expect(page).to have_content("Password confirmation doesn't match Password")
   end
 end
