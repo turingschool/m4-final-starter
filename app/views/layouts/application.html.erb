@@ -9,8 +9,8 @@
 <body>
 <div class="container">
    <% flash.each do |type, message| %>
-    <div class="alert alert-<%= type %>">   
-    <%= sanitize(msg) %>
+    <div class="alert alert-<%= type %>">
+    <%= sanitize(message) %>
     </div>
   <% end %>
     </div>
