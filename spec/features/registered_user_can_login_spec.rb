@@ -11,6 +11,7 @@ describe "registerd user" do
     click_on "Log In"
 
     expect(current_path).to eq(root_path)
+    expect(page).to have_content("Sign Out")
     expect(page).to have_content("Successfully signed in!")
   end
 

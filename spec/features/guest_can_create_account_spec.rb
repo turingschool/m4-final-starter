@@ -14,8 +14,8 @@ describe "guest user" do
     click_on "Register"
 
     expect(current_path).to eq(root_path)
-    # expect(page).to_not have_content("Sign Up")
-    # expect(page).to have_content("Sign Out")
+    expect(page).to_not have_content("Sign Up")
+    expect(page).to have_content("Sign Out")
   end
 
   it "cannot create account without email" do
