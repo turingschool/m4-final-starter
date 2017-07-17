@@ -37,7 +37,7 @@ function Link(link) {
       <p>Title: ${this.title}</p>
       <p>URL:<a href="${this.url}"> ${this.url}</a></p>
       <p>Read?: ${this.read}</p>
-      <input type="button" value="Mark as Read">
+      <input type="button" class="mark-as-read" value="Mark as Read">
       <a href="/links/${this.id}/edit" class="button">Edit</a>
     </fieldset>`
   )}
