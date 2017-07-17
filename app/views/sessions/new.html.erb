@@ -1,0 +1,10 @@
+<%= form_for :session, url: login_path do |f| %>
+  <%= f.label :email, required: true %>
+  <%= f.text_field :email, placeholder: "Email" %>
+  <%= f.label :password, required: true %>
+  <%= f.password_field :password, placeholder: "Password"%>
+  <%= f.submit "Login" %>
+<% end %>
+
+
+Need an account? <%= link_to "Register for an account", new_user_path %>
