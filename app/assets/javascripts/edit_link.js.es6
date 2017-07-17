@@ -1,7 +1,7 @@
 $('.links-section').on('click', '.edit-button', function(){
-  let id = $(this).parent().data('linkId')
-  let title = $(this).siblings('h3.title').data('title')
-  let url = $(this).siblings('h3.url').data('url')
+  var id = $(this).parent().data('linkId')
+  var title = $(this).siblings('h3.title').data('title')
+  var url = $(this).siblings('h3.url').data('url')
   parent = $(this).parent()
   $(this).parent().append(saveButton)
   addEditForm(url, title, parent)
@@ -23,9 +23,9 @@ function addEditForm(url, title, parent){
 }
 
 $('.links-section').on('click', '.save-button', function (e){
-  let  id = $(this).parent().data('linkId')
-  let title = $(this).siblings("input[name='Title']").val()
-  let url = $(this).siblings("input[name='URL']").val()
+  var  id = $(this).parent().data('linkId')
+  var title = $(this).siblings("input[name='Title']").val()
+  var url = $(this).siblings("input[name='URL']").val()
   $.ajax({
    type: "PUT",
    url: '/api/v1/links/' + id,
