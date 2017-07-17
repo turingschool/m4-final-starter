@@ -1,0 +1,21 @@
+<div class="form-2">
+<h1><span class="log-in">Log in</span> or <span class="create-account"><%= link_to "Create Account", new_user_path, method: :get %></span></h1>
+
+<%=  form_for(:session, url: login_path) do |f| %>
+  <p class="float">
+    <%= f.label :email %>
+    <%= f.text_field :email, placeholder: "email" %>
+  </p>
+
+  <p class="float">
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Password" %>
+  </p>
+
+
+  <p class="clearfix">
+
+    <%= f.submit "Log In" %>
+  </p>
+  </div>
+<% end %>
