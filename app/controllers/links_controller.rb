@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_filter :authorize
 
   def index
-    @links = Link.all
+    @links = Link.where(user_id: params[current_user.id])
   end
 
   def create
