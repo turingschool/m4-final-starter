@@ -6,6 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'shoulda/matchers'
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(
