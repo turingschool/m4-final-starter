@@ -4,8 +4,10 @@ class LinksController < ApplicationController
     if current_user
       @links = Link.where(user: current_user)
       @add_link = Link.new
-      binding.pry
+    else
+      redirect_to login_path
     end
+
   end
 
   def create

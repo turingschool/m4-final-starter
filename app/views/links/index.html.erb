@@ -1,8 +1,7 @@
 <div class="form-2">
 <h1><span class="log-in">Add a new Link</span></h1>
 
-
-<%= form_for(@add_link) do |f| %>
+<%= form_for (@add_link) do |f| %>
 
   <p class="float">
     <%= f.label :url %>
@@ -11,12 +10,20 @@
 
   <p class="float">
     <%= f.label :title %>
-    <%= f.password_field :title, placeholder: "title" %>
+    <%= f.text_field :title, placeholder: "title" %>
   </p>
 
   <p class="clearfix">
     <%= f.submit 'Submit' %>
   </p>
   <% end %>
-
 </div>
+
+<h3>My Links</h3>
+<table >
+  <tr>
+    <th>URL</th>
+    <th>Title</th>
+    <th>Read Status</th>
+  </tr>
+</table>
