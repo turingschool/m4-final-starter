@@ -8,10 +8,11 @@
 <hr>
 <div class="links-section">
   <% current_user.links.each do |link| %>
-    <div class="link" id="<%= link.id %>">
-      <h4>Title: <%= link.title %></h4><br>
-      <h4>URL: <a href="<%= link.url %>"></a><%= link.url %></h4><br>
+    <div class="link" data-link-id="<%= link.id %>">
+      <h3 class="title">Title: <%= link.title %></h4><br>
+      <h3 class="url">URL: <a href="<%= link.url %>"><%= link.url %></a></h4><br>
       <h4>Read?: <%= link.read %></h4><br>
+      <button type="button">edit</button>
     </div>
   <% end %>
 </div>
