@@ -3,14 +3,3 @@
   Title: <%= f.text_field :title, required: true %><br><br>
   <%= f.submit "Add Link" %>
 <% end %>
-
-<hr>
-<div class="all_links">
-  <p><% @links.each do |link| %>
-    <%= link.url %><br>
-    <%= link.title %><br>
-    <br><br>
-    <% end %>
-
-  </p>
-</div>

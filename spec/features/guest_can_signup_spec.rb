@@ -15,6 +15,7 @@ RSpec.feature "as an authenticated user, when I visit '/'" do
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Welcome: janedoe@janedoe.com")
     expect(page).to_not have_content("Sign up by clicking here")
-    expect(page).to have_content("links index")
+    expect(page).to have_content("URL")
+    expect(page).to have_content("Title")
   end
 end
