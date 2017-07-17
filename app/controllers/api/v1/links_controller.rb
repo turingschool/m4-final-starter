@@ -6,7 +6,7 @@ class Api::V1::LinksController < ApplicationController
     if @link.update_attributes(link_params)
       render json: @link
     else
-      render json: @link.errors.full_messages, status: 500
+      render json: { errors: @link.errors.full_messages }
     end
   end
 
