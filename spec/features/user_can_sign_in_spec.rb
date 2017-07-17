@@ -4,11 +4,8 @@ RSpec.describe "user can sign in" do
   scenario "unauthenticated user can register" do
 
     visit "/"
-    expect(current_path).to eq("/signup")
+    expect(current_path).to eq("/login")
     expect(page).to have_content("Register for an account")
-    within('.link .read-status') do
-      expect(page).to have_text("false")
-    end
 
     fill_in "Email", with: "j@j.com"
     fill_in "Password", with: "password"
