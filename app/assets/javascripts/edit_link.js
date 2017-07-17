@@ -1,4 +1,4 @@
-$('.edit-button').on('click', function(){
+$('.links-section').on('click', '.edit-button', function(){
   let id = $(this).parent().data('linkId')
   let title = $(this).siblings('h3.title').data('title')
   let url = $(this).siblings('h3.url').data('url')
@@ -22,7 +22,7 @@ function addEditForm(url, title, parent){
   )
 }
 
-$('.link').on('click', '.save-button', function (e){
+$('.links-section').on('click', '.save-button', function (e){
   let  id = $(this).parent().data('linkId')
   let title = $(this).siblings("input[name='Title']").val()
   let url = $(this).siblings("input[name='URL']").val()

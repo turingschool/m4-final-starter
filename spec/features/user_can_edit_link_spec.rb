@@ -16,7 +16,7 @@ RSpec.describe "User can edit link", :js => :true do
     expect(page).to have_content('change')
     expect(page).to have_content('http://www.yahoo.com')
   end
-  
+
   scenario "When the user clicks on edit button they are unable to save with bad params" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -29,7 +29,7 @@ RSpec.describe "User can edit link", :js => :true do
       click_on('save')
     end
     wait_for_ajax
-    expect(page).to have_content('valid URL')
+    expect(page).to have_content('not a valid URL')
   end
 
 end

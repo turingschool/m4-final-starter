@@ -21,9 +21,9 @@ $('#new-link-form').submit(function(e){
 
 function makeLink(data){
   return `<div class="link" data-link-id="${data.id}">
-            <h4>Title: ${data.title}</h4><br>
-            <h4>URL: <a href="${data.url}">${data.url}</a></h4><br>
-            <h4>Read?: ${data.read}</h4><br>
-
+          <h3 class="title" data-title="${data.title}">Title: ${data.title}</h4><br>
+          <h3 class="url" data-url="${data.url}">URL: <a href="${data.url}">${data.url}</a></h4><br>
+          <h4>Read?: ${data.read}</h4><br>
+          <button type="button" class="edit-button">edit</button>
           </div>`
 }
