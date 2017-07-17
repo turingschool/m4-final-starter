@@ -6,14 +6,14 @@ RSpec.feature "as a user on the site"  do
 
     click_on "Edit"
     expect(current_path).to eq(link_path(link))
-    fill_in :user_email, with: "user@gmail.com"
-    fill_in :user_password, with: "123"
-    fill_in :user_password_confirmation, with: "123"
 
-    click_on "Submit"
+    fill_in "url[url]", with: "https://www.google.com/"
+    fill_in "title[title]", with: "google"
 
-    expect(current_path).to eq(root_path)
-    expect(page).to have_content("Logout")
-    expect(page).to_not have_content("Signup")
+    click_on "Edit Link"
+
+    expect(current_path).to eq(link_path)
+    expect(page).to have_content("https://www.google.com/")
+    expect(page).to have_content("google")
   end
 end
