@@ -2,20 +2,20 @@
   <p><%= link_to 'Log Out', login_path, method: :delete %></p>
 <% end %>
 
-<div>
+<div class="link_form">
   <form>
-    URL:<input type="text" name="url">
-    Title:<input type="text" name="title">
-    <input type="submit" value="Add Link">
+    URL:<input type="text" class="url" name="url">
+    Title:<input type="text" class="title" name="title">
+    <input type="submit" class="submit_link "value="Add Link">
   </form></br>
 </div>
 
 <div class="links">
   <% @links.each do |link| %>
   <fieldset>
-    <p>Title:<%= link.title %></p>
-    <p>URL:<%= link_to link.url, link.url %></p>
-    <p>Read?:<%= link.read %></p>
+    <p>Title: <%= link.title %></p>
+    <p>URL: <%= link_to link.url, link.url %></p>
+    <p>Read?: <%= link.read %></p>
     <input type="button" value="Mark as Read">
     <%= link_to "Edit", edit_link_path(link) %>
   </fieldset>
