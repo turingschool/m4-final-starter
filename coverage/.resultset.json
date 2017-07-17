@@ -1,0 +1,131 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/helpers/sessions_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/helpers/users_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/user.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/links_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        21,
+        null,
+        null,
+        1,
+        6,
+        null,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/sessions_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/users_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/link.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/api/v1/links_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1500310697
+  }
+}
