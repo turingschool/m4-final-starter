@@ -1,0 +1,17 @@
+<div class="">
+  <form id="new-link-form">
+    URL: <input type="text" name="link[url]" id="link_url" /><br>
+    Title: <input type="text" name="link[title]" id="link_title" /><br>
+    <input type="submit" value="Add Link" id="submit-link-button"/>
+</form>
+</div>
+<hr>
+<div class="links-section">
+  <% current_user.links.each do |link| %>
+    <div class="link" id="<%= link.id %>">
+      <h4>Title: <%= link.title %></h4><br>
+      <h4>URL: <a href="<%= link.url %>"></a><%= link.url %></h4><br>
+      <h4>Read?: <%= link.read %></h4><br>
+    </div>
+  <% end %>
+</div>

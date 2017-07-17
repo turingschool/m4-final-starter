@@ -3,7 +3,6 @@
 <head>
   <title>URLockBox</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
 
@@ -13,7 +12,7 @@
     Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
     <% else %>
     <!-- Possibley useful links if navbar is implemented -->
-    <% end %>
+  <% end %>
 
   </div>
 <div class="container">
@@ -23,5 +22,6 @@
   <%= yield %>
 </div>
 
+<%= javascript_include_tag 'application'%>
 </body>
 </html>
