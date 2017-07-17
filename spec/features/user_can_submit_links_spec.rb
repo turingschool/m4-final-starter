@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "user can submit a link" do
+RSpec.describe "user can submit a link", js: => :true do
   scenario "User can submit a url" do
 
     user = User.create(email: "j@j.com", password: "password")
