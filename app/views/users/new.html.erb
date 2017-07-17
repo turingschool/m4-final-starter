@@ -1,0 +1,20 @@
+<div>
+  <h1>Sign Up!</h1>
+</div>
+
+<div>
+  <%= form_for @user do |f| %>
+    <%= f.label :email  %>
+    <%= f.text_field :email, placeholder: 'Email' %>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: 'Password'%>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: 'Password Confirmation'%>
+
+    <%= f.submit 'Create Account' %>
+  <% end %>
+</div>
+
+<div>
+  <p>Already a user? <%= link_to "Log in by clicking here", login_path %></p>
+</div>
