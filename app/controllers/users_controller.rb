@@ -10,8 +10,9 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect_to root_path
       else
-        flash[:notice] = "Account Not Created"
-        redirect_to new_user_path
+        @user = user
+
+        render :new
       end
   end
 
