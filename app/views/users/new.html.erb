@@ -1,9 +1,9 @@
 <%= form_for @user do |f| %>
   <%= f.label :email %>
-  <%= f.text_field :email, placeholder: "Email" %>
+  <%= f.text_field :email, placeholder: "Email", required: true %>
   <%= f.label :password %>
-  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.password_field :password, placeholder: "Password", required: true%>
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", required: true %>
   <%= f.submit "Register" %>
 <% end %>

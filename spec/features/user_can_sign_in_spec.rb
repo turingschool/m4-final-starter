@@ -6,6 +6,8 @@ RSpec.describe "user can sign in" do
     visit "/"
     expect(current_path).to eq("/login")
     expect(page).to have_content("Register for an account")
+    click_on "Register for an account"
+    expec(current_path).to eq(new_user_path)
 
     fill_in "Email", with: "j@j.com"
     fill_in "Password", with: "password"
