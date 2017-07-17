@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
+      flash[:errors] = user.errors.map { |k,v| v  }
       redirect_to '/signup'
     end
   end
