@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      user.errors.map { |k,v| flash[key] =  v  }
+      user.errors.each { |k,v| flash[k] =  v  }
       redirect_to '/signup'
     end
   end

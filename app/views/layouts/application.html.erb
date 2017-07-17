@@ -17,9 +17,9 @@
 
   </div>
 <div class="container">
-  <% flash.each do |value| %>
+  <% flash.each do |key, value| %>
     <%= content_tag :div, value %>
-  <% end if flash[:errors]%>
+  <% end if flash%>
   <%= yield %>
 </div>
 
