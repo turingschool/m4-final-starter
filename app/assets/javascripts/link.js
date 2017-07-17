@@ -19,6 +19,8 @@ function Link(link) {
             link.appendLinkToPage()
                 $('input[name="title"]').val("")
                 $('input[name="url"]').val("")
+                $('.link_form').before('<span class="error">Link successfully created</span>')
+
           },
           error: function (request, status, error) {
               if (status === 'error') {
