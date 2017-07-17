@@ -13,10 +13,9 @@ RSpec.describe User do
     it { expect(user).to respond_to(:password_confirmation) }
   end
 
-  describe "ActiveModel validations" do
+  describe 'ActiveModel validations' do
     it { expect(user).to validate_presence_of(:email) }
     it { expect(user).to validate_uniqueness_of(:email) }
-    # it { expect(user).to validate_presence_of(:password) }
-    # it { expect(user).to validate_presence_of(:password_confirmation) }
+    it { expect(user).to validate_presence_of(:password_confirmation) }
   end
 end
