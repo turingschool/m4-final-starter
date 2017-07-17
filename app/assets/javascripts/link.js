@@ -19,6 +19,12 @@ function Link(link) {
             link.appendLinkToPage()
                 $('input[name="title"]').val("")
                 $('input[name="url"]').val("")
+          },
+          error: function (request, status, error) {
+              if (status === 'error') {
+                $('.error').remove()
+                $('.link_form').before('<span class="error">URL is invalid</span>')
+              }
           }
         })
   }
@@ -28,11 +34,10 @@ function Link(link) {
       `<fieldset>
       <p>Title: ${this.title}</p>
       <p>URL:<a href="${this.url}"> ${this.url}</a></p>
-      <p>Read?: ${link.read}</p>
+      <p>Read?: ${this.read}</p>
       <input type="button" value="Mark as Read">
       <a href="/links/${this.id}/edit" class="button">Edit</a>
     </fieldset>`
-
   )}
 
 }
