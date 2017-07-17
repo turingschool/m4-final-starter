@@ -13,7 +13,7 @@ RSpec.describe "user can submit a link" do
       expect(page).to have_content("Add Link")
     end
 
-    fill_in "URL:", with: "https://turing.io"
+    fill_in "Url", with: "https://turing.io"
     fill_in "Title", with: "Turing"
     click_on "Add Link"
     expect(page).to have_content "Title: Turing"
