@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       render :new
 
     elsif @user.save
-      flash[:sucess] = "Account Created!"
+      flash[:success] = "Account Created!"
       session[:user_id] = @user.id
       redirect_to links_path
     end
