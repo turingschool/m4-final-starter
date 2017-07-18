@@ -16,7 +16,7 @@
     <p>Title: <%= link.title %></p>
     <p>URL: <%= link_to link.url, link.url %></p>
     <p>Read?: <%= link.read %></p>
-    <input type="button" value="Mark as Read">
+    <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Read">
     <%= link_to "Edit", edit_link_path(link) %>
   </fieldset>
   <% end %>
