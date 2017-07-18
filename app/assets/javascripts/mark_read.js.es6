@@ -4,7 +4,6 @@ $( document ).ready(function(){
 
 function markAsRead(e) {
   e.preventDefault();
-
   var linkId = this.dataset.id
   $.ajax({
     type: "PATCH",
@@ -16,6 +15,7 @@ function markAsRead(e) {
 
 function updateLinkStatus(link) {
   $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
+  // const button = $('.mark-as-read')[0].dataset.id
 }
 
 function displayFailure(failureData){
