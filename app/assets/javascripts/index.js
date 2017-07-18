@@ -18,6 +18,7 @@ $(document).ready(function(){
       newLink.createLink()
     }
   })
+  $('#link-input').on('keyup', filterLinks)
 })
 
 function getLinkFromForm() {
@@ -28,4 +29,16 @@ function getLinkFromForm() {
       title: title,
       url: url,
     })
+}
+
+function filterLinks() {
+  const filter = this.value.toUpperCase()
+  const links = document.getElementsByClassName('link')
+
+  for(i = 0; i < links.length; i++) {
+    const linkTitle = links[i].innerText.replace(/\s/g, ' ').split(' ')[2]
+    const linkURL = links[i].innerText.replace(/\s/g, ' ').split(' ')[5]
+    const match = linkTitle.toUpperCase().indexOf(filter) > -1  || linkURL.toUpperCase().indexOf(filter) > -1
+    links[i].style.display = match ?  "" : "none"
   }
+}
