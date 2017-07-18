@@ -1,8 +1,8 @@
 $('#new-link-form').submit(function(e){
   e.preventDefault
   $('#ajax-errors').empty()
-  url = $('#new-link-form #link_url').val()
-  title = $('#new-link-form #link_title').val()
+  let url = $('#new-link-form #link_url').val()
+  let title = $('#new-link-form #link_title').val()
   $.ajax({
     type: "POST",
     url: '/api/v1/links',
@@ -11,7 +11,7 @@ $('#new-link-form').submit(function(e){
       if (data.errors) {
         $('#ajax-errors').append(data.errors)
       } else {
-        $('.links-section').append(makeLink(data))
+        $('.links-section').prepend(makeLink(data))
       }
     }
   })
