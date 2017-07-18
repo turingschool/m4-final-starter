@@ -10,14 +10,21 @@
   </form></br>
 </div>
 
+<div>
+  <h3>Filters:</h3>
+  By text: <input type="text" id='link-input' placeholder='Search for links..'>
+</div></br>
+
 <div class="links">
   <% @links.each do |link| %>
+  <div class="link">
   <fieldset>
-    <p>Title: <%= link.title %></p>
-    <p>URL: <%= link_to link.url, link.url %></p>
-    <p>Read?: <%= link.read %></p>
-    <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Read">
-    <%= link_to "Edit", edit_link_path(link) %>
-  </fieldset>
+      <p>Title: <%= link.title %></p>
+      <p>URL: <%= link_to link.url, link.url %></p>
+      <p>Read?: <%= link.read %></p>
+      <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Read">
+      <%= link_to "Edit", edit_link_path(link) %>
+</fieldset>
+</div>
   <% end %>
 </div>
