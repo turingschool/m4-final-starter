@@ -17,13 +17,18 @@
 <div class="links">
 
 <% @links.each do |link| %>
-  <div class="link">
+  <div class="link read-<%=link.read%>"  data-link-id="<%=link.id%>" >
     <ul>
-    <li>URL: <%= link_to link.url, link.url %></li>
-    <li>Title: <%= link.title %></li>
-    <li>Read?: <%= link.read %></li>
-    <%= button_to "Edit", edit_link_path(link), method: :get %>
-  </ul>
+      <li class="url" >URL: <%= link_to link.url, link.url %></li>
+      <li class="title" >Title: <%= link.title %></li>
+      <li class="read-status" >Read?: <%= link.read %></li>
+      <%= button_to "Edit", edit_link_path(link), method: :get %>
+      <% if link.read %>
+        <button class=mark-as-unread>Mark as Unread</button>
+      <% else %>
+        <button class=mark-as-read>Mark as Read</button>
+      <% end %>
+    </ul>
   </div>
 <% end %>
 

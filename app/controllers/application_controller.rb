@@ -4,15 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
-  before_action :check_login
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-
   def check_login
-    render "sessions/new" if !current_user  && request.path == "/" #|| request.path[0..5] == "/users" || "/login"
+    redirect_to login_path unless current_user
   end
 
 end
