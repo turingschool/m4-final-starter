@@ -8,6 +8,7 @@ function markAsRead(e) {
   var status = e.data
   var $link = $(this).parents('.link');
   var linkId = $link.data('link-id');
+  if (status) { postReadLink($link)  }
 
   $.ajax({
     type: "PATCH",
@@ -15,6 +16,14 @@ function markAsRead(e) {
     data: { read: status },
   }).then(updateLinkStatus)
     .fail(displayFailure);
+}
+
+function postReadLink($link) {
+  var url = $link.children().children('.url').text().slice(5)
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:2000/api/v1/reads?url=" + url,
+  })
 }
 
 function updateLinkStatus(link) {
