@@ -22,6 +22,7 @@
     <li>URL: <%= link_to link.url, link.url %></li>
     <li>Title: <%= link.title %></li>
     <li>Read?: <%= link.read %></li>
+    <%= button_to "Edit", edit_link_path(link), method: :get %>
   </ul>
   </div>
 <% end %>
