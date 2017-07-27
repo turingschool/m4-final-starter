@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_filter :check_login
 
   def index
     @link = Link.new
