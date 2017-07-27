@@ -21,13 +21,11 @@ function showAll() {
 
 function searchFilter() {
   let input = event.target.value.toLowerCase()
-
   let titles = document.querySelectorAll(".title")
   let urls = document.querySelectorAll(".url")
   for (let i = 0; i < titles.length; i++) {
-    let title = titles[i].innerHTML.toLowerCase()
-    let url = urls[i].innerHTML.toLowerCase()
-
+    let title = titles[i].innerText.toLowerCase().slice(7)
+    let url = urls[i].innerText.toLowerCase(5)
     if ((title.indexOf(input) > -1) || (url.indexOf(input) > -1) ) {
       titles[i].parentElement.parentElement.style.display = "";
     } else {
