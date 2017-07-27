@@ -1,4 +1,5 @@
 class Api::V1::LinksController < ApplicationController
+  protect_from_forgery except: [:create, :update]
 
   def create
     @link = Link.new(link_params)
