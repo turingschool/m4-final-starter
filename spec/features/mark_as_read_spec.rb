@@ -17,6 +17,9 @@ RSpec.describe "can mark links as read", :js => :true do
       expect(page).to have_text("true")
     end
 
+    within('.link' ) do
+      expect(page).to have_button("Mark as Unread")
+    end
   end
 
   scenario "Mark a link as unread" do
@@ -35,5 +38,8 @@ RSpec.describe "can mark links as read", :js => :true do
       expect(page).to have_text("false")
     end
 
+    within('.link' ) do
+      expect(page).to have_button("Mark as Read")
+    end
   end
 end
