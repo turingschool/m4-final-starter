@@ -24,6 +24,7 @@ function makeLink(data){
           <h3 class="title" data-title="${data.title}">Title: ${data.title}</h4><br>
           <h3 class="url" data-url="${data.url}">URL: <a href="${data.url}">${data.url}</a></h4><br>
           <h4>Read?: ${data.read}</h4><br>
+          <button type='button' class='mark-as-read'>Mark as Read</button>
           <button type="button" class="edit-button">edit</button>
           </div>`
 }

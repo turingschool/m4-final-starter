@@ -8,14 +8,14 @@ RSpec.describe "User can edit link", :js => :true do
     fill_in('link[url]', with: 'http://www.google.com')
     fill_in('link[title]', with: 'test link')
     click_on('Add Link')
-    click_on('edit')
-    within('.link') do
+    within('div.link') do
+      click_on('edit')
       fill_in('Title', with: 'change')
+
       fill_in('URL', with: 'http://www.yahoo.com')
       click_on('save')
     end
-    
-    visit '/'
+
     expect(page).to have_content('change')
     expect(page).to have_content('http://www.yahoo.com')
   end
