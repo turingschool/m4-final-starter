@@ -7,22 +7,6 @@ class LinksController < ApplicationController
     end
   end
 
-  def create
-    @link = Link.new(link_params)
-
-    respond_to do |format|
-      if @link.save
-        format.html { redirect_to root_path, notice: 'Link was successfully created.' }
-        format.json { render json: @link, status: :created }
-      else
-        format.html { render :new }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-
-
   def edit
     @link = Link.find(params[:id])
   end
