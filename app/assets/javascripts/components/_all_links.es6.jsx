@@ -23,25 +23,10 @@ class AllLinks extends React.Component {
         <Link
           link={link}
           handleDelete={this.handleDelete.bind(this, link.id)}
+          filterText={this.props.filterText}
           handleUpdate={this.onUpdate} />
         </div>
       ))
-      const LinksList = ({
-        data,
-        filter
-      }) => { const input = filter.toLowerCase()
-        const links = data
-        .map((link, i) => {
-          return (
-            <Link
-              id={link.id}
-              key={i}
-              info={link}
-              />
-          )
-        })
-      }
-
     return <div>{links}</div>
   }
 }

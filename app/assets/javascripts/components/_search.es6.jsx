@@ -1,15 +1,20 @@
 class Search extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this)
+  }
+
+  handleFilterTextInputChange(e) {
+    this.props.onFilterTextInput(e.target.value)
+  }
+
   render() {
-    const { filterVal, filterUpdate} = this.props
     return (
       <form>
         <input type='text'
-                ref='filterInput'
                 placeholder='Start typing to filter...'
-                value={filterVal}
-                onChange={() => {
-                  filterUpdate(this.refs.filterInput.value)
-                }}
+                value={this.props.filterText}
+                onChange={this.handleFilterTextInputChange}
                 />
       </form>
     )
