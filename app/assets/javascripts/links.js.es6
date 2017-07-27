@@ -19,11 +19,13 @@ function postLink(e) {
 function prependLink(data) {
   $('.links').prepend(
     `
-    <div class="link">
+    <div class="link read-false" data-link-id=${data['id']}>
     <ul>
-    <li>URL: <a href="${data['url']}">${data['url']}</a></li>
-    <li>Title: ${data['title']}</li>
-    <li>Read?: false</li>
+    <li class="url">URL: <a href="${data['url']}">${data['url']}</a></li>
+    <li class="title">Title: ${data['title']}</li>
+    <li class="read-status">Read?: false</li>
+    <form class="button_to" method="get" action="/links/${data['id']}/edit"><input type="submit" value="Edit"></form>
+    <button class="mark-as-read">Mark as Read</button>
   </ul>
   </div>
     `)
