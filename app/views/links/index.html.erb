@@ -24,9 +24,9 @@
       <li class="read-status" >Read?: <%= link.read %></li>
       <%= button_to "Edit", edit_link_path(link), method: :get %>
       <% if link.read %>
-        <button class=mark-as-unread>Mark as Unread</button>
+        <button class="mark-as-unread">Mark as Unread</button>
       <% else %>
-        <button class=mark-as-read>Mark as Read</button>
+        <button class="mark-as-read">Mark as Read</button>
       <% end %>
     </ul>
   </div>
