@@ -1,0 +1,13 @@
+
+
+.link {
+  display: inline-block;
+  border: 3px solid rgb(52, 144, 252);
+  border-radius: 10px;
+}
+
+
+.read-true {
+  background-color: rgb(108, 149, 193);
+  border-color: rgb(136, 78, 78)
+}
