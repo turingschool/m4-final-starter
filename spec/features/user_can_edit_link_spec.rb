@@ -15,7 +15,6 @@ RSpec.describe "User can edit link", :js => :true do
       click_on('save')
     end
 
-    # visit '/'
     expect(page).to have_content('change')
     expect(page).to have_content('http://www.yahoo.com')
   end
