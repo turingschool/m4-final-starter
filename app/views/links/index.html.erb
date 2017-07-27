@@ -25,7 +25,7 @@
     <div class="link" data-id="<%=link.id %>">
   <% end %>
   <fieldset>
-      <p>Title: <%= link.title %></p>
+      <p class="link-title">Title: <%= link.title %></p>
       <p>URL: <%= link_to link.url, link.url %></p>
       <p class="read-status" data-link-id="<%=link.id%>">Read?: <%= link.read %></p>
       <% if link.read %>
