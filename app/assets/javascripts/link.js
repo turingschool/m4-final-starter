@@ -7,7 +7,7 @@ function Link(link) {
   Link.prototype.createLink = function() {
         $.ajax({
           type: "POST",
-          url: `/links`,
+          url: `/api/v1/links`,
           dataType: "json",
           data: { link: {
                   title: this.title,
