@@ -1,3 +1,38 @@
 <% if current_user %>
   <p><%= link_to 'Log Out', login_path, method: :delete %></p>
 <% end %>
+
+<div class="link_form">
+  <form>
+    URL:<input type="text" class="url" name="url">
+    Title:<input type="text" class="title" name="title">
+    <input type="submit" class="submit_link "value="Add Link">
+  </form></br>
+</div>
+
+<div>
+  <h3>Filters:</h3>
+  By text: <input type="text" id='link-input' placeholder='Search for links..'>
+</div></br>
+
+<div class="links">
+  <% @links.each do |link| %>
+  <% if link.read %>
+    <div class="link read" data-id="<%=link.id %>">
+  <% else %>
+    <div class="link" data-id="<%=link.id %>">
+  <% end %>
+  <fieldset>
+      <p>Title: <%= link.title %></p>
+      <p>URL: <%= link_to link.url, link.url %></p>
+      <p class="read-status" data-link-id="<%=link.id%>">Read?: <%= link.read %></p>
+      <% if link.read %>
+        <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Unread">
+      <% else %>
+        <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Read">
+      <% end %>
+      <%= link_to "Edit", edit_link_path(link) %>
+</fieldset>
+</div>
+  <% end %>
+</div>
