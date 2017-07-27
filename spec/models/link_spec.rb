@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Link, type: :model do
   describe 'relationships' do
     it "link belongs to a user" do
       user = create(:user)

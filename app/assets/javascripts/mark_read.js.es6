@@ -33,6 +33,7 @@ function updateLinkStatus(link) {
     status.text('Read?: true')
     button.prop('value', 'Mark as Unread')
     linkDiv.addClass('read')
+    postHotReads(link)
   }
   else if (button.prop('value') === 'Mark as Unread') {
     status.text('Read?: false')
@@ -40,6 +41,19 @@ function updateLinkStatus(link) {
     linkDiv.removeClass('read')
   }
 }
+
+function postHotReads(link) {
+  $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3001/api/v1/links',
+    data: {
+            link:
+              { url: link.url }
+          }
+  }).done(console.log('Success'))
+  .fail(displayFailure);
+}
+
 
 function displayFailure(failureData){
   console.log("FAILED attempt to update Link: " + failureData.responseText);

@@ -33,11 +33,12 @@ function Link(link) {
 
   Link.prototype.appendLinkToPage = function() {
     $('.links').append(
-      `<fieldset>
+      `<div class="link" data-id="${this.id}">
+      <fieldset>
       <p>Title: ${this.title}</p>
       <p>URL:<a href="${this.url}"> ${this.url}</a></p>
-      <p>Read?: ${this.read}</p>
-      <input type="button" class="mark-as-read" value="Mark as Read">
+      <p class="read-status" data-link-id="${this.id}">Read?: ${this.read}</p>
+      <input type="button" class="mark-as-read" data-id="${this.id}" value="Mark as Read">
       <a href="/links/${this.id}/edit" class="button">Edit</a>
     </fieldset>`
   )}
