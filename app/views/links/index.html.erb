@@ -11,11 +11,17 @@
     <%= f.submit "Add Link", class: "add-link" %>
   <% end %>
 </div>
+<br>
 
-
-<button id="show-read">Only Read Links</button>
-<button id="show-unread">Only Unread Links</button>
-<button id="show-all">Show All Links</button>
+<div class="filter">
+  <button id="show-read">Only Read Links</button>
+  <button id="show-unread">Only Unread Links</button>
+  <button id="show-all">Show All Links</button>
+  <br>
+  <br>
+  <label for="search-filter">Search Links</label>
+  <input id="search-filter" type="text" placeholder="By Title or Url" onkeyup="searchFilter()">
+</div>
 
 <br>
 
