@@ -22,7 +22,7 @@ function markAsRead(e) {
 
   $.ajax({
     type: "PATCH",
-    url: "/api/v1/links/" + linkId,
+    url: "https://bs-hot-reads.herokuapp.com/api/v1/links/" + linkId,
     data: {
             link:
               { read: readStatus },
