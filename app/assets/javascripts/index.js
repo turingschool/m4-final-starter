@@ -18,7 +18,9 @@ $(document).ready(function(){
       newLink.createLink()
     }
   })
-  $('#link-input').on('keyup', filterLinks)
+  $('#link-input').on('keyup', filterTypeLinks)
+  $('#filter-read').on('click', filterReadLinks)
+  $('#filter-unread').on('click', filterUnreadLinks)
 })
 
 function getLinkFromForm() {
@@ -31,7 +33,7 @@ function getLinkFromForm() {
     })
 }
 
-function filterLinks() {
+function filterTypeLinks() {
   const filter = this.value.toUpperCase()
   const links = document.getElementsByClassName('link')
 
@@ -39,6 +41,26 @@ function filterLinks() {
     const linkTitle = links[i].innerText.replace(/\s/g, ' ').split(' ')[2]
     const linkURL = links[i].innerText.replace(/\s/g, ' ').split(' ')[5]
     const match = linkTitle.toUpperCase().indexOf(filter) > -1  || linkURL.toUpperCase().indexOf(filter) > -1
+    links[i].style.display = match ?  "" : "none"
+  }
+}
+
+function filterReadLinks() {
+  const links = document.getElementsByClassName('link')
+
+  for(i = 0; i < links.length; i++) {
+    const readStatus = links[i].innerText.replace(/\s/g, ' ').split(' ')[8]
+    const match = readStatus.toUpperCase().indexOf('TRUE') > -1
+    links[i].style.display = match ?  "" : "none"
+  }
+}
+
+function filterUnreadLinks() {
+  const links = document.getElementsByClassName('link')
+
+  for(i = 0; i < links.length; i++) {
+    const unreadStatus = links[i].innerText.replace(/\s/g, ' ').split(' ')[8]
+    const match = unreadStatus.toUpperCase().indexOf('FALSE') > -1
     links[i].style.display = match ?  "" : "none"
   }
 }
