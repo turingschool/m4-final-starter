@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  resources :links, only: [:index, :create]
-
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :links, only: [:update]
+      resources :links, only: [:index, :create, :update, :destroy]
     end
   end
 end
