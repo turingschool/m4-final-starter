@@ -1,11 +1,11 @@
 class Api::V1::LinksController < ApplicationController
 
   def update
-    @link = Link.find(params[:id])
-    if @link.update_attributes(link_params)
-      render json: @link
+    link = Link.find(params[:id])
+    if link.update_attributes(link_params)
+      render json: link
     else
-      render json: { errors: @link.errors.full_messages }
+      render json: { errors: link.errors.full_messages }
     end
   end
 

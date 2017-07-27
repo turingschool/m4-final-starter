@@ -11,6 +11,7 @@ RSpec.describe "User can edit link", :js => :true do
     within('div.link') do
       click_on('edit')
       fill_in('Title', with: 'change')
+
       fill_in('URL', with: 'http://www.yahoo.com')
       click_on('save')
     end
