@@ -1,0 +1,46 @@
+<p class="errors">
+
+<h1>Welcome to links index, <%= current_user.email %>!</h1>
+
+<div class="link_form">
+  <%= form_for @link do |f| %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit "Add Link", class: "add-link" %>
+  <% end %>
+</div>
+<br>
+
+<div class="filter">
+  <button id="show-read">Only Read Links</button>
+  <button id="show-unread">Only Unread Links</button>
+  <button id="show-all">Show All Links</button>
+  <br>
+  <br>
+  <label for="search-filter">Search Links</label>
+  <input id="search-filter" type="text" placeholder="By Title or Url" onkeyup="searchFilter()">
+</div>
+
+<br>
+
+<div class="links">
+
+<% @links.each do |link| %>
+  <div class="link read-<%=link.read%>"  data-link-id="<%=link.id%>" >
+    <ul>
+      <li class="url" >URL: <%= link_to link.url, link.url %></li>
+      <li class="title" >Title: <%= link.title %></li>
+      <li class="read-status" >Read?: <%= link.read %></li>
+      <%= button_to "Edit", edit_link_path(link), method: :get %>
+      <% if link.read %>
+        <button class=mark-as-unread>Mark as Unread</button>
+      <% else %>
+        <button class=mark-as-read>Mark as Read</button>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+</div>
