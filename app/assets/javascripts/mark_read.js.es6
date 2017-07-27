@@ -3,7 +3,7 @@ $( document ).ready(function(){
 
   $.ajax({
     type: "GET",
-    url: 'http://localhost:3001/api/v1/links',
+    url: 'https://bs-hot-reads.herokuapp.com/api/v1/links',
   }).then(updateHotReads)
     .fail(displayFailure);
 })
@@ -51,7 +51,7 @@ function updateLinkStatus(link) {
 function postHotReads(link) {
   $.ajax({
     method: 'POST',
-    url: 'http://localhost:3001/api/v1/links',
+    url: 'https://bs-hot-reads.herokuapp.com/api/v1/links',
     data: {
             link:
               { url: link.url }
