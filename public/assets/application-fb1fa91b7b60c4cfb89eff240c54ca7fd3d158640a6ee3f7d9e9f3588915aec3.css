@@ -10,21 +10,23 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
- */
 
-.link{
+
+ */
+/* line 18, /Users/jack/Turing/4mod/m4-final-starter/app/assets/stylesheets/application.css.scss */
+.link {
   display: inline-block;
-  border:1px solid black;
+  border: 1px solid black;
   border-radius: 5px;
-  margin:10px;
+  margin: 10px;
   padding: 10px;
 }
-.flash{
+
+/* line 25, /Users/jack/Turing/4mod/m4-final-starter/app/assets/stylesheets/application.css.scss */
+.flash {
   display: inline-block;
-  border:1px solid black;
+  border: 1px solid black;
   border-radius: 5px;
-  margin:10px;
+  margin: 10px;
   padding: 10px;
 }

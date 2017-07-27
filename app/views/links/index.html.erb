@@ -1,0 +1,18 @@
+<div class="">
+  <form id="new-link-form">
+    URL: <input type="text" name="link[url]" id="link_url" /><br>
+    Title: <input type="text" name="link[title]" id="link_title" /><br>
+    <input type="submit" value="Add Link" id="submit-link-button"/>
+</form>
+</div>
+<hr>
+<div class="links-section">
+  <% current_user.links.reverse.each do |link| %>
+    <div class="link" data-link-id="<%= link.id %>">
+      <h3 class="title" data-title="<%= link.title %>">Title: <%= link.title %></h4><br>
+      <h3 class="url" data-url="<%= link.url %>">URL: <a href="<%= link.url %>"><%= link.url %> </a></h4><br>
+      <h4>Read?:<p class="read-status"><%= link.read %></p><br></h4>
+      <button type="button" class="edit-button">edit</button>
+    </div>
+  <% end %>
+</div>

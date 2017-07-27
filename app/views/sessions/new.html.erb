@@ -1,0 +1,16 @@
+<div class="">
+  <h1>You need to Log In First!</h1>
+
+  <%= form_tag '/login' do %>
+
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" %>
+
+  <% end %>
+
+</div>
+
+<div class="">
+  <h1>If you don't have an account please <%= link_to('Sign Up', '/signup') %> </h1>
+</div>
