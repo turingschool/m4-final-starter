@@ -9,6 +9,10 @@ class AllLinks extends React.Component {
     this.props.handleDelete(id)
   }
 
+  handleMarkRead(id) {
+    this.props.handleMarkRead(id)
+  }
+
   handleEdit() {
 
   }
@@ -24,6 +28,7 @@ class AllLinks extends React.Component {
           link={link}
           handleDelete={this.handleDelete.bind(this, link.id)}
           filterText={this.props.filterText}
+          handleMarkRead={this.handleMarkRead.bind(this, link.id)}
           handleUpdate={this.onUpdate} />
         </div>
       ))

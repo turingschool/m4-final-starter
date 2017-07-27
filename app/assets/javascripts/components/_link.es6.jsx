@@ -27,8 +27,10 @@ class Link extends React.Component {
         {title}
         {url}
         {read}
-        <button onClick={this.handleEdit}>{this.state.editable ? 'Mark Unread' : 'Mark as Read' }</button>
+        <button onClick={this.props.handleMarkRead}>Mark as Read</button>
+
         <button onClick={this.props.handleDelete}>Delete</button>
+
         <button onClick={this.handleEdit}> {this.state.editable ? 'Submit' : 'Edit' } </button>
       </div>
     )

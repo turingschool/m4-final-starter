@@ -25,8 +25,8 @@ class Body extends React.Component {
   }
 
   handleSubmit(link) {
-  let newState = this.state.links.concat(link)
-  this.setState({ links: newState })
+    let newState = this.state.links.concat(link)
+    this.setState({ links: newState })
   }
 
   handleDelete(id) {
@@ -40,6 +40,25 @@ class Body extends React.Component {
   removeLink(id) {
     let newLinks = this.state.links.filter(link => link.id != id)
     this.setState({ links: newLinks})
+  }
+
+  handleMarkRead(link) {
+    $.ajax({
+      url: `/api/v1/links/${link.id}`,
+      type: 'PATCH',
+      data: { read: true },
+      success: (() => this.updateLinkStatus(link)),
+      fail: (() => this.displayFailure)
+    })
+  }
+
+  updateLinkStatus(link) {
+    let newState = this.state.links.concat(link)
+    this.setState({ links: newState })
+  }
+
+  displayFailure(failureData){
+    console.log("FAILED attempt to update Link: " + failureData.responseText)
   }
 
   handleUpdate(link) {
@@ -64,7 +83,7 @@ class Body extends React.Component {
 
         <Search filterText={this.state.filterText} onFilterTextInput={this.handleFilterTextInput} />
 
-        <AllLinks links={this.state.links} filterText={this.state.filterText} handleDelete={this.handleDelete} onUpdate={this.handleUpdate} />
+        <AllLinks links={this.state.links} filterText={this.state.filterText} handleDelete={this.handleDelete} handleMarkRead={this.handleMarkRead} onUpdate={this.handleUpdate} />
       </div>
     )
   }
