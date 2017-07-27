@@ -1,5 +1,11 @@
 $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
+
+  $.ajax({
+    type: "GET",
+    url: 'http://localhost:3001/api/v1/links',
+  }).then(updateHotReads)
+    .fail(displayFailure);
 })
 
 function markAsRead(e) {
@@ -50,10 +56,27 @@ function postHotReads(link) {
             link:
               { url: link.url }
           }
-  }).done(console.log('Success'))
+  }).done(updateHotReads)
   .fail(displayFailure);
 }
 
+function updateHotReads(data) {
+  var urls = data.map(function (linkObject) {
+    return linkObject.url.toLowerCase()
+  })
+  $('.link').each(function(index, link) {
+    var linkUrl = $(link).find('a')[0].text.toLowerCase()
+    if (urls.includes(linkUrl)) {
+      $(link).find('.hot').remove()
+      $(link).find('.link-title').prepend('<h3 class="hot">Hot!</h3>')
+    }
+    if (urls[0] === linkUrl) {
+      $(link).find('.hot').remove()
+      $(link).find('.top-link').remove()
+      $(link).find('.link-title').prepend('<h3 class="top-link">¡Top Link!</h3>')
+    }
+  })
+}
 
 function displayFailure(failureData){
   console.log("FAILED attempt to update Link: " + failureData.responseText);
