@@ -9,6 +9,7 @@ function markAsRead(e) {
 
   var $link = $(this).parents('.link');
   var linkId = $link.data('link-id');
+  var url = $(this).parent().parent().siblings('.url').data()['url']
 
   $.ajax({
     type: "PATCH",
@@ -16,6 +17,12 @@ function markAsRead(e) {
     data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
+
+  $.ajax({
+    type: "POST",
+    url:  'https://mighty-ocean-52812.herokuapp.com/api/v1/reads' ,
+    data: {URL: url},
+  })
 }
 function markAsUnread(e) {
   e.preventDefault();
