@@ -17,12 +17,20 @@
 
 <div class="links">
   <% @links.each do |link| %>
-  <div class="link" data-id="<%=link.id %>">
+  <% if link.read %>
+    <div class="link read" data-id="<%=link.id %>">
+  <% else %>
+    <div class="link" data-id="<%=link.id %>">
+  <% end %>
   <fieldset>
       <p>Title: <%= link.title %></p>
       <p>URL: <%= link_to link.url, link.url %></p>
       <p class="read-status" data-link-id="<%=link.id%>">Read?: <%= link.read %></p>
-      <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Read">
+      <% if link.read %>
+        <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Unread">
+      <% else %>
+        <input type="button" class="mark-as-read" data-id="<%=link.id %>" value="Mark as Read">
+      <% end %>
       <%= link_to "Edit", edit_link_path(link) %>
 </fieldset>
 </div>
