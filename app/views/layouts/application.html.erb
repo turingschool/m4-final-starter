@@ -3,13 +3,31 @@
 <head>
   <title>URLockBox</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<div class="container">
-  <%= yield %>
-</div>
 
+<body>
+
+  <div class="" id="ajax-errors">
+
+  </div>
+
+  <div class="flash">
+    <% if current_user %>
+    Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
+    <% else %>
+    <!-- Possibley useful links if navbar is implemented -->
+    <% end %>
+  </div>
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: 'flash' %>
+    <% end if flash%>
+    <%= yield %>
+  </div>
+
+
+  <%= javascript_include_tag 'application'%>
 </body>
 </html>
