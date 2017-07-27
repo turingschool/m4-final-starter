@@ -1,12 +1,12 @@
 class Api::V1::LinksController < Api::V1::BaseController
-  responders :flash
 
   def index
-    respond_with Link.all
+    # require 'pry'; binding.pry
+    @links = current_user.links
+    respond_with @links
   end
 
   def create
-    # require 'pry'; binding.pry
     link = Link.new(link_params)
     if link.save
       respond_with :api, :v1, link
@@ -21,7 +21,7 @@ class Api::V1::LinksController < Api::V1::BaseController
 
   def update
     link = Link.find(params[:id])
-    link.update_attributes(link_params)
+    link.update_attributes(link_params_read)
     respond_with link, json: link
   end
 

@@ -26,6 +26,21 @@ class AllLinks extends React.Component {
           handleUpdate={this.onUpdate} />
         </div>
       ))
+      const LinksList = ({
+        data,
+        filter
+      }) => { const input = filter.toLowerCase()
+        const links = data
+        .map((link, i) => {
+          return (
+            <Link
+              id={link.id}
+              key={i}
+              info={link}
+              />
+          )
+        })
+      }
 
     return <div>{links}</div>
   }

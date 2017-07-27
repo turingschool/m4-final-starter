@@ -3,6 +3,7 @@ class Body extends React.Component {
     super(props)
 
     this.state = {
+      filterText: '',
       links: []
     }
 
@@ -10,10 +11,17 @@ class Body extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.updateLinks = this.updateLinks.bind(this)
+    this.filterUpdate = this.filterUpdate.bind(this)
   }
 
   componentDidMount() {
     $.getJSON('/api/v1/links', links => this.setState({ links }))
+  }
+
+  filterUpdate(value) {
+    this.setState({
+      filterText: value
+    })
   }
 
   handleSubmit(link) {
@@ -50,10 +58,19 @@ class Body extends React.Component {
   }
 
   render() {
+    const hasSearch = this.state.filterText.length > 0
     return (
       <div>
         <NewLink handleSubmit={this.handleSubmit} />
-        <AllLinks links={this.state.links} handleDelete={this.handleDelete} onUpdate={this.handleUpdate} />
+        <Search
+          filterVal={this.state.filterText}
+          filterUpdate={this.filterUpdate.bind(this)}
+          />
+        {hasSearch &&
+        <button onClick={this.filterUpdate.bind(this, '')}>
+          Clear search
+        </button>}
+        <AllLinks links={this.state.links} filter={this.state.filterText} handleDelete={this.handleDelete} onUpdate={this.handleUpdate} />
       </div>
     )
   }
