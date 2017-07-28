@@ -3,7 +3,7 @@ $( document ).ready(function(){
 
   $.ajax({
     type: "GET",
-    url: 'https://bs-hot-reads.herokuapp.com/api/v1/links',
+    url: 'http://localhost:3001/api/v1/links',
   }).then(updateHotReads)
     .fail(displayFailure);
 })
@@ -22,7 +22,7 @@ function markAsRead(e) {
 
   $.ajax({
     type: "PATCH",
-    url: "https://bs-hot-reads.herokuapp.com/api/v1/links/" + linkId,
+    url: "/api/v1/links/" + linkId,
     data: {
             link:
               { read: readStatus },
@@ -51,7 +51,7 @@ function updateLinkStatus(link) {
 function postHotReads(link) {
   $.ajax({
     method: 'POST',
-    url: 'https://bs-hot-reads.herokuapp.com/api/v1/links',
+    url: 'http://localhost:3001/api/v1/links',
     data: {
             link:
               { url: link.url }
