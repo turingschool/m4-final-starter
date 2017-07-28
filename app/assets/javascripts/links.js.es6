@@ -6,7 +6,7 @@ $( document ).ready(function(){
 function checkHotReads() {
   $.ajax({
     type: "GET",
-    url: "http://localhost:2000/api/v1/reads",
+    url: "https://hotreads-jg.herokuapp.com/api/v1/reads",
   }).then(prependHots)
 }
 

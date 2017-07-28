@@ -22,7 +22,7 @@ function postReadLink($link) {
   var url = $link.children().children('.url').text().slice(5)
   $.ajax({
     type: "POST",
-    url: "http://localhost:2000/api/v1/reads?url=" + url,
+    url: "https://hotreads-jg.herokuapp.com/api/v1/reads?url=" + url,
   })
 }
 
