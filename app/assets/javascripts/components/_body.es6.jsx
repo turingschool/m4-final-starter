@@ -11,6 +11,7 @@ class Body extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.updateLinks = this.updateLinks.bind(this)
+    // this.sendToHotReads = this.sendToHotReads.bind(this)
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
   }
 
@@ -46,9 +47,10 @@ class Body extends React.Component {
     $.ajax({
       url: `/api/v1/links/${link.id}`,
       type: 'PATCH',
-      data: { read: true },
-      success: (() => this.sendToHotReads(link)),
-      fail: (() => this.displayFailure)
+      data: { read: true }
+    })
+    .success(function(data) {
+      this.sendToHotReads.bind(this)
     })
   }
 
@@ -57,7 +59,7 @@ class Body extends React.Component {
       url: `https://guarded-reef-14770.herokuapp.com/api/v1/links`,
       type: 'POST',
       data: { link: url },
-      success: (console.log("success!")
+      success: (console.log("success!"))
     })
   }
 
