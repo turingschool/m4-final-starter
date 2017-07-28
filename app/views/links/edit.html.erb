@@ -1,0 +1,15 @@
+<p class="errors">
+
+<h1>Edit your link!, <%= current_user.email %>!</h1>
+
+<div class="link_form">
+  <%= form_for @link do |f| %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit "Edit Link", class: "update-link" %>
+  <% end %>
+</div>
+
+<br>
