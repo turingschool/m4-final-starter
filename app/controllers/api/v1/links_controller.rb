@@ -1,7 +1,6 @@
 class Api::V1::LinksController < Api::V1::BaseController
 
   def index
-    # require 'pry'; binding.pry
     @links = current_user.links
     respond_with @links
   end
@@ -23,6 +22,7 @@ class Api::V1::LinksController < Api::V1::BaseController
     link = Link.find(params[:id])
     link.update_attributes(link_params_read)
     respond_with link, json: link
+    # require 'pry'; binding.pry
   end
 
   private

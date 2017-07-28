@@ -27,7 +27,8 @@ class Link extends React.Component {
         {title}
         {url}
         {read}
-        <button onClick={this.props.handleMarkRead}>Mark as Read</button>
+        {this.props.link.read}
+        <button onClick={this.props.handleMarkRead}>Change Read Status</button>
 
         <button onClick={this.props.handleDelete}>Delete</button>
 

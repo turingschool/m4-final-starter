@@ -47,14 +47,18 @@ class Body extends React.Component {
       url: `/api/v1/links/${link.id}`,
       type: 'PATCH',
       data: { read: true },
-      success: (() => this.updateLinkStatus(link)),
+      success: (() => this.sendToHotReads(link)),
       fail: (() => this.displayFailure)
     })
   }
 
-  updateLinkStatus(link) {
-    let newState = this.state.links.concat(link)
-    this.setState({ links: newState })
+  sendToHotReads(link) {
+    $.ajax({
+      url: `https://guarded-reef-14770.herokuapp.com/api/v1/links`,
+      type: 'POST',
+      data: { link: url },
+      success: (console.log("success!")
+    })
   }
 
   displayFailure(failureData){
