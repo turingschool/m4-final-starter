@@ -7,7 +7,7 @@ function Link(link) {
   Link.prototype.createLink = function() {
         $.ajax({
           type: "POST",
-          url: `https://bs-url-lockbox.herokuapp.com/api/v1/links`,
+          url: `/api/v1/links`,
           dataType: "json",
           data: { link: {
                   title: this.title,
