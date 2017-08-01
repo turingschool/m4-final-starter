@@ -17,7 +17,7 @@ class LinksController < ApplicationController
           flash[:success] = "Link Updated Sucessfully"
           redirect_to links_path
         else
-          link_params_error_check
+          flash[:warning] = link.errors.full_messages.join(', ')
           redirect_to edit_link_path(link)
         end
     end
@@ -26,16 +26,6 @@ class LinksController < ApplicationController
 
     def link_params
       params.require(:link).permit(:title, :url).merge(user_id: current_user.id)
-    end
-
-    def link_params_error_check
-      if link_params[:title].empty? && link_params[:url].empty?
-        flash[:danger] = "Link must have a title and url"
-      elsif link_params[:title].empty?
-        flash[:danger] = "Link must have a title"
-      elsif link_params[:url].empty?
-        flash[:danger] = "Link must have a url"
-      end
     end
 
 end
